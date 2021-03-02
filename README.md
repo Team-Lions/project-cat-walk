@@ -7,7 +7,7 @@ staging branch is where first merge will occur to make sure overall functionalit
 
 Create a new branch:
  - first make sure your local version of the main branch is up to date. Run command: git pull origin main
- - run command: git checkout -b <new branchname>
+ - run command: git checkout -b new_branchname
  - to verify that you are on the correct branch, run git status. First line will say what branch you are currently on
  - run command: git merge main
  
