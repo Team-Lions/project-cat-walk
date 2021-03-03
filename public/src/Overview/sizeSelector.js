@@ -1,0 +1,8 @@
+var SizeSelector = props =>
+/*#__PURE__*/
+//returns a drop down form of available sizes
+//available sizes, and what to show when collapsed are passed in as props
+React.createElement("div", null);
+
+export default SizeSelector;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvT3ZlcnZpZXcvU2l6ZVNlbGVjdG9yLmpzeCJdLCJuYW1lcyI6WyJTaXplU2VsZWN0b3IiLCJwcm9wcyJdLCJtYXBwaW5ncyI6IkFBQUEsSUFBSUEsWUFBWSxHQUFJQyxLQUFEO0FBQUE7QUFDakI7QUFDQTtBQUNBLGdDQUhGOztBQU1BLGVBQWVELFlBQWYiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgU2l6ZVNlbGVjdG9yID0gKHByb3BzKSA9PiAoXG4gIC8vcmV0dXJucyBhIGRyb3AgZG93biBmb3JtIG9mIGF2YWlsYWJsZSBzaXplc1xuICAvL2F2YWlsYWJsZSBzaXplcywgYW5kIHdoYXQgdG8gc2hvdyB3aGVuIGNvbGxhcHNlZCBhcmUgcGFzc2VkIGluIGFzIHByb3BzXG4gIDxkaXY+PC9kaXY+XG4pO1xuXG5leHBvcnQgZGVmYXVsdCBTaXplU2VsZWN0b3I7Il19

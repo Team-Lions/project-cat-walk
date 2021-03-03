@@ -1,0 +1,58 @@
+import React from 'react';
+import SizeSelector from './SizeSelector.jsx';
+import QuantitySelector from './QuantitySelector.jsx';
+
+class AddToCart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      style: props.style,
+      sizes: [],
+      sizeSelection: '',
+      quantityEnabled: false,
+      quantityAvailable: null,
+      quantitySelection: null
+    };
+  }
+
+  changeSizeSelection(event) {//event handler for a new size selection
+    //gets passed into the sizeSelector functional Component
+    //updates state.sizeSelection
+    //changes quantityEnabled to true
+  }
+
+  getStyleData() {//ajax request to get all the relevent data for the selected style
+    // ^ see if it's possible to do something else that allows this to return a promise. Will axios work here?
+  }
+
+  parseAvailableSizes(data) {//looks through style data to populate an array of available sizes
+    //returns an array, but does not set the state
+  }
+
+  parseStock() {//creates an array of integers of wither 1 - total number of stock, or 1-15 if the total number of stock is above 15
+    //is dependent on size being selected
+    //returns array, but does not set the state
+  }
+
+  addToCart(event) {//event handler passed into the button
+    //will have different functionality based on the current state
+  }
+
+  componentDidMount() {//gets data on current style. Upon success renders the following:
+    //Size Selector -
+    //invoke parseAvailableSizes
+    //if return.length === 0 then set state to selection = "OUT OF STOCK", make dropdown inactive
+    //else set state to selection = "Select Size", sizes = return of parseAvailableSizes call
+    //Won't have to do anything with QuantitySelector, since it's defaults are to be inactive until a size is selected
+  }
+
+  render() {//invokes :
+    //SizeSelector
+    //QuantitySelector (conditional rendering based on state.quantityEnabled)
+    //renders an add to cart button that is dependent on current selection
+  }
+
+}
+
+;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvT3ZlcnZpZXcvQWRkVG9DYXJ0LmpzeCJdLCJuYW1lcyI6WyJSZWFjdCIsIlNpemVTZWxlY3RvciIsIlF1YW50aXR5U2VsZWN0b3IiLCJBZGRUb0NhcnQiLCJDb21wb25lbnQiLCJjb25zdHJ1Y3RvciIsInByb3BzIiwic3RhdGUiLCJzdHlsZSIsInNpemVzIiwic2l6ZVNlbGVjdGlvbiIsInF1YW50aXR5RW5hYmxlZCIsInF1YW50aXR5QXZhaWxhYmxlIiwicXVhbnRpdHlTZWxlY3Rpb24iLCJjaGFuZ2VTaXplU2VsZWN0aW9uIiwiZXZlbnQiLCJnZXRTdHlsZURhdGEiLCJwYXJzZUF2YWlsYWJsZVNpemVzIiwiZGF0YSIsInBhcnNlU3RvY2siLCJhZGRUb0NhcnQiLCJjb21wb25lbnREaWRNb3VudCIsInJlbmRlciJdLCJtYXBwaW5ncyI6IkFBQUEsT0FBT0EsS0FBUCxNQUFrQixPQUFsQjtBQUNBLE9BQU9DLFlBQVAsTUFBeUIsb0JBQXpCO0FBQ0EsT0FBT0MsZ0JBQVAsTUFBNkIsd0JBQTdCOztBQUVBLE1BQU1DLFNBQU4sU0FBd0JILEtBQUssQ0FBQ0ksU0FBOUIsQ0FBd0M7QUFDdENDLEVBQUFBLFdBQVcsQ0FBQ0MsS0FBRCxFQUFRO0FBQ2pCLFVBQU1BLEtBQU47QUFDQSxTQUFLQyxLQUFMLEdBQWE7QUFDWEMsTUFBQUEsS0FBSyxFQUFFRixLQUFLLENBQUNFLEtBREY7QUFFWEMsTUFBQUEsS0FBSyxFQUFFLEVBRkk7QUFHWEMsTUFBQUEsYUFBYSxFQUFFLEVBSEo7QUFJWEMsTUFBQUEsZUFBZSxFQUFFLEtBSk47QUFLWEMsTUFBQUEsaUJBQWlCLEVBQUUsSUFMUjtBQU1YQyxNQUFBQSxpQkFBaUIsRUFBRTtBQU5SLEtBQWI7QUFRRDs7QUFFREMsRUFBQUEsbUJBQW1CLENBQUNDLEtBQUQsRUFBUSxDQUN6QjtBQUNBO0FBQ0E7QUFDQTtBQUNEOztBQUVEQyxFQUFBQSxZQUFZLEdBQUcsQ0FDYjtBQUNBO0FBQ0Q7O0FBRURDLEVBQUFBLG1CQUFtQixDQUFDQyxJQUFELEVBQU8sQ0FDeEI7QUFDQTtBQUNEOztBQUVEQyxFQUFBQSxVQUFVLEdBQUcsQ0FDWDtBQUNBO0FBQ0E7QUFDRDs7QUFFREMsRUFBQUEsU0FBUyxDQUFDTCxLQUFELEVBQVEsQ0FDZjtBQUNBO0FBQ0Q7O0FBRURNLEVBQUFBLGlCQUFpQixHQUFHLENBQ2xCO0FBQ0E7QUFDRTtBQUNBO0FBQ0E7QUFDRjtBQUNEOztBQUVEQyxFQUFBQSxNQUFNLEdBQUcsQ0FDUDtBQUNBO0FBQ0E7QUFFQTtBQUNEOztBQXhEcUM7O0FBeUR2QyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgU2l6ZVNlbGVjdG9yIGZyb20gJy4vU2l6ZVNlbGVjdG9yLmpzeCc7XG5pbXBvcnQgUXVhbnRpdHlTZWxlY3RvciBmcm9tICcuL1F1YW50aXR5U2VsZWN0b3IuanN4JztcblxuY2xhc3MgQWRkVG9DYXJ0IGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICBzdXBlcihwcm9wcyk7XG4gICAgdGhpcy5zdGF0ZSA9IHtcbiAgICAgIHN0eWxlOiBwcm9wcy5zdHlsZSxcbiAgICAgIHNpemVzOiBbXSxcbiAgICAgIHNpemVTZWxlY3Rpb246ICcnLFxuICAgICAgcXVhbnRpdHlFbmFibGVkOiBmYWxzZSxcbiAgICAgIHF1YW50aXR5QXZhaWxhYmxlOiBudWxsLFxuICAgICAgcXVhbnRpdHlTZWxlY3Rpb246IG51bGxcbiAgICB9O1xuICB9XG5cbiAgY2hhbmdlU2l6ZVNlbGVjdGlvbihldmVudCkge1xuICAgIC8vZXZlbnQgaGFuZGxlciBmb3IgYSBuZXcgc2l6ZSBzZWxlY3Rpb25cbiAgICAvL2dldHMgcGFzc2VkIGludG8gdGhlIHNpemVTZWxlY3RvciBmdW5jdGlvbmFsIENvbXBvbmVudFxuICAgIC8vdXBkYXRlcyBzdGF0ZS5zaXplU2VsZWN0aW9uXG4gICAgLy9jaGFuZ2VzIHF1YW50aXR5RW5hYmxlZCB0byB0cnVlXG4gIH1cblxuICBnZXRTdHlsZURhdGEoKSB7XG4gICAgLy9hamF4IHJlcXVlc3QgdG8gZ2V0IGFsbCB0aGUgcmVsZXZlbnQgZGF0YSBmb3IgdGhlIHNlbGVjdGVkIHN0eWxlXG4gICAgLy8gXiBzZWUgaWYgaXQncyBwb3NzaWJsZSB0byBkbyBzb21ldGhpbmcgZWxzZSB0aGF0IGFsbG93cyB0aGlzIHRvIHJldHVybiBhIHByb21pc2UuIFdpbGwgYXhpb3Mgd29yayBoZXJlP1xuICB9XG5cbiAgcGFyc2VBdmFpbGFibGVTaXplcyhkYXRhKSB7XG4gICAgLy9sb29rcyB0aHJvdWdoIHN0eWxlIGRhdGEgdG8gcG9wdWxhdGUgYW4gYXJyYXkgb2YgYXZhaWxhYmxlIHNpemVzXG4gICAgLy9yZXR1cm5zIGFuIGFycmF5LCBidXQgZG9lcyBub3Qgc2V0IHRoZSBzdGF0ZVxuICB9XG5cbiAgcGFyc2VTdG9jaygpIHtcbiAgICAvL2NyZWF0ZXMgYW4gYXJyYXkgb2YgaW50ZWdlcnMgb2Ygd2l0aGVyIDEgLSB0b3RhbCBudW1iZXIgb2Ygc3RvY2ssIG9yIDEtMTUgaWYgdGhlIHRvdGFsIG51bWJlciBvZiBzdG9jayBpcyBhYm92ZSAxNVxuICAgIC8vaXMgZGVwZW5kZW50IG9uIHNpemUgYmVpbmcgc2VsZWN0ZWRcbiAgICAvL3JldHVybnMgYXJyYXksIGJ1dCBkb2VzIG5vdCBzZXQgdGhlIHN0YXRlXG4gIH1cblxuICBhZGRUb0NhcnQoZXZlbnQpIHtcbiAgICAvL2V2ZW50IGhhbmRsZXIgcGFzc2VkIGludG8gdGhlIGJ1dHRvblxuICAgIC8vd2lsbCBoYXZlIGRpZmZlcmVudCBmdW5jdGlvbmFsaXR5IGJhc2VkIG9uIHRoZSBjdXJyZW50IHN0YXRlXG4gIH1cblxuICBjb21wb25lbnREaWRNb3VudCgpIHtcbiAgICAvL2dldHMgZGF0YSBvbiBjdXJyZW50IHN0eWxlLiBVcG9uIHN1Y2Nlc3MgcmVuZGVycyB0aGUgZm9sbG93aW5nOlxuICAgIC8vU2l6ZSBTZWxlY3RvciAtXG4gICAgICAvL2ludm9rZSBwYXJzZUF2YWlsYWJsZVNpemVzXG4gICAgICAvL2lmIHJldHVybi5sZW5ndGggPT09IDAgdGhlbiBzZXQgc3RhdGUgdG8gc2VsZWN0aW9uID0gXCJPVVQgT0YgU1RPQ0tcIiwgbWFrZSBkcm9wZG93biBpbmFjdGl2ZVxuICAgICAgLy9lbHNlIHNldCBzdGF0ZSB0byBzZWxlY3Rpb24gPSBcIlNlbGVjdCBTaXplXCIsIHNpemVzID0gcmV0dXJuIG9mIHBhcnNlQXZhaWxhYmxlU2l6ZXMgY2FsbFxuICAgIC8vV29uJ3QgaGF2ZSB0byBkbyBhbnl0aGluZyB3aXRoIFF1YW50aXR5U2VsZWN0b3IsIHNpbmNlIGl0J3MgZGVmYXVsdHMgYXJlIHRvIGJlIGluYWN0aXZlIHVudGlsIGEgc2l6ZSBpcyBzZWxlY3RlZFxuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIC8vaW52b2tlcyA6XG4gICAgLy9TaXplU2VsZWN0b3JcbiAgICAvL1F1YW50aXR5U2VsZWN0b3IgKGNvbmRpdGlvbmFsIHJlbmRlcmluZyBiYXNlZCBvbiBzdGF0ZS5xdWFudGl0eUVuYWJsZWQpXG5cbiAgICAvL3JlbmRlcnMgYW4gYWRkIHRvIGNhcnQgYnV0dG9uIHRoYXQgaXMgZGVwZW5kZW50IG9uIGN1cnJlbnQgc2VsZWN0aW9uXG4gIH1cbn07Il19
