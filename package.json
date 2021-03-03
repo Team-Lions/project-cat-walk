@@ -4,11 +4,13 @@
   "description": "HRATX54 FEC",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --watch",
+    "compile": "./node_modules/.bin/babel client --out-dir public --presets @babel/preset-react --source-maps inline --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Team-Lions/project-cat-walk.git"
+    "url": "https://github.com/Team-Lions/project-cat-walk.git"
   },
   "author": "",
   "license": "ISC",
@@ -17,13 +19,17 @@
   },
   "homepage": "https://github.com/Team-Lions/project-cat-walk#readme",
   "dependencies": {
-    "axios": "^0.21.1",
-    "babel": "^6.23.0",
-    "nodemon": "^2.0.7",
+    "@babel/cli": "^7.13.0",
+    "axois": "^0.0.1-security",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "webpack-cli": "^4.5.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.24.2"
   }
 }
