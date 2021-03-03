@@ -1,7 +1,19 @@
-var SizeSelector = (props) => (
+import React from 'react';
+
+var SizeSelector = (props) => {
   //returns a drop down form of available sizes
-  //available sizes, and what to show when collapsed are passed in as props
-  <div></div>
-);
+  //expects props of available sizes array and onchange function
+  let listOptions = props.sizes.map((item) => {
+    return <option value={item}>{item}</option>
+  });
+  return (
+    <div>
+      <label id="size">Size: </label>
+      <select id="size" name="size" onChange={props.change}>
+        {listOptions}
+      </select>
+    </div>
+  );
+};
 
 export default SizeSelector;
