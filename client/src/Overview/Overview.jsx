@@ -1,4 +1,5 @@
 import React from 'react';
+import AddToCart from './AddToCart.jsx';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -7,7 +8,9 @@ class Overview extends React.Component {
   }
 
   render() {
-
+    return (
+      <AddToCart/>
+    );
   }
 };
 
