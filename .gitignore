@@ -1,5 +1,3 @@
 node_modules
 package-lock.json
-
-client/token.jsx
-public/token.js
+/public/token.js

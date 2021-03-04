@@ -1,8 +1,8 @@
 import React from 'react';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
-import token from '../../token.jsx';
 import axios from 'axios';
+import token from '../../../public/token.js';
 
 class AddToCart extends React.Component {
   //expects props to contain object called skus
