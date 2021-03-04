@@ -9,16 +9,12 @@ class App extends React.Component {
   }
 
   render() {
-<<<<<<< HEAD
-    return <div>Hello<Rating/></div>
-=======
     return (
       <div>
         <Overview />
         <Ratings />
       </div>
     );
->>>>>>> main
   }
 };
 
