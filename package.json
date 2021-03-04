@@ -26,7 +26,11 @@
     "express": "^4.17.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+<<<<<<< HEAD
     "web-dev-server": "^3.0.22",
+=======
+    "underscore": "^1.12.0",
+>>>>>>> main
     "webpack-cli": "^4.5.0"
   },
   "devDependencies": {
