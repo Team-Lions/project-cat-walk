@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Overview from './Overview/Overview.jsx';
+import Rating from './Ratings&Reviews/rating.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -11,8 +12,9 @@ class App extends React.Component {
     return (
       <div>
         <Overview />
+        <Rating />
       </div>
-    )
+    );
   }
 };
 
