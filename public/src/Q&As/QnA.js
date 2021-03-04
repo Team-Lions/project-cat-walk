@@ -1,0 +1,14 @@
+import React, { Component } from 'react';
+
+class QnA extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Questions and Answers"), /*#__PURE__*/React.createElement(QnAList, null));
+  }
+
+} //minor changes
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvUSZBcy9RbkEuanMiXSwibmFtZXMiOlsiUmVhY3QiLCJDb21wb25lbnQiLCJRbkEiLCJjb25zdHJ1Y3RvciIsInByb3BzIiwic3RhdGUiLCJyZW5kZXIiXSwibWFwcGluZ3MiOiJBQUFBLE9BQU9BLEtBQVAsSUFBZUMsU0FBZixRQUErQixPQUEvQjs7QUFFQSxNQUFNQyxHQUFOLFNBQWtCRCxTQUFsQixDQUE0QjtBQUMxQkUsRUFBQUEsV0FBVyxDQUFDQyxLQUFELEVBQVE7QUFDakIsVUFBTUEsS0FBTjtBQUVBLFNBQUtDLEtBQUwsR0FBYSxFQUFiO0FBR0Q7O0FBR0RDLEVBQUFBLE1BQU0sR0FBRztBQUNQLHdCQUNFLDhDQUNFLHdEQURGLGVBRUUsb0JBQUMsT0FBRCxPQUZGLENBREY7QUFNRDs7QUFqQnlCLEMsQ0FtQjVCIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7Q29tcG9uZW50fSBmcm9tICdyZWFjdCc7XG5cbmNsYXNzIFFuQSBleHRlbmRzIENvbXBvbmVudCB7XG4gIGNvbnN0cnVjdG9yKHByb3BzKSB7XG4gICAgc3VwZXIocHJvcHMpO1xuXG4gICAgdGhpcy5zdGF0ZSA9IHtcblxuICAgIH1cbiAgfVxuXG5cbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2PlxuICAgICAgICA8aDE+UXVlc3Rpb25zIGFuZCBBbnN3ZXJzPC9oMT5cbiAgICAgICAgPFFuQUxpc3QgLz5cbiAgICAgIDwvZGl2PlxuICAgIClcbiAgfVxufVxuLy9taW5vciBjaGFuZ2VzIl19

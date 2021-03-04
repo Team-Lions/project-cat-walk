@@ -8,7 +8,7 @@ class App extends React.Component {
   }
 
   render() {
-    return <div><Rating/></div>
+    return <div>iefhkdjhkjgh<Rating/></div>
   }
 };
 
