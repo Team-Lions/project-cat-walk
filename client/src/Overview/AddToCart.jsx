@@ -1,6 +1,8 @@
 import React from 'react';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
+import token from './token.jsx';
+import axios from 'axios';
 
 class AddToCart extends React.Component {
   //expects props to contain object called skus
@@ -41,13 +43,31 @@ class AddToCart extends React.Component {
   enforceSizeSelection(e) {
     //opens size dropdown
     //displays a message that says "Please select size"
-    console.log('please select size');
+    //come back to this if time to figure out how to open the dropdown and display a more graceful message
+    alert('Please select size');
   }
 
   addToCart(e) {
-    //event handler passed into the button
-    //will have different functionality based on the current state
-    console.log('added to cart');
+    //may not be working properly. Will have to test again when I have a real SKU instead of dummy data
+    var sku_id = Number.parseInt(this.state.sizeFirstSkus[this.state.sizeSelection].sku_id);
+    axios({
+      method: 'post',
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx/cart',
+      data: {
+        sku_id: sku_id,
+        count: this.state.quantitySelection
+      },
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then(() => {
+      console.log('added to cart')
+    })
+    .catch((err) => {
+      console.log('error');
+      throw err;
+    });
   }
 
   componentDidMount() {
@@ -58,7 +78,7 @@ class AddToCart extends React.Component {
       size = this.props.skus[k].size;
       quantity = this.props.skus[k].quantity;
       sizeFirstSkus[size] = {
-        skuId: k,
+        sku_id: k,
         quantity: quantity
       };
     }

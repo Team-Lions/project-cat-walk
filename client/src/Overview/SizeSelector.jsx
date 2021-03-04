@@ -8,7 +8,7 @@ var SizeSelector = (props) => {
   });
   return (
     <select id="size" name="size" onChange={props.change}>
-      <option value="Select Size" selected>Select Size</option>
+      <option value="Select Size">Select Size</option>
       {listOptions}
     </select>
 

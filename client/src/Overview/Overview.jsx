@@ -23,7 +23,7 @@ class Overview extends React.Component {
       }
     };
     return (
-      <AddToCart skus={{}}/>
+      <AddToCart skus={dummySkus}/>
     );
   }
 };
