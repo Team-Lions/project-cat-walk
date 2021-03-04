@@ -3,38 +3,34 @@ import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 
 class AddToCart extends React.Component {
+  //expects props to contain object called skus
   constructor(props) {
     super(props);
     this.state = {
-      style: props.style,
-      sizes: ['s', 'm', 'l'],
+      sizeFirstSkus: {},
+      sizes: [],
       sizeSelection: '',
       quantityEnabled: false,
-      quantities: [1, 2, 3, 4],
+      quantityAvailable: 0,
       quantitySelection: null
     };
   }
 
-  getStyleData() {
-    //ajax request to get all the relevent data for the selected style
-    // ^ see if it's possible to do something else that allows this to return a promise. Will axios work here?
-  }
-
-  //Size functions
   changeSize(e) {
+    // if this is the first slection away formthe default, remove "Select Size as an option"
+    if(document.getElementById('size').options[0].value === 'Select Size') {
+      document.getElementById('size').remove(0);
+    }
     var newSize = e.target.value;
+    document.getElementById('quantity').value = 1;
     this.setState({
       sizeSelection: newSize,
-      quantityEnabled: true
+      quantityEnabled: true,
+      quantityAvailable: this.state.sizeFirstSkus[newSize].quantity,
+      quantitySelection: 1
     });
   }
 
-  parseAvailableSizes(data) {
-    //looks through style data to populate an array of available sizes
-    //returns an array, but does not set the state
-  }
-
-  //Quantity Functions
   changeQuantity(e) {
     var newQuantity = e.target.value;
     this.setState({
@@ -42,35 +38,47 @@ class AddToCart extends React.Component {
     });
   }
 
-  parseStock() {
-    //creates an array of integers of wither 1 - total number of stock, or 1-15 if the total number of stock is above 15
-    //is dependent on size being selected
-    //returns array, but does not set the state
-  }
-
-  addToCart(event) {
+  addToCart(e) {
     //event handler passed into the button
     //will have different functionality based on the current state
   }
 
-  // componentDidMount() {
-  //   //gets data on current style. Upon success renders the following:
-  //   //Size Selector -
-  //     //invoke parseAvailableSizes
-  //     //if return.length === 0 then set state to selection = "OUT OF STOCK", make dropdown inactive
-  //     //else set state to selection = "Select Size", sizes = return of parseAvailableSizes call
-  //   //Won't have to do anything with QuantitySelector, since it's defaults are to be inactive until a size is selected
-  // }
+  componentDidMount() {
+    //populates sizeFirstSkus and sizes objects
+    var sizeFirstSkus = {};
+    var size, quantity;
+    for (var k in this.props.skus) {
+      size = this.props.skus[k].size;
+      quantity = this.props.skus[k].quantity;
+      sizeFirstSkus[size] = {
+        skuId: k,
+        quantity: quantity
+      };
+    }
+    this.setState({
+      sizeFirstSkus: sizeFirstSkus,
+      sizes: Object.keys(sizeFirstSkus)
+    });
+  }
 
   render() {
-    //invokes :
-    //SizeSelector
-    //QuantitySelector (conditional rendering based on state.quantityEnabled)
-    //renders an add to cart button that is dependent on current selection
     return (
       <div>
-        <SizeSelector sizes={this.state.sizes} change={this.changeSize.bind(this)}/>
-        <QuantitySelector quantities={this.state.quantities} change={this.changeQuantity.bind(this)}/>
+        {this.state.sizes.length === 0 ?
+          <select id="size" name="size" disabled>
+            <option>OUT OF STOCK</option>
+          </select>
+          :
+          <SizeSelector sizes={this.state.sizes} change={this.changeSize.bind(this)}/>
+        }
+        {this.state.quantityEnabled ?
+          <QuantitySelector quantityAvailable={this.state.quantityAvailable} change={this.changeQuantity.bind(this)}/>
+          :
+          <select id="quantity" name="quantity" disabled>
+            <option>-</option>
+          </select>
+        }
+        {/*button goes here*/}
       </div>
     )
   }

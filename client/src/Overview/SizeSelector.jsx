@@ -7,12 +7,11 @@ var SizeSelector = (props) => {
     return <option value={item}>{item}</option>
   });
   return (
-    <div>
-      <label id="size">Size: </label>
-      <select id="size" name="size" onChange={props.change}>
-        {listOptions}
-      </select>
-    </div>
+    <select id="size" name="size" onChange={props.change}>
+      <option value="Select Size" selected>Select Size</option>
+      {listOptions}
+    </select>
+
   );
 };
 

@@ -1,18 +1,21 @@
 import React from 'react';
+import _ from 'underscore';
 
 var QuantitySelector = (props) => {
-  //expects as array of integers, and onchange function
+  //expects an integer, and onchange function
   //renders a dropdown with the array values as options
-  let listOptions = props.quantities.map((item) => {
+  if (props.quantityAvailable >= 15){
+    var quantities = _.range(1, 16);
+  } else {
+    var quantities = _.range(1, props.quantityAvailable + 1);
+  }
+  var listOptions = quantities.map((item) => {
     return <option value={item}>{item}</option>
   });
   return (
-    <div>
-      <label id="quantity">Quantity:</label>
-      <select id="quantity" name="quantity" onChange={props.change}>
-        {listOptions}
-      </select>
-    </div>
+    <select id="quantity" name="quantity" onChange={props.change}>
+      {listOptions}
+    </select>
   );
 };
 

@@ -8,8 +8,22 @@ class Overview extends React.Component {
   }
 
   render() {
+    var dummySkus = {
+      37: {
+        quantity: 8,
+        size: 'XS'
+      },
+      38: {
+        quantity: 16,
+        size: 'S'
+      },
+      39: {
+        quantity: 17,
+        size: 'M'
+      }
+    };
     return (
-      <AddToCart/>
+      <AddToCart skus={{}}/>
     );
   }
 };
