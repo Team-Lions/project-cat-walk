@@ -38,9 +38,16 @@ class AddToCart extends React.Component {
     });
   }
 
+  enforceSizeSelection(e) {
+    //opens size dropdown
+    //displays a message that says "Please select size"
+    console.log('please select size');
+  }
+
   addToCart(e) {
     //event handler passed into the button
     //will have different functionality based on the current state
+    console.log('added to cart');
   }
 
   componentDidMount() {
@@ -78,7 +85,17 @@ class AddToCart extends React.Component {
             <option>-</option>
           </select>
         }
-        {/*button goes here*/}
+        {this.state.sizes.length > 0 ?
+          this.state.sizeSelection === "" ?
+            /* there is quantity, but size is not selected. Button opens dropdown display message */
+            <button onClick={this.enforceSizeSelection.bind(this)}>Add to Cart</button>
+            :
+            /* quantity and size selected. Button adds to cart */
+            <button onClick={this.addToCart.bind(this)}>Add to Cart</button>
+          :
+          /* hide button */
+          <button style={{visibility: 'hidden'}}>Add to Cart</button>
+        }
       </div>
     )
   }
