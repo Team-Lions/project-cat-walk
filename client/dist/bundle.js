@@ -389,7 +389,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar token = '90fec5c96584a8cd8b3a2f5015aec0d5229eb9eb';\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (token);\n\n//# sourceURL=webpack://project-cat-walk/./client/token.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar token = 'de3a246077b190698a7b1bfb2a1a85da1c74fe18';\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (token);\n\n//# sourceURL=webpack://project-cat-walk/./client/token.jsx?");
 
 /***/ }),
 
