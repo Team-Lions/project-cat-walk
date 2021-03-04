@@ -9,29 +9,29 @@ class Rating extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		axios
-			.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews', {
-				headers: {
-					Authorization: 'fa912ab9e634977280cf067e1632685789a10cc1',
-				},
-				params: {
-					product_id: 21112,
-				},
-			})
-			.then((res) => {
-				console.log(res.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	}
+	// componentDidMount() {
+	// 	axios
+	// 		.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/', {
+	// 			headers: {
+	// 				"Authorization": 'fa912ab9e634977280cf067e1632685789a10cc1',
+	// 			},
+	// 			params: {
+	// 				product_id: 21112,
+	// 			},
+	// 		})
+	// 		.then((res) => {
+	// 			console.log(res.data);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error(error);
+	// 		});
+	// }
 
 	render() {
 		return (
-			<>
-				<h1>Ratings</h1>
-			</>
+			<div>
+				<h1>dfjghdfkjghk</h1>
+			</div>
 		);
 	}
 }
