@@ -1,6 +1,6 @@
 import React from 'react';
 
-class RelatedItems extends React.Component {
+class YourFit extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -8,13 +8,14 @@ class RelatedItems extends React.Component {
     }
   }
 
+
   render() {
     return (
       <div>
-        Insert something
+        Insert Values
       </div>
     )
   }
 };
 
-export default RelatedItems;
+export default YourFit;
