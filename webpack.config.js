@@ -3,7 +3,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: [/\.jsx$/],
+        test: [/\.jsx$/, /\.js$/],
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -16,7 +16,7 @@ module.exports = {
   },
    output: {
     filename: 'bundle.js',
-    path: __dirname + '/client/dist'
+    path: __dirname + '/public/dist'
   },
   mode: 'development'
 };
