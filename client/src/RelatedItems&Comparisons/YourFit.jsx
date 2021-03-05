@@ -1,10 +1,11 @@
 import React from 'react';
+import Carousel from 'react-multi-carousel';
 
 class YourFit extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-
+      favorites: []
     }
   }
 
@@ -12,7 +13,10 @@ class YourFit extends React.Component {
   render() {
     return (
       <div>
-        Insert Values
+        <h3>
+          Your Outfit
+        </h3>
+        Insert YourFit Carousel
       </div>
     )
   }

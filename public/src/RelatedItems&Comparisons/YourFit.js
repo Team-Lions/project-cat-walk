@@ -1,0 +1,20 @@
+import React from 'react';
+import Carousel from 'react-multi-carousel';
+
+class YourFit extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      favorites: []
+    };
+  }
+
+  render() {
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Your Outfit"), "Insert YourFit Carousel");
+  }
+
+}
+
+;
+export default YourFit;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvUmVsYXRlZEl0ZW1zJkNvbXBhcmlzb25zL1lvdXJGaXQuanN4Il0sIm5hbWVzIjpbIlJlYWN0IiwiQ2Fyb3VzZWwiLCJZb3VyRml0IiwiQ29tcG9uZW50IiwiY29uc3RydWN0b3IiLCJwcm9wcyIsInN0YXRlIiwiZmF2b3JpdGVzIiwicmVuZGVyIl0sIm1hcHBpbmdzIjoiQUFBQSxPQUFPQSxLQUFQLE1BQWtCLE9BQWxCO0FBQ0EsT0FBT0MsUUFBUCxNQUFxQixzQkFBckI7O0FBRUEsTUFBTUMsT0FBTixTQUFzQkYsS0FBSyxDQUFDRyxTQUE1QixDQUFzQztBQUNwQ0MsRUFBQUEsV0FBVyxDQUFDQyxLQUFELEVBQVE7QUFDakIsVUFBTUEsS0FBTjtBQUNBLFNBQUtDLEtBQUwsR0FBYTtBQUNYQyxNQUFBQSxTQUFTLEVBQUU7QUFEQSxLQUFiO0FBR0Q7O0FBR0RDLEVBQUFBLE1BQU0sR0FBRztBQUNQLHdCQUNFLDhDQUNFLDhDQURGLDRCQURGO0FBUUQ7O0FBbEJtQzs7QUFtQnJDO0FBRUQsZUFBZU4sT0FBZiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgQ2Fyb3VzZWwgZnJvbSAncmVhY3QtbXVsdGktY2Fyb3VzZWwnO1xuXG5jbGFzcyBZb3VyRml0IGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICBzdXBlcihwcm9wcylcbiAgICB0aGlzLnN0YXRlID0ge1xuICAgICAgZmF2b3JpdGVzOiBbXVxuICAgIH1cbiAgfVxuXG5cbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2PlxuICAgICAgICA8aDM+XG4gICAgICAgICAgWW91ciBPdXRmaXRcbiAgICAgICAgPC9oMz5cbiAgICAgICAgSW5zZXJ0IFlvdXJGaXQgQ2Fyb3VzZWxcbiAgICAgIDwvZGl2PlxuICAgIClcbiAgfVxufTtcblxuZXhwb3J0IGRlZmF1bHQgWW91ckZpdDsiXX0=
