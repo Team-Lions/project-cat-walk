@@ -1,7 +1,7 @@
 import React from 'react';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
-import token from '../../token.jsx';
+//import token from '../../token.jsx';
 import axios from 'axios';
 
 class AddToCart extends React.Component {
