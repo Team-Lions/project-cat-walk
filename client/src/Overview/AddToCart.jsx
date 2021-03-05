@@ -74,6 +74,7 @@ class AddToCart extends React.Component {
     //populates sizeFirstSkus and sizes objects
     var sizeFirstSkus = {};
     var size, quantity;
+    console.log('skus: ', this.props.skus);
     for (var k in this.props.skus) {
       size = this.props.skus[k].size;
       quantity = this.props.skus[k].quantity;
@@ -89,6 +90,7 @@ class AddToCart extends React.Component {
   }
 
   render() {
+    console.log('rendering add to Cart');
     return (
       <div>
         {this.state.sizes.length === 0 ?

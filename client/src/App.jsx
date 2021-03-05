@@ -69,6 +69,12 @@ class App extends React.Component {
     });
   }
 
+  changeStyle(e) {
+    //event handler function to be passed down to style selector.
+    //when a new selection is made this will run and update the state as needed
+  }
+
+  //will probably need to update to be an event handler function for when a new product is selected
   changeProduct(productId, newState = {}) {
     newState.selectedProductId = productId;
     this.getProductInfo(productId)
@@ -96,7 +102,6 @@ class App extends React.Component {
       newState.productStyles = styleData.data.results;
       newState.selectedStyle = newState.productStyles[0];
       console.log('all data retrieved');
-      console.log('New State: ', newState);
       this.setState(newState);
     })
     .catch((err) => {
@@ -119,9 +124,10 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('state: ', this.state);
     return (
       <div>
-        <Overview productStyles={this.state.productStyles}/>
+        <Overview style={this.state.selectedStyle} productStyles={this.state.productStyles}/>
         <Rating />
       </div>
     );
