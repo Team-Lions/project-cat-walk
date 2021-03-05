@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import calculateStarReview from './calculateStarReview.js';
 import Overview from './Overview/Overview.jsx';
-import Rating from './Ratings&Reviews/rating.jsx';
+import Ratings from './Ratings&Reviews/Ratings.jsx'
+import RelatedItems from './RelatedItems&Comparisons/RelatedItems.jsx';
+import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
 import token from '../../public/token.js';
+import css from './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -71,7 +74,9 @@ class App extends React.Component {
     return (
       <div>
         <Overview productId={this.state.selectedProductId} starRating={this.state.starRating}/>
-        <Rating />
+        <RelatedItems />
+        <YourFit />
+        <Ratings />
       </div>
     );
   }
