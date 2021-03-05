@@ -1,31 +1,13 @@
 import React from 'react';
 import AddToCart from './AddToCart.jsx';
 
-class Overview extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    var dummySkus = {
-      37: {
-        quantity: 8,
-        size: 'XS'
-      },
-      38: {
-        quantity: 16,
-        size: 'S'
-      },
-      39: {
-        quantity: 17,
-        size: 'M'
-      }
-    };
-    return (
-      <AddToCart skus={dummySkus}/>
-    );
-  }
+//props are:
+//style = currently selected style object. To passed into Add to Cart.
+//productStyles = all available styles for current product. To be passed into StyleSelector.
+var Overview  = (props) => {
+  return (
+    <AddToCart skus={props.style.skus}/>
+  );
 };
 
 export default Overview;
