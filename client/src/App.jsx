@@ -16,7 +16,7 @@ class App extends React.Component {
       reviewData: {},
       starRating: 0,
       productStyles: [],
-      selectedStyleId: null
+      selectedStyle: {}
     }
   }
 
@@ -78,8 +78,6 @@ class App extends React.Component {
     })
     .then((reviewData) => {
       newState.reviewData = reviewData.data;
-      console.log('reviewData: ', newState.reviewData);
-      console.log('ratings: ', newState.reviewData.ratings);
       //calculate average review
       var num = 0;
       var denom = 0;
@@ -96,7 +94,7 @@ class App extends React.Component {
     })
     .then((styleData) => {
       newState.productStyles = styleData.data.results;
-      newState.selectedStyleId = newState.productStyles[0];
+      newState.selectedStyle = newState.productStyles[0];
       console.log('all data retrieved');
       console.log('New State: ', newState);
       this.setState(newState);
@@ -123,7 +121,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Overview />
+        <Overview productStyles={this.state.productStyles}/>
         <Rating />
       </div>
     );
