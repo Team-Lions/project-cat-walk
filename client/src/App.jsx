@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import calculateStarReview from './calculateStarReview.js';
 import Overview from './Overview/Overview.jsx';
-import Rating from './Ratings&Reviews/rating.jsx';
+import Ratings from './Ratings&Reviews/Ratings.jsx'
+import RelatedItems from './RelatedItems&Comparisons/RelatedItems.jsx';
+import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
 import token from '../../public/token.js';
+import css from './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -70,8 +73,10 @@ class App extends React.Component {
     console.log('state: ', this.state);
     return (
       <div>
-        <Overview style={this.state.selectedStyle} productStyles={this.state.productStyles}/>
-        <Rating />
+        <Overview />
+        <RelatedItems />
+        <YourFit />
+        <Ratings />
       </div>
     );
   }
