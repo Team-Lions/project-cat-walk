@@ -5,8 +5,8 @@ module.exports = {
   entry: "./client/index.jsx",
   mode: 'development',
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "client/dist"),
+    filename: 'bundle.js',
+    path: __dirname + '/public/dist'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -20,7 +20,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: [/\.jsx$/, /\.js$/],
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
@@ -32,8 +32,8 @@ module.exports = {
         test: /\.png|svg|jpg|gif|woff|ttf|eot$/,
         use: ["file-loader"],
       },
-    ],
-  },
+    ]
+  }
 };
 
 // module.exports = {

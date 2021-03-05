@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class Rating extends React.Component {
+class Ratings extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -36,4 +36,4 @@ class Rating extends React.Component {
 	}
 }
 
-export default Rating;
+export default Ratings;
