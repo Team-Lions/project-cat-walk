@@ -70,7 +70,7 @@ class App extends React.Component {
     console.log('state: ', this.state);
     return (
       <div>
-        <Overview style={this.state.selectedStyle} productStyles={this.state.productStyles}/>
+        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating}/>
         <Rating />
       </div>
     );

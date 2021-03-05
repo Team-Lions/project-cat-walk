@@ -46,7 +46,18 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-
+    var newState = {};
+    Promise.all([this.getProductInfo(this.props.productId), this.getStyles(this.props.productId)])
+    .then((values) => {
+      newState.productInfo = values[0].data;
+      newState.styles = values[1].data.results;
+      newState.selectedStyle = newState.styles[0];
+      console.log('new overview State: ', newState);
+      this.setState(newState);
+    })
+    .catch((err) => {
+      console.log('error get overview data: ', err);
+    })
   }
 
   render() {
