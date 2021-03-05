@@ -75,6 +75,7 @@ class App extends React.Component {
   }
 
   //will probably need to update to be an event handler function for when a new product is selected
+  //If time, these can all be performed in parallel bc they are all only dependent on productID
   changeProduct(productId, newState = {}) {
     newState.selectedProductId = productId;
     this.getProductInfo(productId)
