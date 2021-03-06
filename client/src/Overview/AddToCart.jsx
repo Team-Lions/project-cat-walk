@@ -9,8 +9,6 @@ class AddToCart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sizeFirstSkus: {},
-      sizes: [],
       sizeSelection: '',
       quantityEnabled: false,
       quantityAvailable: 0,
@@ -28,7 +26,7 @@ class AddToCart extends React.Component {
     this.setState({
       sizeSelection: newSize,
       quantityEnabled: true,
-      quantityAvailable: this.state.sizeFirstSkus[newSize].quantity,
+      quantityAvailable: this.props.sizeFirstSkus[newSize].quantity,
       quantitySelection: 1
     });
   }
@@ -49,7 +47,7 @@ class AddToCart extends React.Component {
 
   addToCart(e) {
     //may not be working properly. Will have to test again when I have a real SKU instead of dummy data
-    var sku_id = Number.parseInt(this.state.sizeFirstSkus[this.state.sizeSelection].sku_id);
+    var sku_id = Number.parseInt(this.props.sizeFirstSkus[this.state.sizeSelection].sku_id);
     axios({
       method: 'post',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx/cart',
@@ -70,33 +68,33 @@ class AddToCart extends React.Component {
     });
   }
 
-  componentDidMount() {
-    //populates sizeFirstSkus and sizes objects
-    var sizeFirstSkus = {};
-    var size, quantity;
-    for (var k in this.props.skus) {
-      size = this.props.skus[k].size;
-      quantity = this.props.skus[k].quantity;
-      sizeFirstSkus[size] = {
-        sku_id: k,
-        quantity: quantity
-      };
-    }
-    this.setState({
-      sizeFirstSkus: sizeFirstSkus,
-      sizes: Object.keys(sizeFirstSkus)
-    });
-  }
+  // componentDidMount() {
+  //   //populates sizeFirstSkus and sizes objects
+  //   var sizeFirstSkus = {};
+  //   var size, quantity;
+  //   for (var k in this.props.skus) {
+  //     size = this.props.skus[k].size;
+  //     quantity = this.props.skus[k].quantity;
+  //     sizeFirstSkus[size] = {
+  //       sku_id: k,
+  //       quantity: quantity
+  //     };
+  //   }
+  //   this.setState({
+  //     sizeFirstSkus: sizeFirstSkus,
+  //     sizes: Object.keys(sizeFirstSkus)
+  //   });
+  // }
 
   render() {
     return (
       <div>
-        {this.state.sizes.length === 0 ?
+        {this.props.sizes.length === 0 ?
           <select id="size" name="size" disabled>
             <option>OUT OF STOCK</option>
           </select>
           :
-          <SizeSelector sizes={this.state.sizes} change={this.changeSize.bind(this)}/>
+          <SizeSelector sizes={this.props.sizes} change={this.changeSize.bind(this)}/>
         }
         {this.state.quantityEnabled ?
           <QuantitySelector quantityAvailable={this.state.quantityAvailable} change={this.changeQuantity.bind(this)}/>
@@ -105,7 +103,7 @@ class AddToCart extends React.Component {
             <option>-</option>
           </select>
         }
-        {this.state.sizes.length > 0 ?
+        {this.props.sizes.length > 0 ?
           this.state.sizeSelection === "" ?
             /* there is quantity, but size is not selected. Button opens dropdown display message */
             <button onClick={this.enforceSizeSelection.bind(this)}>Add to Cart</button>

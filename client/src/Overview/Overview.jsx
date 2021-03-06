@@ -1,22 +1,17 @@
 import React from 'react';
 import AddToCart from './AddToCart.jsx';
+import axios from 'axios';
+import token from '../../../public/token.js';
+import parseSizeFirstSkus from '../sizeFirstSkus.js';
 
-//props are:
-//style = currently selected style object. To passed into Add to Cart.
-//productStyles = all available styles for current product. To be passed into StyleSelector.
 class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productStyles: [],
-      selectedStyle: {},
-      productInfo: {}
+      productInfo: {},
+      styles: [],
+      selectedStyle: {}
     }
-  }
-
-  changeStyle(e) {
-    //event handler function to be passed down to style selector.
-    //when a new selection is made this will run and update the state as needed
   }
 
   getStyles(productId) {
@@ -46,23 +41,24 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    var newState = {};
-    Promise.all([this.getProductInfo(this.props.productId), this.getStyles(this.props.productId)])
+    Promise.all([
+      this.getProductInfo(this.props.productId),
+      this.getStyles(this.props.productId)
+    ])
     .then((values) => {
-      newState.productInfo = values[0].data;
-      newState.styles = values[1].data.results;
-      newState.selectedStyle = newState.styles[0];
-      console.log('new overview State: ', newState);
-      this.setState(newState);
-    })
-    .catch((err) => {
-      console.log('error get overview data: ', err);
+      this.setState({
+        productInfo: values[0].data,
+        styles: values[1].data.results,
+        selectedStyle: values[1].data.results[0]
+      });
     })
   }
 
   render() {
-    return (
-      <AddToCart skus={this.state.selectedStyle.skus}/>
+    var sizeFirstSkus = parseSizeFirstSkus(this.state.selectedStyle.skus);
+    var sizes = Object.keys(sizeFirstSkus);
+    return(
+      <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} />
     )
   }
 }
