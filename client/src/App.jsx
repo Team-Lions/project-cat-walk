@@ -74,7 +74,7 @@ class App extends React.Component {
     return (
       <div>
         <Overview />
-        <RelatedItems />
+        <RelatedItems currentItemId={this.state.selectedProductId}/>
         <YourFit />
         <Ratings />
       </div>

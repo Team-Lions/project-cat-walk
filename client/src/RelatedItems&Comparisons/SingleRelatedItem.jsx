@@ -1,6 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import placeHolderImg from './content/placeholderimg.jpeg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SingleRelatedItem = ({ relatedItems }) => {
 
@@ -10,18 +12,20 @@ const SingleRelatedItem = ({ relatedItems }) => {
 
   return (
     <div>
-      <Card style={{ width: '16rem', height: '24rem'}}>
-        <Button>Click Me</Button>
-        <Card.Img variant="top" src={'FILL ME IN'} />
+      <Card border="dark" style={{ width: '16rem', height: '18rem'}}>
+        <Card.Img variant="top" src={placeHolderImg} />
         <Card.Body>
-          <Card.Text>
+          <Card.Subtitle className="mb-2 text-muted">
             Insert product category
-          </Card.Text>
+          </Card.Subtitle>
           <Card.Title>
             Insert product name
           </Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+            $300.00
+          </Card.Subtitle>
           <Card.Text>
-            Insert product review here
+            ★★★★★
           </Card.Text>
         </Card.Body>
       </Card>

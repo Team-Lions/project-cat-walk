@@ -32,6 +32,13 @@ class RelatedItems extends React.Component {
         items: 1
       }
     }
+    console.log('current item', this.props.currentItemId)
+  };
+
+  getRelatedItems() {
+    axios.get('/', {
+
+    })
   }
   // take current product id
 
@@ -46,11 +53,8 @@ class RelatedItems extends React.Component {
     return (
       <div>
         <Carousel responsive={this.responsive}>
-          <div>Item 1</div>
-          <div>Item 2</div>
-          <div>Item 3</div>
-          <div>Item 4</div>
-        </Carousel>;
+          <SingleRelatedItem />
+        </Carousel>
       </div>
     )
   }
