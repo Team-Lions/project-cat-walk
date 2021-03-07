@@ -8,6 +8,7 @@ import RelatedItems from './RelatedItems&Comparisons/RelatedItems.jsx';
 import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
 import token from '../../public/token.js';
 import css from './App.css';
+import QnA from './Q&As/QnA.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -77,6 +78,7 @@ class App extends React.Component {
         <RelatedItems />
         <YourFit />
         <Ratings />
+        <QnA />
       </div>
     );
   }
