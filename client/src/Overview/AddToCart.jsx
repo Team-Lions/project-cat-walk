@@ -68,24 +68,6 @@ class AddToCart extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //   //populates sizeFirstSkus and sizes objects
-  //   var sizeFirstSkus = {};
-  //   var size, quantity;
-  //   for (var k in this.props.skus) {
-  //     size = this.props.skus[k].size;
-  //     quantity = this.props.skus[k].quantity;
-  //     sizeFirstSkus[size] = {
-  //       sku_id: k,
-  //       quantity: quantity
-  //     };
-  //   }
-  //   this.setState({
-  //     sizeFirstSkus: sizeFirstSkus,
-  //     sizes: Object.keys(sizeFirstSkus)
-  //   });
-  // }
-
   render() {
     return (
       <div>
@@ -97,7 +79,7 @@ class AddToCart extends React.Component {
           <SizeSelector sizes={this.props.sizes} change={this.changeSize.bind(this)}/>
         }
         {this.state.quantityEnabled ?
-          <QuantitySelector quantityAvailable={this.state.quantityAvailable} change={this.changeQuantity.bind(this)}/>
+          <QuantitySelector quantityAvailable={this.state.quantityAvailable} change={this.changeQuantity.bind(this)} />
           :
           <select id="quantity" name="quantity" disabled>
             <option>-</option>

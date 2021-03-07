@@ -3,6 +3,7 @@ import AddToCart from './AddToCart.jsx';
 import axios from 'axios';
 import token from '../../../public/token.js';
 import parseSizeFirstSkus from './sizeFirstSkus.js';
+import StyleSelector from './StyleSelector.jsx'
 
 class Overview extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class Overview extends React.Component {
     this.state = {
       productInfo: {},
       styles: [],
-      selectedStyle: {}
+      selectedStyle: {},
+      isLoading: true
     }
   }
 
@@ -40,7 +42,11 @@ class Overview extends React.Component {
     });
   }
 
-
+  changeStyle(e) {
+    this.setState({
+      selectedStyle: this.state.styles[e.target.title]
+    });
+  }
 
   componentDidMount() {
     Promise.all([
@@ -48,19 +54,27 @@ class Overview extends React.Component {
       this.getStyles(this.props.productId)
     ])
     .then((values) => {
+      console.log('return from styles get request: ', values[1].data);
       this.setState({
         productInfo: values[0].data,
         styles: values[1].data.results,
-        selectedStyle: values[1].data.results[0]
+        selectedStyle: values[1].data.results[0],
+        isLoading: false
       });
     })
   }
 
   render() {
+    if(this.state.isLoading) {
+      return <div>Styles loading</div>
+    }
     var sizeFirstSkus = parseSizeFirstSkus(this.state.selectedStyle.skus);
     var sizes = Object.keys(sizeFirstSkus);
     return(
-      <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} />
+      <div className='overview'>
+        <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} key={this.state.selectedStyle.name}/>
+        <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
+      </div>
     )
   }
 }
