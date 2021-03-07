@@ -10,9 +10,14 @@ const SingleRelatedItem = ({ relatedItems }) => {
 
   // need to add button to corner of image to add to favorites
 
+  let onCardClick = (e) => {
+    e.preventDefault();
+    console.log('Clicked');
+  };
+
   return (
-    <div>
-      <Card border="dark" style={{ width: '16rem', height: '18rem'}}>
+    <div id="card">
+      <Card border="dark" style={{ width: '16rem', height: '18rem'}} onClick={onCardClick}>
         <Card.Img variant="top" src={placeHolderImg} />
         <Card.Body>
           <Card.Subtitle className="mb-2 text-muted">
