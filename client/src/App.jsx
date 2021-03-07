@@ -1,12 +1,15 @@
+//libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import calculateStarReview from './calculateStarReview.js';
+//widgets
 import Overview from './Overview/Overview.jsx';
 import Ratings from './Ratings&Reviews/Ratings.jsx'
 import RelatedItems from './RelatedItems&Comparisons/RelatedItems.jsx';
 import QnA from './QnA/QnA.jsx'
 import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
+//Misc
+import calculateStarReview from './calculateStarReview.js';
 import token from '../../public/token.js';
 import css from './App.css';
 
