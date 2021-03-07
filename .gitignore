@@ -2,3 +2,5 @@ node_modules
 package-lock.json
 token.js
 public/dist
+public/dist/bundle.js
+public/dist/index.html
