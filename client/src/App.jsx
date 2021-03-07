@@ -77,6 +77,7 @@ class App extends React.Component {
         <RelatedItems />
         <YourFit />
         <Ratings />
+        <QnA />
       </div>
     );
   }
