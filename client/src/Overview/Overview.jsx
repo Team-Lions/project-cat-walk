@@ -2,7 +2,7 @@ import React from 'react';
 import AddToCart from './AddToCart.jsx';
 import axios from 'axios';
 import token from '../../../public/token.js';
-import parseSizeFirstSkus from '../sizeFirstSkus.js';
+import parseSizeFirstSkus from './sizeFirstSkus.js';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -39,6 +39,8 @@ class Overview extends React.Component {
       }
     });
   }
+
+
 
   componentDidMount() {
     Promise.all([

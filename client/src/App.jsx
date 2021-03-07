@@ -5,6 +5,7 @@ import calculateStarReview from './calculateStarReview.js';
 import Overview from './Overview/Overview.jsx';
 import Ratings from './Ratings&Reviews/Ratings.jsx'
 import RelatedItems from './RelatedItems&Comparisons/RelatedItems.jsx';
+import QnA from './QnA/QnA.jsx'
 import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
 import token from '../../public/token.js';
 import css from './App.css';
@@ -83,6 +84,7 @@ class App extends React.Component {
         <RelatedItems />
         <YourFit />
         <Ratings />
+        <QnA />
       </div>
     );
   }
