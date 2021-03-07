@@ -345,7 +345,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+<<<<<<< HEAD
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _calculateStarReview_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./calculateStarReview.js */ \"./client/src/calculateStarReview.js\");\n/* harmony import */ var _Overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Overview/Overview.jsx */ \"./client/src/Overview/Overview.jsx\");\n/* harmony import */ var _Ratings_Reviews_Ratings_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Ratings&Reviews/Ratings.jsx */ \"./client/src/Ratings&Reviews/Ratings.jsx\");\n/* harmony import */ var _RelatedItems_Comparisons_RelatedItems_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./RelatedItems&Comparisons/RelatedItems.jsx */ \"./client/src/RelatedItems&Comparisons/RelatedItems.jsx\");\n/* harmony import */ var _RelatedItems_Comparisons_YourFit_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./RelatedItems&Comparisons/YourFit.jsx */ \"./client/src/RelatedItems&Comparisons/YourFit.jsx\");\n/* harmony import */ var _public_token_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../public/token.js */ \"./public/token.js\");\n/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./App.css */ \"./client/src/App.css\");\n/* harmony import */ var _Q_As_QnA_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Q&As/QnA.jsx */ \"./client/src/Q&As/QnA.jsx\");\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\nfunction _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _isNativeReflectConstruct() { if (typeof Reflect === \"undefined\" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === \"function\") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar App = /*#__PURE__*/function (_React$Component) {\n  _inherits(App, _React$Component);\n\n  var _super = _createSuper(App);\n\n  function App(props) {\n    var _this;\n\n    _classCallCheck(this, App);\n\n    _this = _super.call(this, props);\n    _this.state = {\n      selectedProductId: null,\n      reviewData: {},\n      starRating: 0\n    };\n    return _this;\n  }\n\n  _createClass(App, [{\n    key: \"getProductList\",\n    value: function getProductList() {\n      //request to get all products\n      //returns a promise\n      return axios__WEBPACK_IMPORTED_MODULE_2___default().get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products', {\n        headers: {\n          'Authorization': _public_token_js__WEBPACK_IMPORTED_MODULE_8__.default\n        }\n      });\n    }\n  }, {\n    key: \"getReviewMetaData\",\n    value: function getReviewMetaData(productId) {\n      //request to get review metadata on a specified product\n      //returns a promise\n      return axios__WEBPACK_IMPORTED_MODULE_2___default().get(\"https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/meta\", {\n        headers: {\n          'Authorization': _public_token_js__WEBPACK_IMPORTED_MODULE_8__.default\n        },\n        params: {\n          product_id: productId\n        }\n      });\n    } //will probably need to update to be an event handler function for when a new product is selected\n\n  }, {\n    key: \"changeProduct\",\n    value: function changeProduct(productId) {\n      var _this2 = this;\n\n      var newState = {};\n      newState.selectedProductId = productId;\n      this.getReviewMetaData(newState.selectedProductId).then(function (reviewData) {\n        newState.reviewData = reviewData.data;\n        newState.starRating = (0,_calculateStarReview_js__WEBPACK_IMPORTED_MODULE_3__.default)(newState.reviewData.ratings);\n        console.log('all App data retrieved');\n\n        _this2.setState(newState);\n      })[\"catch\"](function (err) {\n        console.log('Error retriving data: ', err);\n      });\n    }\n  }, {\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      var _this3 = this;\n\n      //bascially the same as changing the selected product, but has to retrieve product list at the outset\n      this.getProductList().then(function (products) {\n        _this3.changeProduct(products.data[0].id);\n      })[\"catch\"](function (err) {\n        console.log('Error retriving product List: ', err);\n      });\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      console.log('state: ', this.state);\n      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedItems_Comparisons_RelatedItems_jsx__WEBPACK_IMPORTED_MODULE_6__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedItems_Comparisons_YourFit_jsx__WEBPACK_IMPORTED_MODULE_7__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Ratings_Reviews_Ratings_jsx__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Q_As_QnA_jsx__WEBPACK_IMPORTED_MODULE_10__.default, null));\n    }\n  }]);\n\n  return App;\n}(react__WEBPACK_IMPORTED_MODULE_0__.Component);\n\n;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://project-cat-walk/./client/src/App.jsx?");
+=======
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _calculateStarReview_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./calculateStarReview.js */ \"./client/src/calculateStarReview.js\");\n/* harmony import */ var _Overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Overview/Overview.jsx */ \"./client/src/Overview/Overview.jsx\");\n/* harmony import */ var _Ratings_Reviews_Ratings_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Ratings&Reviews/Ratings.jsx */ \"./client/src/Ratings&Reviews/Ratings.jsx\");\n/* harmony import */ var _RelatedItems_Comparisons_RelatedItems_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./RelatedItems&Comparisons/RelatedItems.jsx */ \"./client/src/RelatedItems&Comparisons/RelatedItems.jsx\");\n/* harmony import */ var _RelatedItems_Comparisons_YourFit_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./RelatedItems&Comparisons/YourFit.jsx */ \"./client/src/RelatedItems&Comparisons/YourFit.jsx\");\n/* harmony import */ var _public_token_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../public/token.js */ \"./public/token.js\");\n/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./App.css */ \"./client/src/App.css\");\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\nfunction _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _isNativeReflectConstruct() { if (typeof Reflect === \"undefined\" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === \"function\") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\n\n\n\n\n\n\n\n\n\n\n\nvar App = /*#__PURE__*/function (_React$Component) {\n  _inherits(App, _React$Component);\n\n  var _super = _createSuper(App);\n\n  function App(props) {\n    var _this;\n\n    _classCallCheck(this, App);\n\n    _this = _super.call(this, props);\n    _this.state = {\n      selectedProductId: null,\n      reviewData: {},\n      starRating: 0\n    };\n    return _this;\n  }\n\n  _createClass(App, [{\n    key: \"getProductList\",\n    value: function getProductList() {\n      //request to get all products\n      //returns a promise\n      return axios__WEBPACK_IMPORTED_MODULE_2___default().get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products', {\n        headers: {\n          'Authorization': _public_token_js__WEBPACK_IMPORTED_MODULE_8__.default\n        }\n      });\n    }\n  }, {\n    key: \"getReviewMetaData\",\n    value: function getReviewMetaData(productId) {\n      //request to get review metadata on a specified product\n      //returns a promise\n      return axios__WEBPACK_IMPORTED_MODULE_2___default().get(\"https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/meta\", {\n        headers: {\n          'Authorization': _public_token_js__WEBPACK_IMPORTED_MODULE_8__.default\n        },\n        params: {\n          product_id: productId\n        }\n      });\n    } //will probably need to update to be an event handler function for when a new product is selected\n\n  }, {\n    key: \"changeProduct\",\n    value: function changeProduct(productId) {\n      var _this2 = this;\n\n      var newState = {};\n      newState.selectedProductId = productId;\n      this.getReviewMetaData(newState.selectedProductId).then(function (reviewData) {\n        newState.reviewData = reviewData.data;\n        newState.starRating = (0,_calculateStarReview_js__WEBPACK_IMPORTED_MODULE_3__.default)(newState.reviewData.ratings);\n        console.log('all App data retrieved');\n\n        _this2.setState(newState);\n      })[\"catch\"](function (err) {\n        console.log('Error retriving data: ', err);\n      });\n    }\n  }, {\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      var _this3 = this;\n\n      //bascially the same as changing the selected product, but has to retrieve product list at the outset\n      this.getProductList().then(function (products) {\n        _this3.changeProduct(products.data[0].id);\n      })[\"catch\"](function (err) {\n        console.log('Error retriving product List: ', err);\n      });\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      console.log('state: ', this.state);\n      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedItems_Comparisons_RelatedItems_jsx__WEBPACK_IMPORTED_MODULE_6__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedItems_Comparisons_YourFit_jsx__WEBPACK_IMPORTED_MODULE_7__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Ratings_Reviews_Ratings_jsx__WEBPACK_IMPORTED_MODULE_5__.default, null));\n    }\n  }]);\n\n  return App;\n}(react__WEBPACK_IMPORTED_MODULE_0__.Component);\n\n;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://project-cat-walk/./client/src/App.jsx?");
+>>>>>>> main
 
 /***/ }),
 
@@ -393,6 +397,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./client/src/Q&As/ExampleData.js":
 /*!****************************************!*\
   !*** ./client/src/Q&As/ExampleData.js ***!
@@ -437,6 +442,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+=======
+>>>>>>> main
 /***/ "./client/src/Ratings&Reviews/Ratings.jsx":
 /*!************************************************!*\
   !*** ./client/src/Ratings&Reviews/Ratings.jsx ***!
@@ -2793,7 +2800,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -2806,14 +2813,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -2826,7 +2833,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -2838,7 +2845,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -2850,12 +2857,12 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -2866,7 +2873,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
 /******/ 		var scriptUrl;
@@ -2886,13 +2893,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
 /******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./client/index.jsx");
-/******/ 	
+/******/
 /******/ })()
 ;
