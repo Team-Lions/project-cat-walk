@@ -1,11 +1,15 @@
+//libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import calculateStarReview from './calculateStarReview.js';
+//widgets
 import Overview from './Overview/Overview.jsx';
 import Ratings from './Ratings&Reviews/Ratings.jsx'
 import RelatedItems from './RelatedItems&Comparisons/RelatedItems.jsx';
+import QnA from './QnA/QnA.jsx'
 import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
+//Misc
+import calculateStarReview from './calculateStarReview.js';
 import token from '../../public/token.js';
 import css from './App.css';
 
@@ -14,8 +18,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       selectedProductId: null,
-      reviewData: {},
-      starRating: 0
+      reviewMetaData: {},
+      starRating: 0,
+      isLoading: true
     }
   }
 
@@ -29,6 +34,7 @@ class App extends React.Component {
     });
   }
 
+  //Ratings and Reviews related Get requests
   getReviewMetaData(productId) {
     //request to get review metadata on a specified product
     //returns a promise
@@ -46,17 +52,19 @@ class App extends React.Component {
   changeProduct(productId) {
     var newState = {};
     newState.selectedProductId = productId;
-    this.getReviewMetaData(newState.selectedProductId)
-    .then((reviewData) => {
-      newState.reviewData = reviewData.data;
-      newState.starRating = calculateStarReview(newState.reviewData.ratings);
-      console.log('all App data retrieved');
+    this.getReviewMetaData(productId)
+    .then((reviewMetadata) => {
+      newState.reviewMetaData = reviewMetadata.data;
+      newState.starRating = calculateStarReview(newState.reviewMetaData.ratings);
+      newState.isLoading = false;
+      console.log('newstate: ', newState);
       this.setState(newState);
     })
     .catch((err) => {
-      console.log('Error retriving data: ', err);
-    });
+      console.log('error get overview data: ', err);
+    })
   }
+
 
   componentDidMount() {
     //bascially the same as changing the selected product, but has to retrieve product list at the outset
@@ -70,13 +78,16 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('state: ', this.state);
+    if(this.state.isLoading) {
+      return <div>Loading</div>
+    }
     return (
       <div>
-        <Overview />
-        <RelatedItems currentItemId={this.state.selectedProductId}/>
+        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} key={this.state.selectedProductId}/>
+        <RelatedItems />
         <YourFit />
         <Ratings />
+        <QnA />
       </div>
     );
   }
