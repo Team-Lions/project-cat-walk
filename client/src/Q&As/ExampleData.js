@@ -13,8 +13,7 @@ var exampleData = [
         date: "2018-08-18T00:00:00.000Z",
         answerer_name: "Seller",
         helpfulness: 4,
-        photos: [],
-        // ...
+        photos: []
       },
     },
   },
