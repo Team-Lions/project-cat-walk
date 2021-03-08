@@ -3,6 +3,7 @@ import bootstrap from "react-bootstrap";
 import QnAList from './QnAList.jsx';
 import axios from 'axios';
 import token from '../../../public/token.js';
+import {Scrollbars} from 'rc-scrollbars';
 
 class QnA extends Component {
   constructor(props) {
@@ -44,7 +45,9 @@ class QnA extends Component {
     return (
       <div>
         <h1>Questions and Answers</h1>
-        <QnAList data={this.state.data}/>
+        <Scrollbars style={{width: 500, height: 300}}>
+          <QnAList data={this.state.data}/>
+        </Scrollbars>
       </div>
     )
   }
