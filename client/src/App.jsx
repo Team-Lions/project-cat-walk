@@ -87,7 +87,7 @@ class App extends React.Component {
         <RelatedItems />
         <YourFit />
         <Ratings />
-        <QnA />
+        <QnA productID={this.state.selectedProductId} key={this.state.selectedProductId}/>
       </div>
     );
   }
