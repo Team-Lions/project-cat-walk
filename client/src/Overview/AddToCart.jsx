@@ -1,10 +1,6 @@
 import React from 'react';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
-<<<<<<< HEAD
-//import token from '../../token.jsx';
-=======
->>>>>>> staging
 import axios from 'axios';
 import token from '../../../public/token.js';
 

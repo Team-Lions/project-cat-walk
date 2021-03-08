@@ -2,13 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Overview from './Overview/Overview.jsx';
-<<<<<<< HEAD
-import Ratings from './Ratings&Reviews/Ratings.jsx'
-=======
-import Rating from './Ratings&Reviews/rating.jsx';
+import Ratings from './Ratings&Reviews/Ratings.jsx';
 import token from '../../public/token.js';
 // ^^^^^^ update to where your token is until we figure out how we're doing tokens
->>>>>>> staging
 
 class App extends React.Component {
   constructor(props) {
@@ -131,13 +127,8 @@ class App extends React.Component {
     console.log('state: ', this.state);
     return (
       <div>
-<<<<<<< HEAD
-        <Overview />
-        <Ratings />
-=======
         <Overview style={this.state.selectedStyle} productStyles={this.state.productStyles}/>
-        <Rating />
->>>>>>> staging
+        <Ratings productId = {this.state.selectedProductId}/>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import token from '../../../public/token.js';
 
 class Ratings extends React.Component {
 	constructor(props) {
@@ -13,7 +14,7 @@ class Ratings extends React.Component {
 		axios
 			.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/', {
 				headers: {
-					"Authorization": 'df667317a900700ab8209e5799e288a47fe25e9b',
+					"Authorization": token,
 				},
 				params: {
 					product_id: 21112,
@@ -30,7 +31,7 @@ class Ratings extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Helen</h1>
+				<h1>Hello</h1>
 			</div>
 		);
 	}
