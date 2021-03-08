@@ -7,6 +7,7 @@ import StyleSelector from './StyleSelector.jsx';
 import ProductTitleAndPrice from './ProductTitleAndPrice.jsx';
 import ProductDescription from './ProductDescription.jsx';
 import SocialMediaButtons from './SocialMediaButtons.jsx';
+import ImageGalleryDefault from './ImageGalleryDefault.jsx';
 //misc
 import token from '../../../public/token.js';
 import parseSizeFirstSkus from './sizeFirstSkus.js';
@@ -76,9 +77,10 @@ class Overview extends React.Component {
     var sizeFirstSkus = parseSizeFirstSkus(this.state.selectedStyle.skus);
     var sizes = Object.keys(sizeFirstSkus);
     return(
-      <div className='overview'>
+      <div className='overview' key={this.state.selectedStyle.name}>
         <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} ratings={this.props.ratings}/>
-        <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} key={this.state.selectedStyle.name}/>
+        <ImageGalleryDefault images={this.state.selectedStyle.photos} styleName={this.state.selectedStyle.name} />
+        <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} />
         <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
         <ProductDescription productInfo={this.state.productInfo} />
         <SocialMediaButtons />

@@ -82,12 +82,12 @@ class App extends React.Component {
       return <div>Loading</div>
     }
     return (
-      <div>
-        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} key={this.state.selectedProductId}/>
+      <div key={this.state.selectedProductId}>
+        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings}/>
         <RelatedItems />
         <YourFit />
         <Ratings />
-        <QnA productID={this.state.selectedProductId} key={this.state.selectedProductId}/>
+        <QnA productID={this.state.selectedProductId}/>
       </div>
     );
   }
