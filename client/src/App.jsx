@@ -84,7 +84,7 @@ class App extends React.Component {
     return (
       <div>
         <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} key={this.state.selectedProductId}/>
-        <RelatedItems />
+        <RelatedItems productId={this.state.selectedProductId}/>
         <YourFit />
         <Ratings />
         <QnA />
