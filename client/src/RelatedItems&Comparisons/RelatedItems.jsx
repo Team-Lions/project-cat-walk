@@ -56,7 +56,7 @@ class RelatedItems extends React.Component {
     })
     .then((relatedItems) => {
       let relatedItemsArray = relatedItems.data;
-      this.getRelatedItemsInfo(relatedItemsArray)
+      this.getRelatedItemsInfo(relatedItemsArray);
     })
     .then(() => {
 
@@ -70,31 +70,45 @@ class RelatedItems extends React.Component {
     let products = [];
     for (let i = 0; i < relatedItemsList.length; i++) {
       let productSearchId = relatedItemsList[i];
+      let singleProduct = {}
       axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productSearchId}`, {
         headers: {
           Authorization: token
         }
       })
       .then((productInfo) => {
-        products.push(productInfo.data)
-        console.log(productInfo.data)
+        singleProduct.id = productInfo.data.id
+        singleProduct.name = productInfo.data.name
+        singleProduct.category = productInfo.data.category
+        singleProduct.price = productInfo.data.default_price
+        return singleProduct
       })
-      .then(() => {
-        this.setState({
-          relatedProductsInfo: products
+      .then((productDetails) => {
+        axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productSearchId}/styles`, {
+          headers: {
+            Authorization: token
+          }
+        })
+        .then((styles) => {
+          let imgs = styles.data.results[0].photos
+          productDetails.images = imgs
+          return productDetails;
+        })
+        .then((product) => {
+          products.push(product)
+        })
+        .then(() => {
+          this.setState({
+            relatedProductsInfo: products
+          })
+        })
+        .catch((err) => {
+          console.log(err)
         })
       })
       .catch((err) => {
         console.log(err)
       });
-    }
-  }
-
-  getRelatedItemsImg(relatedItemsList) {
-    let imgs = [];
-    for (let i = 0; i < relatedItemsList.length; i++) {
-      let productSearchId = relatedItemsList[i];
-      axiost.get()
     }
   }
 
@@ -109,7 +123,7 @@ class RelatedItems extends React.Component {
             return (
               <div>
                  <Card border="dark" style={{ width: '16rem', height: '18rem'}}>
-                  <Card.Img variant="top" src={placeHolderImg}/>
+                  <Card.Img variant="top" src={item.images[0].thumbnail_url ? item.images[0].thumbnail_url : placeHolderImg}/>
                   <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted">
                       {item.category}
@@ -118,7 +132,7 @@ class RelatedItems extends React.Component {
                       {item.name}
                     </Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
-                      {item.default_price}
+                      {item.price}
                     </Card.Subtitle>
                     <Card.Text>
                       ★★★★★
