@@ -12,7 +12,8 @@ class AddToCart extends React.Component {
       sizeSelection: '',
       quantityEnabled: false,
       quantityAvailable: 0,
-      quantitySelection: null
+      quantitySelection: null,
+      hideSizeEnforcement: true
     };
   }
 
@@ -27,7 +28,8 @@ class AddToCart extends React.Component {
       sizeSelection: newSize,
       quantityEnabled: true,
       quantityAvailable: this.props.sizeFirstSkus[newSize].quantity,
-      quantitySelection: 1
+      quantitySelection: 1,
+      hideSizeEnforcement: true
     });
   }
 
@@ -39,10 +41,9 @@ class AddToCart extends React.Component {
   }
 
   enforceSizeSelection(e) {
-    //opens size dropdown
-    //displays a message that says "Please select size"
-    //come back to this if time to figure out how to open the dropdown and display a more graceful message
-    alert('Please select size');
+    this.setState({
+      hideSizeEnforcement: false
+    });
   }
 
   addToCart(e) {
@@ -68,27 +69,10 @@ class AddToCart extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //   //populates sizeFirstSkus and sizes objects
-  //   var sizeFirstSkus = {};
-  //   var size, quantity;
-  //   for (var k in this.props.skus) {
-  //     size = this.props.skus[k].size;
-  //     quantity = this.props.skus[k].quantity;
-  //     sizeFirstSkus[size] = {
-  //       sku_id: k,
-  //       quantity: quantity
-  //     };
-  //   }
-  //   this.setState({
-  //     sizeFirstSkus: sizeFirstSkus,
-  //     sizes: Object.keys(sizeFirstSkus)
-  //   });
-  // }
-
   render() {
     return (
-      <div>
+      <div className="AddToCart">
+        <div hidden={this.state.hideSizeEnforcement}>Please select a size!</div>
         {this.props.sizes.length === 0 ?
           <select id="size" name="size" disabled>
             <option>OUT OF STOCK</option>
@@ -97,7 +81,7 @@ class AddToCart extends React.Component {
           <SizeSelector sizes={this.props.sizes} change={this.changeSize.bind(this)}/>
         }
         {this.state.quantityEnabled ?
-          <QuantitySelector quantityAvailable={this.state.quantityAvailable} change={this.changeQuantity.bind(this)}/>
+          <QuantitySelector quantityAvailable={this.state.quantityAvailable} change={this.changeQuantity.bind(this)} />
           :
           <select id="quantity" name="quantity" disabled>
             <option>-</option>

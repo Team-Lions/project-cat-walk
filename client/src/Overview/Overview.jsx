@@ -1,6 +1,13 @@
+//tools
 import React from 'react';
-import AddToCart from './AddToCart.jsx';
 import axios from 'axios';
+//components
+import AddToCart from './AddToCart.jsx';
+import StyleSelector from './StyleSelector.jsx';
+import ProductTitleAndPrice from './ProductTitleAndPrice.jsx';
+import ProductDescription from './ProductDescription.jsx';
+import SocialMediaButtons from './SocialMediaButtons.jsx';
+//misc
 import token from '../../../public/token.js';
 import parseSizeFirstSkus from './sizeFirstSkus.js';
 
@@ -10,7 +17,8 @@ class Overview extends React.Component {
     this.state = {
       productInfo: {},
       styles: [],
-      selectedStyle: {}
+      selectedStyle: {},
+      isLoading: true
     }
   }
 
@@ -40,7 +48,11 @@ class Overview extends React.Component {
     });
   }
 
-
+  changeStyle(e) {
+    this.setState({
+      selectedStyle: this.state.styles[e.target.title]
+    });
+  }
 
   componentDidMount() {
     Promise.all([
@@ -51,16 +63,26 @@ class Overview extends React.Component {
       this.setState({
         productInfo: values[0].data,
         styles: values[1].data.results,
-        selectedStyle: values[1].data.results[0]
+        selectedStyle: values[1].data.results[0],
+        isLoading: false
       });
     })
   }
 
   render() {
+    if(this.state.isLoading) {
+      return <div>Styles loading</div>
+    }
     var sizeFirstSkus = parseSizeFirstSkus(this.state.selectedStyle.skus);
     var sizes = Object.keys(sizeFirstSkus);
     return(
-      <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} />
+      <div className='overview'>
+        <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} ratings={this.props.ratings}/>
+        <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} key={this.state.selectedStyle.name}/>
+        <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
+        <ProductDescription productInfo={this.state.productInfo} />
+        <SocialMediaButtons />
+      </div>
     )
   }
 }
