@@ -3,14 +3,15 @@ import bootstrap from "react-bootstrap";
 import QnAList from './QnAList.jsx';
 import axios from 'axios';
 import token from '../../../public/token.js';
-import {Scrollbars} from 'rc-scrollbars';
+
 
 class QnA extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      index: 3
     }
 
     this.getQuestions = this.getQuestions.bind(this);
@@ -23,18 +24,20 @@ class QnA extends Component {
         'Authorization': token
       },
       params: {
-        product_id: id,
-        page: 1,
-        count: 5
+        product_id: id
       }
     })
     .then((questions) => {
-      this.setState({data: questions.data.results}
-      );
+      this.setState({data: questions.data.results})
     })
     .catch((err) => {
       console.log(err);
     })
+  }
+
+  showMore() {
+    console.log('clicked');
+
   }
 
   componentDidMount() {
@@ -45,9 +48,7 @@ class QnA extends Component {
     return (
       <div>
         <h1>Questions and Answers</h1>
-        <Scrollbars style={{width: 500, height: 300}}>
-          <QnAList data={this.state.data}/>
-        </Scrollbars>
+          <QnAList data={this.state.data} showMore={this.showMore}/>
       </div>
     )
   }

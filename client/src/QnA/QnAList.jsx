@@ -1,5 +1,6 @@
 import React from "react";
 import Question from './Question.jsx';
+import Button from 'react-bootstrap/Button';
 
 const QnAList = (props) => {
   return (
@@ -9,6 +10,9 @@ const QnAList = (props) => {
         <Question question={question} answers={Object.values(question.answers)}/>
         )
       })}
+      <Button onClick={props.showMore}>
+        Load More
+      </Button>
     </div>
   )
 }
