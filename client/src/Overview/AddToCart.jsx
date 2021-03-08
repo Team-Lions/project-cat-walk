@@ -12,7 +12,8 @@ class AddToCart extends React.Component {
       sizeSelection: '',
       quantityEnabled: false,
       quantityAvailable: 0,
-      quantitySelection: null
+      quantitySelection: null,
+      hideSizeEnforcement: true
     };
   }
 
@@ -27,7 +28,8 @@ class AddToCart extends React.Component {
       sizeSelection: newSize,
       quantityEnabled: true,
       quantityAvailable: this.props.sizeFirstSkus[newSize].quantity,
-      quantitySelection: 1
+      quantitySelection: 1,
+      hideSizeEnforcement: true
     });
   }
 
@@ -39,10 +41,9 @@ class AddToCart extends React.Component {
   }
 
   enforceSizeSelection(e) {
-    //opens size dropdown
-    //displays a message that says "Please select size"
-    //come back to this if time to figure out how to open the dropdown and display a more graceful message
-    alert('Please select size');
+    this.setState({
+      hideSizeEnforcement: false
+    });
   }
 
   addToCart(e) {
@@ -70,7 +71,8 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="AddToCart">
+        <div hidden={this.state.hideSizeEnforcement}>Please select a size!</div>
         {this.props.sizes.length === 0 ?
           <select id="size" name="size" disabled>
             <option>OUT OF STOCK</option>

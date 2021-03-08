@@ -1,9 +1,15 @@
+//tools
 import React from 'react';
-import AddToCart from './AddToCart.jsx';
 import axios from 'axios';
+//components
+import AddToCart from './AddToCart.jsx';
+import StyleSelector from './StyleSelector.jsx';
+import ProductTitleAndPrice from './ProductTitleAndPrice.jsx';
+import ProductDescription from './ProductDescription.jsx';
+import SocialMediaButtons from './SocialMediaButtons.jsx';
+//misc
 import token from '../../../public/token.js';
 import parseSizeFirstSkus from './sizeFirstSkus.js';
-import StyleSelector from './StyleSelector.jsx'
 
 class Overview extends React.Component {
   constructor(props) {
@@ -54,7 +60,6 @@ class Overview extends React.Component {
       this.getStyles(this.props.productId)
     ])
     .then((values) => {
-      console.log('return from styles get request: ', values[1].data);
       this.setState({
         productInfo: values[0].data,
         styles: values[1].data.results,
@@ -72,8 +77,11 @@ class Overview extends React.Component {
     var sizes = Object.keys(sizeFirstSkus);
     return(
       <div className='overview'>
+        <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} ratings={this.props.ratings}/>
         <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} key={this.state.selectedStyle.name}/>
         <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
+        <ProductDescription productInfo={this.state.productInfo} />
+        <SocialMediaButtons />
       </div>
     )
   }

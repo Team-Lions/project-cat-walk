@@ -11,7 +11,7 @@ var StyleSelector  = (props) => {
   });
   return (
     <div>
-      <p><b>Style: </b>{props.selectedStyle.name}</p>
+      <p><b>Style > </b>{props.selectedStyle.name}</p>
       {thumbnails}
     </div>
   );

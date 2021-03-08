@@ -7,7 +7,7 @@ body {
   height: 50px;
   width: 50px;
 }
-.styleSelector:hover {
+.styleSelector:hover, a:hover, button:hover, select:hover {
   cursor: pointer;
 }
 
