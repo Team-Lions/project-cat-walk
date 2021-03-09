@@ -6,7 +6,6 @@ const Question = ({question, answers}) => {
     <div>
       <h2>Q:</h2>
       <h3>{question.question_body}</h3>
-      {console.log('answerss', answers)}
       {Object.keys(answers).length > 0 ? answers.map((answer) => {
         return (
           <div>

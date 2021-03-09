@@ -35,7 +35,6 @@ class QnAList extends React.Component {
     return (
       <div>
         {this.state.isLoading ? <div>isLoading</div> : data.map((question) => {
-          console.log('questionn', question);
           return (
           <Question question={question} answers={Object.values(question.answers)} key={this.state.index}/>
           )
