@@ -41,8 +41,7 @@ class QnA extends Component {
 
 
   loadMore() {
-    console.log(this.state.id);
-    this.setState({index: this.state.index += 2})
+    this.setState({index: this.state.index += 1})
     this.getQuestions(this.props.productID, this.state.index)
     .then((data) => {
       this.setState({data: data(0, this.state.index)})
@@ -57,7 +56,7 @@ class QnA extends Component {
     return (
       <div>
         <h1>Questions and Answers</h1>
-          <QnAList data={this.state.data} loadMore={this.loadMore}/>
+          <QnAList data={ this.state.data} loadMore={this.loadMore}/>
       </div>
     )
   }
