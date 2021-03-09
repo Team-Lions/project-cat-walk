@@ -1,3 +1,26 @@
+header {
+  width: 100%;
+  height: 120px;
+  background-color: black;
+  color: lightcyan;
+  text-size-adjust: 36px;
+}
+
 body {
-  background-color: 
+
+}
+
+#carousel-item {
+  padding-left: 75px
+}
+
+#related-items {
+
+}
+
+footer {
+  width: 100%;
+  height: 240px;
+  color: lightcyan;
+  background-color: black
 }

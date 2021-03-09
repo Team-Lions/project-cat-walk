@@ -27,11 +27,11 @@ class RelatedItems extends React.Component {
       superLargeDesktop: {
         // the naming can be any, depends on you.
         breakpoint: { max: 4000, min: 3000 },
-        items: 5
+        items: 6
       },
       desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 3
+        items: 4
       },
       tablet: {
         breakpoint: { max: 1024, min: 464 },
@@ -114,15 +114,15 @@ class RelatedItems extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="related-items">
         <h4>
           Related Items
         </h4>
         <Carousel responsive={this.responsive}>
           {this.state.relatedProductsInfo.map((item) => {
             return (
-              <div>
-                 <Card border="dark" style={{ width: '16rem', height: '18rem'}}>
+              <div id="carousel-item">
+                 <Card border="dark" style={{ width: '20rem', height: '24rem'}}>
                   <Card.Img variant="top" src={item.images[0].thumbnail_url ? item.images[0].thumbnail_url : placeHolderImg}/>
                   <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted">
