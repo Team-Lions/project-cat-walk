@@ -2,6 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+// header and footer
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 //widgets
 import Overview from './Overview/Overview.jsx';
 import Ratings from './Ratings&Reviews/Ratings.jsx'
@@ -83,11 +86,14 @@ class App extends React.Component {
     }
     return (
       <div key={this.state.selectedProductId}>
+        RelatedItemsAndFit
+        <Header />
         <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} />
-        <RelatedItems />
+        <RelatedItems productId={this.state.selectedProductId}/>
         <YourFit />
         <Ratings />
-        <QnA productID={this.state.selectedProductId} />
+        <QnA productID={this.state.selectedProductId}/>
+        <Footer />
       </div>
     );
   }

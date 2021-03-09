@@ -9,7 +9,7 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactMultiCarousel = _interopRequireDefault(require("react-multi-carousel"));
+var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -33,36 +33,49 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var YourFit = /*#__PURE__*/function (_React$Component) {
-  _inherits(YourFit, _React$Component);
+var Rating = /*#__PURE__*/function (_React$Component) {
+  _inherits(Rating, _React$Component);
 
-  var _super = _createSuper(YourFit);
+  var _super = _createSuper(Rating);
 
-  function YourFit(props) {
+  function Rating(props) {
     var _this;
 
-    _classCallCheck(this, YourFit);
+    _classCallCheck(this, Rating);
 
     _this = _super.call(this, props);
     _this.state = {
-      favorites: []
+      values: ''
     };
     return _this;
   }
 
-  _createClass(YourFit, [{
+  _createClass(Rating, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      _axios["default"].get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/', {
+        headers: {
+          "Authorization": 'df667317a900700ab8209e5799e288a47fe25e9b'
+        },
+        params: {
+          product_id: 21112
+        }
+      }).then(function (res) {
+        console.log(res.data);
+      })["catch"](function (error) {
+        console.error(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        id: "your-fit"
-      }, /*#__PURE__*/_react["default"].createElement("h4", null, "Your Outfit"), "Insert YourFit Carousel");
+      return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("h1", null, "Helen"));
     }
   }]);
 
-  return YourFit;
+  return Rating;
 }(_react["default"].Component);
 
-;
-var _default = YourFit;
+var _default = Rating;
 exports["default"] = _default;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvUmVsYXRlZEl0ZW1zJkNvbXBhcmlzb25zL1lvdXJGaXQuanN4Il0sIm5hbWVzIjpbIllvdXJGaXQiLCJwcm9wcyIsInN0YXRlIiwiZmF2b3JpdGVzIiwiUmVhY3QiLCJDb21wb25lbnQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBOztBQUNBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFFTUEsTzs7Ozs7QUFDSixtQkFBWUMsS0FBWixFQUFtQjtBQUFBOztBQUFBOztBQUNqQiw4QkFBTUEsS0FBTjtBQUNBLFVBQUtDLEtBQUwsR0FBYTtBQUNYQyxNQUFBQSxTQUFTLEVBQUU7QUFEQSxLQUFiO0FBRmlCO0FBS2xCOzs7O1dBR0Qsa0JBQVM7QUFDUCwwQkFDRTtBQUFLLFFBQUEsRUFBRSxFQUFDO0FBQVIsc0JBQ0UsMERBREYsNEJBREY7QUFRRDs7OztFQWxCbUJDLGtCQUFNQyxTOztBQW1CM0I7ZUFFY0wsTyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgQ2Fyb3VzZWwgZnJvbSAncmVhY3QtbXVsdGktY2Fyb3VzZWwnO1xuXG5jbGFzcyBZb3VyRml0IGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICBzdXBlcihwcm9wcylcbiAgICB0aGlzLnN0YXRlID0ge1xuICAgICAgZmF2b3JpdGVzOiBbXVxuICAgIH1cbiAgfVxuXG5cbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2IGlkPVwieW91ci1maXRcIj5cbiAgICAgICAgPGg0PlxuICAgICAgICAgIFlvdXIgT3V0Zml0XG4gICAgICAgIDwvaDQ+XG4gICAgICAgIEluc2VydCBZb3VyRml0IENhcm91c2VsXG4gICAgICA8L2Rpdj5cbiAgICApXG4gIH1cbn07XG5cbmV4cG9ydCBkZWZhdWx0IFlvdXJGaXQ7Il19
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvUmF0aW5ncyZSZXZpZXdzL1JhdGluZy5qc3giXSwibmFtZXMiOlsiUmF0aW5nIiwicHJvcHMiLCJzdGF0ZSIsInZhbHVlcyIsImF4aW9zIiwiZ2V0IiwiaGVhZGVycyIsInBhcmFtcyIsInByb2R1Y3RfaWQiLCJ0aGVuIiwicmVzIiwiY29uc29sZSIsImxvZyIsImRhdGEiLCJlcnJvciIsIlJlYWN0IiwiQ29tcG9uZW50Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBQTs7QUFDQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lBRU1BLE07Ozs7O0FBQ0wsa0JBQVlDLEtBQVosRUFBbUI7QUFBQTs7QUFBQTs7QUFDbEIsOEJBQU1BLEtBQU47QUFDQSxVQUFLQyxLQUFMLEdBQWE7QUFDWkMsTUFBQUEsTUFBTSxFQUFFO0FBREksS0FBYjtBQUZrQjtBQUtsQjs7OztXQUVELDZCQUFvQjtBQUNuQkMsd0JBQ0VDLEdBREYsQ0FDTSw4REFETixFQUNzRTtBQUNwRUMsUUFBQUEsT0FBTyxFQUFFO0FBQ1IsMkJBQWlCO0FBRFQsU0FEMkQ7QUFJcEVDLFFBQUFBLE1BQU0sRUFBRTtBQUNQQyxVQUFBQSxVQUFVLEVBQUU7QUFETDtBQUo0RCxPQUR0RSxFQVNFQyxJQVRGLENBU08sVUFBQ0MsR0FBRCxFQUFTO0FBQ2RDLFFBQUFBLE9BQU8sQ0FBQ0MsR0FBUixDQUFZRixHQUFHLENBQUNHLElBQWhCO0FBQ0EsT0FYRixXQVlRLFVBQUNDLEtBQUQsRUFBVztBQUNqQkgsUUFBQUEsT0FBTyxDQUFDRyxLQUFSLENBQWNBLEtBQWQ7QUFDQSxPQWRGO0FBZUE7OztXQUVELGtCQUFTO0FBQ1IsMEJBQ0MsMERBQ0Msb0RBREQsQ0FERDtBQUtBOzs7O0VBaENtQkMsa0JBQU1DLFM7O2VBbUNaaEIsTSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgYXhpb3MgZnJvbSAnYXhpb3MnO1xuXG5jbGFzcyBSYXRpbmcgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXHRjb25zdHJ1Y3Rvcihwcm9wcykge1xuXHRcdHN1cGVyKHByb3BzKTtcblx0XHR0aGlzLnN0YXRlID0ge1xuXHRcdFx0dmFsdWVzOiAnJyxcblx0XHR9O1xuXHR9XG5cblx0Y29tcG9uZW50RGlkTW91bnQoKSB7XG5cdFx0YXhpb3Ncblx0XHRcdC5nZXQoJ2h0dHBzOi8vYXBwLWhyc2VpLWFwaS5oZXJva3VhcHAuY29tL2FwaS9mZWMyL2hyYXR4L3Byb2R1Y3RzLycsIHtcblx0XHRcdFx0aGVhZGVyczoge1xuXHRcdFx0XHRcdFwiQXV0aG9yaXphdGlvblwiOiAnZGY2NjczMTdhOTAwNzAwYWI4MjA5ZTU3OTllMjg4YTQ3ZmUyNWU5YicsXG5cdFx0XHRcdH0sXG5cdFx0XHRcdHBhcmFtczoge1xuXHRcdFx0XHRcdHByb2R1Y3RfaWQ6IDIxMTEyLFxuXHRcdFx0XHR9LFxuXHRcdFx0fSlcblx0XHRcdC50aGVuKChyZXMpID0+IHtcblx0XHRcdFx0Y29uc29sZS5sb2cocmVzLmRhdGEpO1xuXHRcdFx0fSlcblx0XHRcdC5jYXRjaCgoZXJyb3IpID0+IHtcblx0XHRcdFx0Y29uc29sZS5lcnJvcihlcnJvcik7XG5cdFx0XHR9KTtcblx0fVxuXG5cdHJlbmRlcigpIHtcblx0XHRyZXR1cm4gKFxuXHRcdFx0PGRpdj5cblx0XHRcdFx0PGgxPkhlbGVuPC9oMT5cblx0XHRcdDwvZGl2PlxuXHRcdCk7XG5cdH1cbn1cblxuZXhwb3J0IGRlZmF1bHQgUmF0aW5nOyJdfQ==
