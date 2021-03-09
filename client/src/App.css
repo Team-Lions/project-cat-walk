@@ -7,11 +7,15 @@ body {
   height: 50px;
   width: 50px;
 }
-.styleSelector:hover, a:hover, button:hover, select:hover {
+.styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
   cursor: pointer;
 }
 
 #selectedStyle {
+  border: 5px solid black;
+}
+
+#mainImageThumbnail {
   border: 5px solid black;
 }
 

@@ -49,9 +49,9 @@ class Overview extends React.Component {
     });
   }
 
-  changeStyle(e) {
+  changeStyle(index) {
     this.setState({
-      selectedStyle: this.state.styles[e.target.title]
+      selectedStyle: this.state.styles[index]
     });
   }
 
