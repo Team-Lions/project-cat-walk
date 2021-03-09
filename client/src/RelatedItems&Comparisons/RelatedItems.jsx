@@ -22,7 +22,8 @@ class RelatedItems extends React.Component {
     this.state = {
       relatedItems: [],
       relatedItemsLoaded: false,
-      relatedProductsInfo: []
+      relatedProductsInfo: [],
+      favorites: []
     }
 
     // carousel resizing
@@ -118,11 +119,11 @@ class RelatedItems extends React.Component {
 
   handleCardClick(e) {
     e.preventDefault();
-    console.log('Hello World!');
+    let id = e.target.id;
+    let overviewChanger = this.props.handleOverviewChange;
+    overviewChanger(id);
   }
 
-
-  // CardFormatter = (productId, productImage, placeHolderImg, productCategory, productName, productPrice, productRating, cardClick)
   render() {
     return (
       <div id="related-items">
@@ -130,9 +131,9 @@ class RelatedItems extends React.Component {
           Related Items
         </h4>
         <Carousel responsive={this.responsive}>
-          {this.state.relatedProductsInfo.map((item) => {
-            return CardFormatter(item.id, item.images, placeHolderImg, item.category, item.name, item.price, 'rating', this.handleCardClick)
-          })}
+          {this.state.relatedProductsInfo.map((item) => (
+            <CardFormatter id={item.id} image={item.images} placeHolderImg={placeHolderImg} category={item.category} name={item.name} price={item.price} rating='rating' handleClick={this.handleCardClick} key={item.id}/>
+          ))}
         </Carousel>
       </div>
     )
@@ -140,3 +141,5 @@ class RelatedItems extends React.Component {
 };
 
 export default RelatedItems;
+
+//(item.id, item.images, placeHolderImg, item.category, item.name, item.price, 'rating', this.handleCardClick)

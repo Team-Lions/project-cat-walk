@@ -25,6 +25,8 @@ class App extends React.Component {
       starRating: 0,
       isLoading: true
     }
+    this.changeProduct = this.changeProduct.bind(this)
+    this.handleOverviewChange = this.handleOverviewChange.bind(this)
   }
 
   getProductList() {
@@ -80,6 +82,10 @@ class App extends React.Component {
     });
   }
 
+  handleOverviewChange(newProductId) {
+    this.changeProduct(newProductId);
+  }
+
   render() {
     if(this.state.isLoading) {
       return <div>Loading</div>
@@ -88,7 +94,7 @@ class App extends React.Component {
       <div key={this.state.selectedProductId}>
         <Header />
         <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} />
-        <RelatedItems productId={this.state.selectedProductId}/>
+        <RelatedItems productId={this.state.selectedProductId} handleOverviewChange={this.handleOverviewChange}/>
         <YourFit />
         <Ratings />
         <QnA productID={this.state.selectedProductId}/>
