@@ -1,32 +1,48 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+// import React from 'react';
+// import Card from 'react-bootstrap/Card';
+// import Button from 'react-bootstrap/Button';
+// import placeHolderImg from './content/placeholderimg.jpeg';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
-const SingleRelatedItem = ({ relatedItems }) => {
+// const SingleRelatedItem = ({ products }) => {
+//   let relatedItems = products;
+// //let relatedImgs = imgs
+//   let card;
+//   let formattedCards = [];
 
-  // map over related items to format each card for a single item
+//   for (let i = 0; i < relatedItems.length; i++) {
+//     let item = relatedItems[i];
+//     card = (
+//       <div>
+//         <Card border="dark" style={{ width: '16rem', height: '18rem'}}>
+//           <Card.Img variant="top" src={placeHolderImg} />
+//           <Card.Body>
+//             <Card.Subtitle className="mb-2 text-muted">
+//               {item.category}
+//             </Card.Subtitle>
+//             <Card.Title>
+//               {item.name}
+//             </Card.Title>
+//             <Card.Subtitle className="mb-2 text-muted">
+//               {item.default_price}
+//             </Card.Subtitle>
+//             <Card.Text>
+//               ★★★★★
+//             </Card.Text>
+//           </Card.Body>
+//         </Card>
+//       </div>
+//     );
+//     formattedCards.push(card);
+//   }
 
-  // need to add button to corner of image to add to favorites
+//   return (
+//     <div>
+//       {formattedCards.map((card) => (
+//         card
+//       ))}
+//     </div>
+//   )
+// };
 
-  return (
-    <div>
-      <Card style={{ width: '16rem', height: '24rem'}}>
-        <Button>Click Me</Button>
-        <Card.Img variant="top" src={'FILL ME IN'} />
-        <Card.Body>
-          <Card.Text>
-            Insert product category
-          </Card.Text>
-          <Card.Title>
-            Insert product name
-          </Card.Title>
-          <Card.Text>
-            Insert product review here
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </div>
-  )
-};
-
-export default SingleRelatedItem;
+// export default SingleRelatedItem;
