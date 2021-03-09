@@ -21,22 +21,25 @@ class QnAList extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.data) {
-      this.setState({answers: this.props.data})
-    } else {
-      this.setState({isLoading: true})
-    }
+    // if (this.props.data) {
+    //   this.setState({answers: this.props.data})
+    // } else {
+    //   this.setState({isLoading: true})
+    // }
+    this.setState({isLoading: false})
   }
 
   render() {
-    {console.log('answers', this.props.data[0])}
+    // {console.log('not data', this.props.data[0])}
+    const {data} = this.props
     return (
       <div>
-        {this.state.isLoading ? this.props.data.map((question) => {
+        {this.state.isLoading ? <div>isLoading</div> : data.map((question) => {
+          console.log('questionn', question);
           return (
-          <Question question={question} answers={this.state.answers} loadMoreAnswers={this.loadMoreAnswers} key={this.state.index}/>
+          <Question question={question} answers={Object.values(question.answers)} key={this.state.index}/>
           )
-        }) : <div>No answers</div>}
+        })}
         <Button size="lg" onClick={this.props.loadMore}>
           Load More
         </Button>
@@ -45,5 +48,5 @@ class QnAList extends React.Component {
   }
 }
 
-
+// this.props.answers.length > 0 ? this.props.answers : []} loadMoreAnswers={this.loadMoreAnswers
 export default QnAList;

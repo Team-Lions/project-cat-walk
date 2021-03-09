@@ -39,9 +39,13 @@ class QnA extends Component {
     })
   }
 
+  incrementIndex(prevState) {
+    return {index: prevState.index++}
+  }
 
   loadMore() {
-    this.setState({index: this.state.index += 1})
+    this.setState(this.incrementIndex);
+    console.log('index', this.state.index);
     this.getQuestions(this.props.productID, this.state.index)
     .then((data) => {
       this.setState({data: data(0, this.state.index)})
@@ -56,7 +60,8 @@ class QnA extends Component {
     return (
       <div>
         <h1>Questions and Answers</h1>
-          <QnAList data={this.state.data} answers={this.state.data.answers} loadMore={this.loadMore}/>
+        {this.state.data && <QnAList data={this.state.data} answers={this.state.data.answers} loadMore={this.loadMore}/>}
+
       </div>
     )
   }
