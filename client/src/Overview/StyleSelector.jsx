@@ -4,10 +4,10 @@ import React from 'react';
 var StyleSelector  = (props) => {
   var thumbnails = props.styles.map((style, index) => {
     if (style.name === props.selectedStyle.name) {
-      return <img id="selectedStyle" className='styleSelector' title={index} src={style.photos[0].thumbnail_url} alt={style.name} onClick={props.changeStyle} ></img>
+      return <img id="selectedStyle" className='styleSelector' title={index} src={style.photos[0].thumbnail_url} alt={style.name} onClick={() => {props.changeStyle(index)}} ></img>
       //update style above to show a checkmark instead
     }
-    return <img className='styleSelector' title={index} src={style.photos[0].thumbnail_url} alt={style.name} onClick={props.changeStyle}></img>
+    return <img className='styleSelector' title={index} src={style.photos[0].thumbnail_url} alt={style.name} onClick={() => {props.changeStyle(index)}}></img>
   });
   return (
     <div>
