@@ -1,5 +1,6 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
+import roundStarRating from '../roundStarRating.js';
 
 //recieved props ratings (object), productInfo (object), starRating (number), price (string), salePrice (string)
 var ProductTitleAndPrice = (props) => {
@@ -11,7 +12,7 @@ var ProductTitleAndPrice = (props) => {
   return (
     <div className="ProductTitleAndPrice">
       <div hidden={numRatings === 0}>Star Rating:
-        <StarRatings rating={props.starRating} starRatedColor="gold" numberOfStars={5} name="rating" />
+        <StarRatings rating={roundStarRating(props.starRating)} starRatedColor="gold" numberOfStars={5} name="rating" />
         <a href="#RatingsAndReviews">Read all {numRatings} reviews</a>
       </div>
       <p>{props.productInfo.category}</p>
