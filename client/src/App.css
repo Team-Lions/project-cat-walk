@@ -1,9 +1,42 @@
+header {
+  margin-left: 12%;
+  margin-right: 12%;
+  height: 120px;
+  background-color: black;
+  color: lightcyan;
+  font-size: 36px;
+  text-align: center
+}
+
 body {
-  background-color: white
+
+}
+
+#carousel-item {
+  padding-left: 75px
+}
+
+#related-items {
+  margin-left: 17%;
+  margin-right: 17%
 }
 
 .styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
   cursor: pointer;
+}
+
+#your-fit {
+  margin-left: 17%;
+  margin-right: 17%;
+}
+
+footer {
+  margin-left: 12%;
+  margin-right: 12%;
+  height: 240px;
+  color: lightcyan;
+  background-color: black;
+  text-align: center;
 }
 
 .styleSelector {
