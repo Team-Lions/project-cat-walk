@@ -22,8 +22,18 @@ class ImageGalleryDefault extends React.Component {
   }
 
   render() {
+    var images = this.props.images.map((image, index) => {
+      return (
+        <li  title={index}>
+          <img className="imageGalleryList" src={image.thumbnail_url} alt="alternate image"></img>
+        </li>
+      );
+    })
     return (
-      <img id="mainImage" src={this.props.images[this.state.mainImageIndex].thumbnail_url} alt={this.props.name}></img>
+      <div>
+        <img id="mainImage" src={this.props.images[this.state.mainImageIndex].thumbnail_url} alt={this.props.name}></img>
+        <ul>{images}</ul>
+      </div>
     );
   }
 };
