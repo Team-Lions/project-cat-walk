@@ -1,14 +1,17 @@
+// Libraries and dependencies
 import React from 'react';
 import axios from 'axios';
-//import SingleRelatedItem from './SingleRelatedItem.jsx';
 import Carousel from 'react-multi-carousel';
-import "react-multi-carousel/lib/styles.css";
-import token from '../../../public/token.js';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import AddToYourFit from './AddToYourFit.jsx';
-import placeHolderImg from './content/placeholderimg.jpeg';
+// Styling
+import "react-multi-carousel/lib/styles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+// Misc.
+import AddToYourFit from './AddToYourFit.jsx';
+import token from '../../../public/token.js';
+import placeHolderImg from './content/placeholderimg.jpeg';
+// Helper Fn's
+import CardFormatter from './CardFormatter.jsx';
 
 
 //WE NEED CONTENT LOADERS IN OUR WEBPACK CONFIG AND PACKAGE JSON
@@ -129,10 +132,10 @@ class RelatedItems extends React.Component {
           {this.state.relatedProductsInfo.map((item) => {
             return (
               <div id="carousel-item">
-                 <Card border="dark" style={{ width: '16rem', height: '22rem'}} onClick={this.handleCardClick}>
+                 <Card border="dark" style={{ width: '16rem', height: '22rem'}}>
                   <AddToYourFit />
                   <Card.Img variant="top" src={item.images[0].thumbnail_url ? item.images[0].thumbnail_url : placeHolderImg} height="auto" width="100%"/>
-                  <Card.Body>
+                  <Card.Body onClick={this.handleCardClick}>
                     <Card.Subtitle className="mb-2 text-muted">
                       {item.category}
                     </Card.Subtitle>
