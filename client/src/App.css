@@ -7,13 +7,9 @@ header {
   font-size: 36px;
 }
 
-#logo {
-  height: 180px;
+body {
+  background-color: white;
 }
-
-/* body {
-
-} */
 
 #carousel-item {
   padding-left: 75px

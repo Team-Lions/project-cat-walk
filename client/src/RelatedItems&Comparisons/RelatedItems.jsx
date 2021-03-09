@@ -22,8 +22,7 @@ class RelatedItems extends React.Component {
     this.state = {
       relatedItems: [],
       relatedItemsLoaded: false,
-      relatedProductsInfo: [],
-      relatedProductsImg: []
+      relatedProductsInfo: []
     }
 
     // carousel resizing
@@ -122,6 +121,8 @@ class RelatedItems extends React.Component {
     console.log('Hello World!');
   }
 
+
+  // CardFormatter = (productId, productImage, placeHolderImg, productCategory, productName, productPrice, productRating, cardClick)
   render() {
     return (
       <div id="related-items">
@@ -130,28 +131,7 @@ class RelatedItems extends React.Component {
         </h4>
         <Carousel responsive={this.responsive}>
           {this.state.relatedProductsInfo.map((item) => {
-            return (
-              <div id="carousel-item">
-                 <Card border="dark" style={{ width: '16rem', height: '22rem'}}>
-                  <AddToYourFit />
-                  <Card.Img variant="top" src={item.images[0].thumbnail_url ? item.images[0].thumbnail_url : placeHolderImg} height="auto" width="100%"/>
-                  <Card.Body onClick={this.handleCardClick}>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      {item.category}
-                    </Card.Subtitle>
-                    <Card.Title>
-                      {item.name}
-                    </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      {item.price}
-                    </Card.Subtitle>
-                    <Card.Text>
-                      ★★★★★
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-            )
+            return CardFormatter(item.id, item.images, placeHolderImg, item.category, item.name, item.price, 'rating', this.handleCardClick)
           })}
         </Carousel>
       </div>

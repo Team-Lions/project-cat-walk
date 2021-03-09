@@ -8,7 +8,7 @@ const CardFormatter = (productId, productImage, placeHolderImg, productCategory,
     <div>
       <Card border="dark" style={{ width: '16rem', height: '22rem'}}>
         <AddToYourFit />
-        <Card.Img variant="top" src={productImage ? productImage : placeHolderImg} height="auto" width="100%"/>
+        <Card.Img variant="top" src={productImage[0].thumbnail_url ? productImage[0].thumbnail_url : placeHolderImg} height="auto" width="100%"/>
         <Card.Body onClick={cardClick}>
           <Card.Subtitle className="mb-2 text-muted">
             {productCategory}
