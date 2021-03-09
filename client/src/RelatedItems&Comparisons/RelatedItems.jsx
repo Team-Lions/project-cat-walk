@@ -6,6 +6,7 @@ import "react-multi-carousel/lib/styles.css";
 import token from '../../../public/token.js';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import AddToYourFit from './AddToYourFit.jsx';
 import placeHolderImg from './content/placeholderimg.jpeg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -42,6 +43,7 @@ class RelatedItems extends React.Component {
         items: 1
       }
     }
+    this.handleCardClick = this.handleCardClick.bind(this);
   };
 
   componentDidMount() {
@@ -112,18 +114,24 @@ class RelatedItems extends React.Component {
     }
   }
 
+  handleCardClick(e) {
+    e.preventDefault();
+    console.log('Hello World!');
+  }
+
   render() {
     return (
       <div id="related-items">
-        <h4>
+        <h4 id="related-title">
           Related Items
         </h4>
         <Carousel responsive={this.responsive}>
           {this.state.relatedProductsInfo.map((item) => {
             return (
               <div id="carousel-item">
-                 <Card border="dark" style={{ width: '14rem', height: '18rem'}}>
-                  <Card.Img variant="top" src={item.images[0].thumbnail_url ? item.images[0].thumbnail_url : placeHolderImg}/>
+                 <Card border="dark" style={{ width: '16rem', height: '22rem'}} onClick={this.handleCardClick}>
+                  <AddToYourFit />
+                  <Card.Img variant="top" src={item.images[0].thumbnail_url ? item.images[0].thumbnail_url : placeHolderImg} height="auto" width="100%"/>
                   <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted">
                       {item.category}

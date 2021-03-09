@@ -5,25 +5,47 @@ header {
   background-color: black;
   color: lightcyan;
   font-size: 36px;
-  text-align: center
 }
 
-body {
-
+#logo {
+  height: 180px;
 }
+
+/* body {
+
+} */
 
 #carousel-item {
   padding-left: 75px
 }
 
 #related-items {
+  height: 400px;
   margin-left: 17%;
-  margin-right: 17%
+  margin-right: 17%;
+}
+
+#related-title {
+  border-bottom: 1px solid grey;
+}
+
+#fav-button {
+  color: goldenrod;
+  background-color: transparent;
+  float: right;
+  position: fixed;
+  font-size: 30px;
+  border: none;
 }
 
 #your-fit {
+  height: 400px;
   margin-left: 17%;
   margin-right: 17%;
+}
+
+#yourfit-title {
+  border-bottom: 1px solid grey;
 }
 
 footer {
@@ -34,6 +56,7 @@ footer {
   background-color: black;
   text-align: center;
 }
+
 
 
 .styleSelector {
