@@ -3,6 +3,7 @@ import axios from 'axios';
 import token from '../../../public/token.js';
 import AddReview from './AddReview.jsx';
 import ReviewList from './ReviewList.jsx';
+import SingleReview from './SingleReview.jsx';
 
 
 class Ratings extends React.Component {
@@ -10,12 +11,11 @@ class Ratings extends React.Component {
 		super(props);
 		this.state = {
 		  reviews: {},
+		  isLoading: true
 		}
 	  }
 	
 	  getReviews(productId) {
-		//request to get all the styles available on single/specified product
-		//returns a promise
 		return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews', {
 		  headers: {
 			'Authorization': token
@@ -35,17 +35,21 @@ class Ratings extends React.Component {
 		.then((values) => {
 		  this.setState({
 			reviews: values[0].data,
+			isLoading: false
 		  });
 		})
 	  }
 	
 	  render() {
+		if(this.state.isLoading) {
+			return <div>Loading</div>
+		}
 		return(
 			<>
-				<h1>Ratings</h1>
-				<h2>{JSON.stringify(this.state.reviews)}</h2>
-				<AddReview />
-				<ReviewList />
+				<div id="RatingsAndReviews">
+					<SingleReview reviews={this.state.reviews}/>
+
+				</div>
 			</>
 		)
 	  }
