@@ -12,6 +12,11 @@ body {
 
 }
 
+/* everyone put their buttons/other clickable things here */
+.styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
+  cursor: pointer;
+}
+
 #carousel-item {
   padding-left: 75px
 }
@@ -19,10 +24,6 @@ body {
 #related-items {
   margin-left: 17%;
   margin-right: 17%
-}
-
-.styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
-  cursor: pointer;
 }
 
 #your-fit {
@@ -39,22 +40,14 @@ footer {
   text-align: center;
 }
 
-.styleSelector {
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-}
+/* Overview related Styling */
 
-#selectedStyle {
-  border: 5px solid black;
-}
-
-#mainImageThumbnail {
-  padding-bottom: 2px;
+.mainImageThumbnail {
   border-bottom: 3px solid black;
 }
 
 .imageGalleryList {
   height: 7%;
   width: 7%;
+  padding: 2px;
 }

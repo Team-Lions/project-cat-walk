@@ -1,18 +1,41 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
+
+const SelectorFlexContainer = styled.div`
+  width: 345px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  flex-flow: row wrap;
+`;
+
+const StyleThumbnail = styled.img`
+  border-radius: 50%;
+  height: 65px;
+  width: 65px;
+  margin: 10px;
+
+  ${props => props.selected && css `
+    border: 3px solid black;
+  `}
+`;
 
 //expects props: styles as an array of style objects, changeStyle as a function, selectedStyle as an object
 var StyleSelector  = (props) => {
   var thumbnails = props.styles.map((style, index) => {
+    var selected = false;
     if (style.name === props.selectedStyle.name) {
-      return <img id="selectedStyle" className='styleSelector' title={index} src={style.photos[0].thumbnail_url} alt={style.name} onClick={() => {props.changeStyle(index)}} ></img>
+      selected = true;
       //update style above to show a checkmark instead
     }
-    return <img className='styleSelector' title={index} src={style.photos[0].thumbnail_url} alt={style.name} onClick={() => {props.changeStyle(index)}}></img>
+    return <StyleThumbnail selected={selected} src={style.photos[0].thumbnail_url} alt={style.name} onClick={() => {props.changeStyle(index)}}></StyleThumbnail>
   });
   return (
     <div>
       <p><b>Style > </b>{props.selectedStyle.name}</p>
-      {thumbnails}
+      <SelectorFlexContainer>
+        {thumbnails}
+      </SelectorFlexContainer>
     </div>
   );
 }

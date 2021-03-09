@@ -29,16 +29,13 @@ class ImageGalleryDefault extends React.Component {
 
   render() {
     var images = this.props.images.map((image, index) => {
+      var className = 'imageGalleryList';
       if (index === this.state.mainImageIndex) {
-        return (
-          <li>
-            <img id="mainImageThumbnail" className="imageGalleryList" src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></img>
-          </li>
-        );
+        className += ' mainImageThumbnail';
       }
       return (
         <li>
-          <img className="imageGalleryList" src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></img>
+          <img className={className} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></img>
         </li>
       );
     })
