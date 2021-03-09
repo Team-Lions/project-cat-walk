@@ -135,14 +135,14 @@ var App = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/_react["default"].createElement("div", null, "Loading");
       }
 
-      return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Overview["default"], {
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        key: this.state.selectedProductId
+      }, /*#__PURE__*/_react["default"].createElement(_Overview["default"], {
         productId: this.state.selectedProductId,
         starRating: this.state.starRating,
-        ratings: this.state.reviewMetaData.ratings,
-        key: this.state.selectedProductId
+        ratings: this.state.reviewMetaData.ratings
       }), /*#__PURE__*/_react["default"].createElement(_RelatedItems["default"], null), /*#__PURE__*/_react["default"].createElement(_YourFit["default"], null), /*#__PURE__*/_react["default"].createElement(_Ratings["default"], null), /*#__PURE__*/_react["default"].createElement(_QnA["default"], {
-        productID: this.state.selectedProductId,
-        key: this.state.selectedProductId
+        productID: this.state.selectedProductId
       }));
     }
   }]);
