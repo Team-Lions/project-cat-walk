@@ -2,13 +2,14 @@ body {
   background-color: white
 }
 
+.styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
+  cursor: pointer;
+}
+
 .styleSelector {
   border-radius: 50%;
   height: 50px;
   width: 50px;
-}
-.styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
-  cursor: pointer;
 }
 
 #selectedStyle {
@@ -16,7 +17,8 @@ body {
 }
 
 #mainImageThumbnail {
-  border: 5px solid black;
+  padding-bottom: 2px;
+  border-bottom: 3px solid black;
 }
 
 .imageGalleryList {
