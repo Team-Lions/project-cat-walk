@@ -1,5 +1,6 @@
 node_modules
 package-lock.json
-/public/token.js
-/client/dist/bundle.js
-/public/dist/bundle.js
+token.js
+public/dist
+public/dist/bundle.js
+public/dist/index.html
