@@ -56,7 +56,7 @@ class QnA extends Component {
     return (
       <div>
         <h1>Questions and Answers</h1>
-          <QnAList data={ this.state.data} loadMore={this.loadMore}/>
+          <QnAList data={this.state.data} answers={this.state.data.answers} loadMore={this.loadMore}/>
       </div>
     )
   }

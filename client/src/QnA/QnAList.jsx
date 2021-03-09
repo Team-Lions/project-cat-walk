@@ -8,33 +8,35 @@ class QnAList extends React.Component {
     super(props);
 
     this.state = {
-      index: 1
+      index: 1,
+      isLoading: true,
+      answers: []
     }
 
     this.loadMoreAnswers = this.loadMoreAnswers.bind(this);
   }
 
   loadMoreAnswers() {
-    console.log('clicked');
+    console.log(this.props.data.answers);
   }
 
-  // componentDidMount() {
-  //   if (this.props.data) {
-  //     this.setState({answers: this.props.data})
-  //   } else {
-  //     this.setState({answers: 'isLoading'})
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.data) {
+      this.setState({answers: this.props.data})
+    } else {
+      this.setState({isLoading: true})
+    }
+  }
 
   render() {
-    {console.log('answers', this.props.data)}
+    {console.log('answers', this.props.data[0])}
     return (
       <div>
-        {this.props.data.map((question) => {
+        {this.state.isLoading ? this.props.data.map((question) => {
           return (
           <Question question={question} answers={this.state.answers} loadMoreAnswers={this.loadMoreAnswers} key={this.state.index}/>
           )
-        })}
+        }) : <div>No answers</div>}
         <Button size="lg" onClick={this.props.loadMore}>
           Load More
         </Button>
