@@ -1,40 +1,39 @@
 /* everyone put their buttons/other clickable things here */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 .styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
   cursor: pointer;
 }
 
 header {
-  margin-left: 12%;
-  margin-right: 12%;
-  height: 120px;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 135px;
   background-color: black;
-  color: lightcyan;
+  border-bottom: 3px solid deepskyblue;
+}
+
+header:hover {
+  border-bottom: 3px solid deeppink;
 }
 
 #page-title {
   font-size: 24px;
-  width: 120px;
-  height: 120px;
+  width: 125px;
+  height: 125px;
   text-align: center;
   color: deepskyblue;
-  border: 3px solid deepskyblue;
+  border: 2px solid deepskyblue;
   border-radius: 100%;
 }
 
-#page-title:hover {
-  color: deeppink;
-  border: 3px solid deeppink;
-}
 
 body {
-  background-color: whitesmoke;
-	margin-left: 12%;
-	margin-right: 12%;
-	height: 120px;
+  padding-left: 2px;
+  padding-right: 2px;
 	background-color: black;
-	color: lightcyan;
-	font-size: 36px;
-	text-align: center;
+	color: white;
+  font-family: 'Poppins', sans-serif;
 }
 
 #RatingsAndReviews {
@@ -144,7 +143,7 @@ body {
 }
 
 #related-title {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
 }
 
 #fav-button {
@@ -167,7 +166,7 @@ body {
 }
 
 #yourfit-title {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
 }
 
 footer {
