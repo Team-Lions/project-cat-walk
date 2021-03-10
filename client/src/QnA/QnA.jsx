@@ -4,47 +4,60 @@ import QnAList from './QnAList.jsx';
 import axios from 'axios';
 import token from '../../../public/token.js';
 
+const itemsPerPage = 2;
+
 class QnA extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      index: 2,
+      id: this.props.productID
     }
 
     this.getQuestions = this.getQuestions.bind(this);
+    this.loadMore = this.loadMore.bind(this);
   }
 
 
-  getQuestions(id) {
+  getQuestions(id, index) {
     return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions`, {
       headers: {
         'Authorization': token
       },
       params: {
-        product_id: id,
-        page: 1,
-        count: 5
+        product_id: id
       }
     })
     .then((questions) => {
-      this.setState({data: questions.data.results}
-      );
+      this.setState({data: questions.data.results.slice(0, index)})
+      this.setState({id: id})
     })
     .catch((err) => {
       console.log(err);
     })
   }
 
+
+  loadMore() {
+    this.setState({index: this.state.index += 1})
+    this.getQuestions(this.props.productID, this.state.index)
+    .then((data) => {
+      this.setState({data: data(0, this.state.index)})
+    })
+  }
+
   componentDidMount() {
-    this.getQuestions(this.props.productID);
+    this.getQuestions(this.props.productID, this.state.index);
   }
 
   render() {
     return (
       <div>
         <h1>Questions and Answers</h1>
-        <QnAList data={this.state.data}/>
+        {this.state.data && <QnAList data={this.state.data} answers={this.state.data.answers} loadMore={this.loadMore}/>}
+
       </div>
     )
   }
