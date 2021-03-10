@@ -2,6 +2,11 @@ node_modules
 package-lock.json
 token.js
 public/dist
+public/src
 public/dist/bundle.js
+<<<<<<< HEAD
 public/dist/index.html
 public/src
+=======
+public/dist/index.html
+>>>>>>> main
