@@ -118,7 +118,7 @@ class RelatedItems extends React.Component {
   handleCardClick(e) {
     e.preventDefault();
     let id = e.target.id;
-    let overviewChanger = this.props.handleOverviewChange;
+    let overviewChanger = this.props.handleProductChange;
     overviewChanger(id);
   }
 
