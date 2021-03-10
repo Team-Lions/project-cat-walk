@@ -16,8 +16,8 @@ var ProductTitleAndPrice = (props) => {
         <p>${props.price}</p>
         :
         <p>
-          <div style={{color: 'red'}}>${props.salePrice} </div>
-          <div style={{'text-decoration':'line-through'}}>${props.price}</div>
+          <span style={{color: 'red'}}>${props.salePrice} </span>
+          <span style={{textDecoration:'line-through'}}>${props.price}</span>
         </p>
       }
     </div>
