@@ -75,7 +75,7 @@ class App extends React.Component {
     //bascially the same as changing the selected product, but has to retrieve product list at the outset
     this.getProductList()
     .then((products) => {
-      this.changeProduct(products.data[3].id);
+      this.changeProduct(products.data[0].id);
     })
     .catch((err) => {
       console.log('Error retriving product List: ', err);
