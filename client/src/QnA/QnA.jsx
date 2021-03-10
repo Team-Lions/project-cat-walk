@@ -41,6 +41,7 @@ class QnA extends Component {
     })
   }
 
+
 //replace setState w var
   loadMore() {
     this.setState({index: this.state.index += 1})
@@ -58,7 +59,7 @@ class QnA extends Component {
     return (
       <div>
         <h1>Questions and Answers</h1>
-        {this.state.data && <QnAList data={this.state.data} answers={this.state.data.answers} loadMore={this.loadMore}/>}
+        {this.state.data && <QnAList data={this.state.data} key={this.state.id} answers={this.state.data.answers} loadMore={this.loadMore}/>}
 
       </div>
     )
