@@ -46,6 +46,7 @@ class RelatedItems extends React.Component {
         items: 1
       }
     }
+
     this.handleCardClick = this.handleCardClick.bind(this);
   };
 
@@ -62,9 +63,6 @@ class RelatedItems extends React.Component {
     .then((relatedItems) => {
       let relatedItemsArray = relatedItems.data;
       this.getRelatedItemsInfo(relatedItemsArray);
-    })
-    .then(() => {
-
     })
     .catch((err) => {
       console.log(err)
@@ -88,7 +86,7 @@ class RelatedItems extends React.Component {
         singleProduct.price = productInfo.data.default_price
         return singleProduct
       })
-      .then((productDetails) => {
+      .then((singleProduct) => {
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productSearchId}/styles`, {
           headers: {
             Authorization: token
@@ -96,8 +94,8 @@ class RelatedItems extends React.Component {
         })
         .then((styles) => {
           let imgs = styles.data.results[0].photos
-          productDetails.images = imgs
-          return productDetails;
+          singleProduct.images = imgs
+          return singleProduct;
         })
         .then((product) => {
           products.push(product)
