@@ -31,15 +31,17 @@ class QnA extends Component {
       }
     })
     .then((questions) => {
-      this.setState({data: questions.data.results.slice(0, index)})
-      this.setState({id: id})
+      this.setState({
+        data: questions.data.results.slice(0, index),
+        id: id
+      })
     })
     .catch((err) => {
       console.log(err);
     })
   }
 
-
+//replace setState w var
   loadMore() {
     this.setState({index: this.state.index += 1})
     this.getQuestions(this.props.productID, this.state.index)
