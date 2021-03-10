@@ -25,6 +25,8 @@ class App extends React.Component {
       starRating: 0,
       isLoading: true
     }
+    this.changeProduct = this.changeProduct.bind(this)
+    this.handleProductChange = this.handleProductChange.bind(this)
   }
 
   getProductList() {
@@ -73,11 +75,15 @@ class App extends React.Component {
     //bascially the same as changing the selected product, but has to retrieve product list at the outset
     this.getProductList()
     .then((products) => {
-      this.changeProduct(products.data[3].id);
+      this.changeProduct(products.data[0].id);
     })
     .catch((err) => {
       console.log('Error retriving product List: ', err);
     });
+  }
+
+  handleProductChange(newProductId) {
+    this.changeProduct(newProductId);
   }
 
   render() {
@@ -88,8 +94,8 @@ class App extends React.Component {
       <div key={this.state.selectedProductId}>
         <Header />
         <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} />
-        RelatedItemsAndFit
-        <RelatedItems productId={this.state.selectedProductId}/>
+         RelatedItemsAndFit
+        <RelatedItems productId={this.state.selectedProductId} handleProductChange={this.handleProductChange}/>
         <YourFit />
         <Ratings productId={this.state.selectedProductId}/>
         <QnA productID={this.state.selectedProductId}/>
