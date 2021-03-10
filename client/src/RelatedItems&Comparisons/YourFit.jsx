@@ -13,10 +13,9 @@ class YourFit extends React.Component {
   render() {
     return (
       <div id="your-fit">
-        <h4>
+        <h4 id="yourfit-title">
           Your Outfit
         </h4>
-        Insert YourFit Carousel
       </div>
     )
   }
