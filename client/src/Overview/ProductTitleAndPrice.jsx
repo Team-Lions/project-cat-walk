@@ -15,6 +15,10 @@ const A = styled.a`
   display: inline-block;
   font-size: 12px;
   padding: 2px;
+  color: deepskyblue;
+  :hover {
+    color: deeppink;
+  }
 `;
 
 const Category = styled.div`
@@ -22,9 +26,7 @@ const Category = styled.div`
 `;
 
 const Name = styled.div`
-  height: 50px;
   font-size: 50px;
-  line-height: 50px;
 `;
 
 //recieved props ratings (object), productInfo (object), starRating (number), price (string), salePrice (string)
@@ -35,10 +37,10 @@ var ProductTitleAndPrice = (props) => {
   }
 
   return (
-    <div>
+    <div id="productTitleAndPrice">
       <RatingData hidden={numRatings === 0}>
         <ReactStarRating numberOfStar={5} numberOfSelectedStar={roundStarRating(props.starRating)} colorFilledStar="gold" colorEmptyStar="grey" starSize="15px" spaceBetweenStar="3px" disableOnSelect={true} name="rating" />
-        <A href="#RatingsAndReviews">Read all {numRatings} reviews</A>
+        <A id="ratingsLink" href="#RatingsAndReviews">Read all {numRatings} reviews</A>
       </RatingData>
       <Category>{props.productInfo.category}</Category>
       <Name><b>{props.productInfo.name}</b></Name>
@@ -46,7 +48,7 @@ var ProductTitleAndPrice = (props) => {
         <p style={{margin: "10px 0 10px 0"}}>${props.price}</p>
         :
         <p style={{margin: "10px 0 10px 0"}}>
-          <span style={{color: "red"}}>${props.salePrice} </span>
+          <span style={{color: "deeppink"}}>${props.salePrice} </span>
           <span style={{textDecoration:"line-through"}}>${props.price}</span>
         </p>
       }

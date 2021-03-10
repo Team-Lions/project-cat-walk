@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import styled, { css } from 'styled-components';
 // header and footer
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
@@ -14,7 +15,7 @@ import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
 //Misc
 import calculateStarReview from './calculateStarReview.js';
 import token from '../../public/token.js';
-import css from './App.css';
+import appCss from './App.css';
 
 class App extends React.Component {
   constructor(props) {

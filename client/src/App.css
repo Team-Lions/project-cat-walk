@@ -1,7 +1,7 @@
 /* everyone put their buttons/other clickable things here */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-.styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
+a:hover, button:hover, select:hover {
   cursor: pointer;
 }
 
