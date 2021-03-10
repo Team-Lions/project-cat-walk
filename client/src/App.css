@@ -97,6 +97,11 @@ header {
 	grid-area: date;
 }
 
+/* everyone put their buttons/other clickable things here */
+.styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
+  cursor: pointer;
+}
+
 #carousel-item {
 	padding-left: 75px;
 }
