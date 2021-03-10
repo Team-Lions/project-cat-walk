@@ -29,7 +29,7 @@ class AddToCart extends React.Component {
       quantityEnabled: true,
       quantityAvailable: this.props.sizeFirstSkus[newSize].quantity,
       quantitySelection: 1,
-      hideSizeEnforcement: true
+      hideSizeEnforcement: truee
     });
   }
 
@@ -47,7 +47,6 @@ class AddToCart extends React.Component {
   }
 
   addToCart(e) {
-    //may not be working properly. Will have to test again when I have a real SKU instead of dummy data
     var sku_id = Number.parseInt(this.props.sizeFirstSkus[this.state.sizeSelection].sku_id);
     axios({
       method: 'post',
@@ -84,7 +83,7 @@ class AddToCart extends React.Component {
           <QuantitySelector quantityAvailable={this.state.quantityAvailable} change={this.changeQuantity.bind(this)} />
           :
           <select id="quantity" name="quantity" disabled>
-            <option>-</option>
+            <option> - </option>
           </select>
         }
         {this.props.sizes.length > 0 ?
