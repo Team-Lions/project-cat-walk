@@ -1,4 +1,15 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
+
+const GalleryThumbnail = styled.img`
+  height: 7%;
+  width: 7%;
+  padding: 2px;
+
+  ${props => props.selected && css `
+    border-bottom: 3px solid black;
+  `}
+`;
 
 //expected props images (array of objects), name (String)
 class ImageGalleryDefault extends React.Component {
@@ -29,13 +40,13 @@ class ImageGalleryDefault extends React.Component {
 
   render() {
     var images = this.props.images.map((image, index) => {
-      var className = 'imageGalleryList';
+      var selected = false;
       if (index === this.state.mainImageIndex) {
-        className += ' mainImageThumbnail';
+        selected = true;
       }
       return (
         <li>
-          <img className={className} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></img>
+          <GalleryThumbnail selected={selected} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></GalleryThumbnail>
         </li>
       );
     })

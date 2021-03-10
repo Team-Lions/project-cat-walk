@@ -40,14 +40,5 @@ footer {
   text-align: center;
 }
 
-/* Overview related Styling */
 
-.mainImageThumbnail {
-  border-bottom: 3px solid black;
-}
 
-.imageGalleryList {
-  height: 7%;
-  width: 7%;
-  padding: 2px;
-}
