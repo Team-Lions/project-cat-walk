@@ -1,13 +1,17 @@
+// Libraries and dependencies
 import React from 'react';
 import axios from 'axios';
-//import SingleRelatedItem from './SingleRelatedItem.jsx';
 import Carousel from 'react-multi-carousel';
-import "react-multi-carousel/lib/styles.css";
-import token from '../../../public/token.js';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import placeHolderImg from './content/placeholderimg.jpeg';
+// Styling
+import "react-multi-carousel/lib/styles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+// Misc.
+import AddToYourFit from './AddToYourFit.jsx';
+import token from '../../../public/token.js';
+import placeHolderImg from './content/placeholderimg.jpeg';
+// Helper Fn's
+import CardFormatter from './CardFormatter.jsx';
 
 
 //WE NEED CONTENT LOADERS IN OUR WEBPACK CONFIG AND PACKAGE JSON
@@ -19,7 +23,7 @@ class RelatedItems extends React.Component {
       relatedItems: [],
       relatedItemsLoaded: false,
       relatedProductsInfo: [],
-      relatedProductsImg: []
+      favorites: []
     }
 
     // carousel resizing
@@ -42,6 +46,8 @@ class RelatedItems extends React.Component {
         items: 1
       }
     }
+
+    this.handleCardClick = this.handleCardClick.bind(this);
   };
 
   componentDidMount() {
@@ -57,9 +63,6 @@ class RelatedItems extends React.Component {
     .then((relatedItems) => {
       let relatedItemsArray = relatedItems.data;
       this.getRelatedItemsInfo(relatedItemsArray);
-    })
-    .then(() => {
-
     })
     .catch((err) => {
       console.log(err)
@@ -83,7 +86,7 @@ class RelatedItems extends React.Component {
         singleProduct.price = productInfo.data.default_price
         return singleProduct
       })
-      .then((productDetails) => {
+      .then((singleProduct) => {
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productSearchId}/styles`, {
           headers: {
             Authorization: token
@@ -91,8 +94,8 @@ class RelatedItems extends React.Component {
         })
         .then((styles) => {
           let imgs = styles.data.results[0].photos
-          productDetails.images = imgs
-          return productDetails;
+          singleProduct.images = imgs
+          return singleProduct;
         })
         .then((product) => {
           products.push(product)
@@ -112,36 +115,23 @@ class RelatedItems extends React.Component {
     }
   }
 
+  handleCardClick(e) {
+    e.preventDefault();
+    let id = e.target.id;
+    let overviewChanger = this.props.handleOverviewChange;
+    overviewChanger(id);
+  }
+
   render() {
     return (
       <div id="related-items">
-        <h4>
+        <h4 id="related-title">
           Related Items
         </h4>
         <Carousel responsive={this.responsive}>
-          {this.state.relatedProductsInfo.map((item) => {
-            return (
-              <div id="carousel-item">
-                 <Card border="dark" style={{ width: '14rem', height: '18rem'}}>
-                  <Card.Img variant="top" src={item.images[0].thumbnail_url ? item.images[0].thumbnail_url : placeHolderImg}/>
-                  <Card.Body>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      {item.category}
-                    </Card.Subtitle>
-                    <Card.Title>
-                      {item.name}
-                    </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      {item.price}
-                    </Card.Subtitle>
-                    <Card.Text>
-                      ★★★★★
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-            )
-          })}
+          {this.state.relatedProductsInfo.map((item) => (
+            <CardFormatter id={item.id} image={item.images} placeHolderImg={placeHolderImg} category={item.category} name={item.name} price={item.price} rating='rating' handleClick={this.handleCardClick} key={item.id}/>
+          ))}
         </Carousel>
       </div>
     )
@@ -149,3 +139,5 @@ class RelatedItems extends React.Component {
 };
 
 export default RelatedItems;
+
+//(item.id, item.images, placeHolderImg, item.category, item.name, item.price, 'rating', this.handleCardClick)
