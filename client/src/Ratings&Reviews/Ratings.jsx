@@ -4,6 +4,7 @@ import token from '../../../public/token.js';
 import AddReview from './AddReview.jsx';
 import SingleReview from './SingleReview.jsx';
 import RatingBreakDown from './RatingBreakDown.jsx';
+import SortReview from './SortReview.jsx';
 
 
 class Ratings extends React.Component {
@@ -11,6 +12,8 @@ class Ratings extends React.Component {
 		super(props);
 		this.state = {
 		  reviews: {},
+		  metaData: this.props.metaData,
+		  avgStarRating: this.props.starRating,
 		  isLoading: true
 		}
 	  }
@@ -25,7 +28,6 @@ class Ratings extends React.Component {
 		  }
 		});
 	  }
-	
 	 
 	
 	  componentDidMount() {
@@ -48,20 +50,20 @@ class Ratings extends React.Component {
 			<>
 				<div id="RatingsAndReviews">
 					<div className="sidebar">
-						<RatingBreakDown/>
+						<RatingBreakDown metaData={this.state.metaData} starRating={this.state.avgStarRating}/>
 					</div>
 					<div className="mainReviews">
+						<SortReview reviews={this.state.reviews} />
 						<SingleReview reviews={this.state.reviews}/>
+						<div className="reviewButtons">
+							<button>
+								MORE REVIEWS
+							</button>
+							<button>
+								ADD A REVIEW +
+							</button>
+						</div>
 					</div>
-					<div className="reviewButtons">
-						<button>
-							More Reviews
-						</button>
-						<button>
-							Add Review
-						</button>
-					</div>
-
 				</div>
 			</>
 		)
