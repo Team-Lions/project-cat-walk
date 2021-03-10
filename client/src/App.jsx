@@ -26,7 +26,7 @@ class App extends React.Component {
       isLoading: true
     }
     this.changeProduct = this.changeProduct.bind(this)
-    this.handleOverviewChange = this.handleOverviewChange.bind(this)
+    this.handleProductChange = this.handleProductChange.bind(this)
   }
 
   getProductList() {
@@ -82,7 +82,7 @@ class App extends React.Component {
     });
   }
 
-  handleOverviewChange(newProductId) {
+  handleProductChange(newProductId) {
     this.changeProduct(newProductId);
   }
 
@@ -95,7 +95,7 @@ class App extends React.Component {
         RelatedItemsAndFit
         <Header />
         <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} />
-        <RelatedItems productId={this.state.selectedProductId} handleOverviewChange={this.handleOverviewChange}/>
+        <RelatedItems productId={this.state.selectedProductId} handleProductChange={this.handleProductChange}/>
         <YourFit />
         <Ratings />
         <QnA productID={this.state.selectedProductId}/>
