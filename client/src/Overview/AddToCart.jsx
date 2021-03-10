@@ -29,7 +29,7 @@ class AddToCart extends React.Component {
       quantityEnabled: true,
       quantityAvailable: this.props.sizeFirstSkus[newSize].quantity,
       quantitySelection: 1,
-      hideSizeEnforcement: truee
+      hideSizeEnforcement: true
     });
   }
 
