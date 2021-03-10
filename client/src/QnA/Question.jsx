@@ -1,6 +1,7 @@
 import React from "react";
 import Answers from "./Answers.jsx";
-import Button from 'react-bootstrap/button'
+import Button from 'react-bootstrap/button';
+
 
 class Question extends React.Component {
   constructor(props) {
@@ -19,7 +20,6 @@ class Question extends React.Component {
   }
 
   loadMoreAnswers() {
-    console.log('clicked');
     var newIndex = this.state.index += 2
     this.setShow();
     this.setState({index: newIndex});
@@ -35,13 +35,14 @@ class Question extends React.Component {
     this.setState({index: 1, show: true});
   }
 
+
+
   render() {
-    console.log('all the answers', this.props.answers)
     return (
       <div>
         <h2>Q:</h2>
         <h3>{this.props.question.question_body}</h3>
-        <Answers answers={Object.values(this.props.answers).slice(0, this.state.index)} show={this.state.show} loadMoreAnswers={this.loadMoreAnswers} collapseAnswers={this.collapseAnswers}></Answers>
+        <Answers answers={Object.values(this.props.answers).slice(0, this.state.index)} index={this.state.index} show={this.state.show} loadMoreAnswers={this.loadMoreAnswers} collapseAnswers={this.collapseAnswers}></Answers>
       </div>
       )
   }
