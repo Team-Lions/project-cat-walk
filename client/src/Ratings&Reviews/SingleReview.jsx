@@ -1,9 +1,9 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
 import moment from 'moment';
+import 'font-awesome/css/font-awesome.min.css';
 
 const SingleReview = ({ reviews }) => {
-  console.log('REVIEWS: ', reviews)
   return (
     <div>
       {reviews.results.map((review) => {
@@ -47,7 +47,7 @@ const SingleReview = ({ reviews }) => {
                   Yes &nbsp;
                 </span>({review.helpfulness}) 
                 <span>
-                 &nbsp;|&nbsp; Report
+                 &nbsp;|&nbsp; Report <i className="fa fa-flag"></i>
                 </span>
               </div>
             {(review.photos.length > 1) ? review.photos.map((photo) => {

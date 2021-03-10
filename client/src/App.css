@@ -107,7 +107,7 @@ footer {
 .sidebar {
 	grid-area: sidebar;
 	gap: 20px 20px;
-	height: 600px;
+	height: 700px;
 	margin: 0 20px;
 }
 
@@ -171,5 +171,11 @@ footer {
 .response {
 	padding: 20px;
 	background-color: grey;
+}
+
+.sizeSlider {
+	display: flex;
+	justify-content: space-between;
+	font-size: 14px;
 }
 /* Ratings CSS End */
