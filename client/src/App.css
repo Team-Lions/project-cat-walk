@@ -12,6 +12,11 @@ body {
 
 }
 
+/* everyone put their buttons/other clickable things here */
+.styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
+  cursor: pointer;
+}
+
 #carousel-item {
   padding-left: 75px
 }
@@ -36,24 +41,4 @@ footer {
 }
 
 
-.styleSelector {
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-}
-.styleSelector:hover, a:hover, button:hover, select:hover, .imageGalleryList:hover {
-  cursor: pointer;
-}
 
-#selectedStyle {
-  border: 5px solid black;
-}
-
-#mainImageThumbnail {
-  border: 5px solid black;
-}
-
-.imageGalleryList {
-  height: 7%;
-  width: 7%;
-}
