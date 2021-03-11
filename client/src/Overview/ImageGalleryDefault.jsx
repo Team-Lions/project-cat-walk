@@ -21,7 +21,9 @@ const Thumbnails = styled.div`
 const Gallery = styled.div`
   display: grid;
   grid-row-gap: 10px;
-  grid-template-columns: 50px 35px max-content 30px;
+  grid-template-columns: 50px 35px 500px 30px;
+  grid-template-rows: 590px;
+  grid-column-gap: 10px;
   `;
 
 const ScrollButton = styled.button`
@@ -39,26 +41,48 @@ class ImageGalleryDefault extends React.Component {
   constructor(props) {
     super (props);
     this.state = {
-      mainImageIndex: 0
+      mainImageIndex: 0,
+      mainImageHeight: '5px',
+      mainImageWidth: '5px'
     };
   }
 
   nextImageRight(e) {
     this.setState({
-      mainImageIndex: this.state.mainImageIndex + 1
+      mainImageIndex: this.state.mainImageIndex + 1,
+      mainImageHeight: '5px',
+      mainImageWidth: '5px'
     });
   }
 
   nextImageLeft(e) {
     this.setState({
-      mainImageIndex: this.state.mainImageIndex - 1
+      mainImageIndex: this.state.mainImageIndex - 1,
+      mainImageHeight: '5px',
+      mainImageWidth: '5px'
     });
   }
 
   changeImage(index) {
     this.setState({
-      mainImageIndex: index
+      mainImageIndex: index,
+      mainImageHeight: '5px',
+      mainImageWidth: '5px'
     });
+  }
+
+  setImageSize(e) {
+    if (e.target.naturalHeight >= e.target.naturalWidth) {
+      this.setState({
+        mainImageHeight: '590px',
+        mainImageWidth: 'auto'
+      });
+    } else {
+      this.setState({
+        mainImageHeight: 'auto',
+        mainImageWidth: '500px'
+      });
+    }
   }
 
   render() {
@@ -77,21 +101,25 @@ class ImageGalleryDefault extends React.Component {
     }
     return (
       <Gallery>
-        <div style={{"grid-column": 1}}>
+        <div style={{"gridColumn": 1}}>
           <Thumbnails>
             {images}
           </Thumbnails>
         </div>
         {this.state.mainImageIndex === 0 ?
-          <div style={{"grid-column": 2}}></div>
+          <div style={{"gridColumn": 2}}></div>
           :
-          <ScrollButton style={{"grid-column": 2}} onClick={this.nextImageLeft.bind(this)}><b>left</b></ScrollButton>
+          <ScrollButton style={{"gridColumn": 2}} onClick={this.nextImageLeft.bind(this)}><b>left</b></ScrollButton>
         }
-        <img id="mainImage" style = {{"grid-column": 3}}src={this.props.images[this.state.mainImageIndex].thumbnail_url} alt={this.props.name}></img>
+        <img id="mainImage"
+          style = {{"gridColumn": 3, "height": this.state.mainImageHeight, "width": this.state.mainImageWidth, "alignSelf": "center", "justifySelf": "center"}}
+          src={this.props.images[this.state.mainImageIndex].thumbnail_url}
+          alt={this.props.name}
+          onLoad={this.setImageSize.bind(this)}></img>
         {this.state.mainImageIndex === (this.props.images.length - 1) ?
-          <div style={{"grid-column": 4}}></div>
+          <div style={{"gridColumn": 4}}></div>
           :
-          <ScrollButton style={{"grid-column": 4}} onClick={this.nextImageRight.bind(this)}><b>right</b></ScrollButton>
+          <ScrollButton style={{"gridColumn": 4}} onClick={this.nextImageRight.bind(this)}><b>right</b></ScrollButton>
         }
       </Gallery>
     );

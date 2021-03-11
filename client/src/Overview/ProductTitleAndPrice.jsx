@@ -34,7 +34,7 @@ var ProductTitleAndPrice = (props) => {
   return (
     <div id="productTitleAndPrice">
       <RatingData hidden={props.numReviews === 0}>
-        <ReactStarRating numberOfStar={5} numberOfSelectedStar={roundStarRating(props.starRating)} colorFilledStar="gold" colorEmptyStar="grey" starSize="15px" spaceBetweenStar="3px" disableOnSelect={true} name="rating" />
+        <ReactStarRating numberOfStar={5} numberOfSelectedStar={roundStarRating(props.starRating)} colorFilledStar="deeppink" colorEmptyStar="grey" starSize="15px" spaceBetweenStar="3px" disableOnSelect={true} name="rating" />
         <A id="ratingsLink" href="#RatingsAndReviews">Read all {props.numReviews} reviews</A>
       </RatingData>
       <Category>{props.productInfo.category}</Category>
