@@ -16,6 +16,9 @@ class YourFit extends React.Component {
         <h4 id="yourfit-title">
           Your Outfit
         </h4>
+        <div>
+        {this.state.length ? 'Products available' : `👀 Your Outfit is looking empty ...Let's change that?`}
+        </div>
       </div>
     )
   }

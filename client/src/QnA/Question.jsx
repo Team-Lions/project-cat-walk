@@ -40,9 +40,15 @@ class Question extends React.Component {
   render() {
     return (
       <div>
+<<<<<<< HEAD
         <h2 style={{color:"deepskyblue", fontWeight:"bold"}}>Q:</h2>
         <h3 style={{color:"deepskyblue", fontWeight:"bold"}}>{this.props.question.question_body}</h3>
         <Answers questionID={this.props.question.question_id} answers={Object.values(this.props.answers).slice(0, this.state.index)} index={this.state.index} show={this.state.show} loadMoreAnswers={this.loadMoreAnswers} collapseAnswers={this.collapseAnswers}></Answers>
+=======
+        <h2 style={{color:"deepskyblue", fontWeight:"bold", padding: "5px"}}>Q:</h2>
+        <h3 style={{color:"deepskyblue", fontWeight:"bold", padding: "5px"}}>{this.props.question.question_body}</h3>
+        <Answers answers={Object.values(this.props.answers).slice(0, this.state.index)} index={this.state.index} show={this.state.show} loadMoreAnswers={this.loadMoreAnswers} collapseAnswers={this.collapseAnswers}></Answers>
+>>>>>>> a1bacfc88ad15db41613dcb33baf2e316610d3e3
       </div>
       )
   }

@@ -29,6 +29,7 @@ class Answers extends React.Component {
         {this.props.answers.length > 0 ? this.props.answers.map((answer) => {
           return (
             <div>
+<<<<<<< HEAD
               <h2 style={{fontWeight: "Bold", color:"deepPink"}}>A:</h2>
               <p style={{fontStyle: "italic", color:"deepPink"}}>{answer.body}</p>
               <h2 style={{fontWeight: "Bold", color:"deepPink"}}>Answerer</h2>
@@ -37,6 +38,12 @@ class Answers extends React.Component {
               <p style={{color:"deepPink", borderBottom:"1px solid deepPink", fontWeight: "normal"}}>By {answer.answerer_name}, {dateFormat(answer.date, "mmmm dS, yyyy")}</p>}
               <div>Yes</div>
               <QHelpfulness questionID={this.props.questionID} helpfulness={answer.helpfulness}/>
+=======
+              <h2 style={{fontWeight: "Bold", color:"deepPink", padding: "5px"}}>A:</h2>
+              <p style={{fontStyle: "italic", color:"deepPink", padding: "5px"}}>{answer.body}</p>
+              <h2 style={{fontWeight: "Bold", color:"deepPink", padding: "5px"}}>Answerer</h2>
+              <p style={{color:"deepPink", borderBottom:"1px solid deepPink", padding: "5px"}}>{answer.answerer_name}</p>
+>>>>>>> a1bacfc88ad15db41613dcb33baf2e316610d3e3
             </div>
           )
         }) : <div>No answers</div>
