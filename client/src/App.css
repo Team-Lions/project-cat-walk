@@ -1,12 +1,9 @@
 /* everyone put their buttons/other clickable things here */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-.styleSelector:hover,
-a:hover,
-button:hover,
-select:hover,
-.imageGalleryList:hover {
-	cursor: pointer;
+
+a:hover, button:hover, select:hover {
+  cursor: pointer;
 }
 
 header {
@@ -107,7 +104,7 @@ footer {
 .sidebar {
 	grid-area: sidebar;
 	gap: 20px 20px;
-	height: 600px;
+	height: 700px;
 	margin: 0 20px;
 }
 
@@ -171,5 +168,21 @@ footer {
 .response {
 	padding: 20px;
 	background-color: grey;
+}
+
+.sizeSlider {
+	display: flex;
+	justify-content: space-between;
+	font-size: 14px;
+}
+
+.modalImg {
+	width: 150px;
+	height: 100px;
+	padding: 5px;
+}
+
+.modalReview {
+	display: flex;
 }
 /* Ratings CSS End */
