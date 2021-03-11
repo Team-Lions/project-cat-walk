@@ -31,8 +31,10 @@ class QnA extends Component {
       }
     })
     .then((questions) => {
-      this.setState({data: questions.data.results.slice(0, index)})
-      this.setState({id: id})
+      this.setState({
+        data: questions.data.results.slice(0, index),
+        id: id
+      })
     })
     .catch((err) => {
       console.log(err);
@@ -40,6 +42,7 @@ class QnA extends Component {
   }
 
 
+//replace setState w var
   loadMore() {
     this.setState({index: this.state.index += 1})
     this.getQuestions(this.props.productID, this.state.index)
@@ -55,8 +58,8 @@ class QnA extends Component {
   render() {
     return (
       <div>
-        <h1>Questions and Answers</h1>
-        {this.state.data && <QnAList data={this.state.data} answers={this.state.data.answers} loadMore={this.loadMore}/>}
+        <h1 style={{fontWeight:"Bold", padding:"2px", borderBottom:"1px solid deepskyblue", color:"deepskyblue"}}>Questions and Answers</h1>
+        {this.state.data && <QnAList style={{overflow: "auto"}}data={this.state.data} id={this.state.id} answers={this.state.data.answers} loadMore={this.loadMore}/>}
 
       </div>
     )
