@@ -1,4 +1,5 @@
 import React from 'React';
+import axios from 'axios';
 
 class QHelpfulness extends React.Component {
   constructor(props) {
@@ -14,7 +15,9 @@ class QHelpfulness extends React.Component {
   helpful(e) {
     e.preventDefault();
     e.target.innerHTML++;
-    this.setState({disabled: true})
+    this.setState({disabled: true});
+    console.log(this.props.questionID);
+    axios.put(`/qa/questions/${this.props.questionID}/helpful`);
   }
 
 
