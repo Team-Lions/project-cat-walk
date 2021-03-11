@@ -3,7 +3,7 @@ import StarRatings from 'react-star-ratings';
 import { ProgressBar } from 'react-bootstrap';
 import roundStarRating from '../roundStarRating.js';
 import calculateRecommended from './calculateRecommended.js';
-import ContinuousSlider from './ProductBreakDown';
+import ProductBreakDown from './ProductBreakDown.jsx';
 
 const RatingBreakDown = ({ metaData, starRating }) => {
   let recommended = calculateRecommended(metaData.recommended);
@@ -36,7 +36,7 @@ const RatingBreakDown = ({ metaData, starRating }) => {
         1 stars <ProgressBar now={metaData.ratings['1']} max={10}/>
       </div>
       <br/>
-      <ContinuousSlider/>
+      <ProductBreakDown metaData={metaData}/>
     </div>
   );
 };

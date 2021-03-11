@@ -178,4 +178,14 @@ footer {
 	justify-content: space-between;
 	font-size: 14px;
 }
+
+.modalImg {
+	width: 150px;
+	height: 100px;
+	padding: 5px;
+}
+
+.modalReview {
+	display: flex;
+}
 /* Ratings CSS End */

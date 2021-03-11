@@ -50,8 +50,10 @@ const comfortMarks = [
   ];
 
 
-export default function ContinuousSlider() {
+export default function ProductBreakDown({ metaData }) {
 
+  //let comfortVal = (metaData.characteristics.Comfort.value)*10;
+  //let sizeVal = (metaData.characteristics.Fit.value)*10;
   return (
     <ThemeProvider theme={muiTheme}>
         <div>

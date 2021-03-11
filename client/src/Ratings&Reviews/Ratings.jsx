@@ -12,62 +12,82 @@ class Ratings extends React.Component {
 		super(props);
 		this.state = {
 		  reviews: {},
+		  resultReview:[],
+		  index:2,
 		  metaData: this.props.metaData,
 		  avgStarRating: this.props.starRating,
 		  isLoading: true
 		}
-	  }
+		this.loadMore = this.loadMore.bind(this);
+	}
 	
-	  getReviews(productId) {
-		return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews', {
-		  headers: {
-			'Authorization': token
-		  },
-		  params: {
-			product_id: productId
-		  }
-		});
-	  }
-	 
+	getReviews(productId) {
+	return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews', {
+		headers: {
+		'Authorization': token
+		},
+		params: {
+		product_id: productId
+		}
+	});
+	}
 	
-	  componentDidMount() {
+	loadMore() {
 		Promise.all([
-		  this.getReviews(this.props.productId),
+			this.getReviews(this.props.productId),
 		])
 		.then((values) => {
-		  this.setState({
-			reviews: values[0].data,
-			isLoading: false
-		  });
+			if (this.state.index > this.state.reviews.results.length) {
+				this.setState({
+					index: 2,
+					resultReview: values[0].data.results.slice(0, this.state.index)
+				})
+			} else {
+				this.setState({
+					index: this.state.index + 2,
+					resultReview: values[0].data.results.slice(0, this.state.index)
+				})
+			}
 		})
-	  }
-	
-	  render() {
-		if(this.state.isLoading) {
-			return <div>Loading</div>
-		}
-		return(
-			<>
-				<div id="RatingsAndReviews">
-					<div className="sidebar">
-						<RatingBreakDown metaData={this.state.metaData} starRating={this.state.avgStarRating}/>
-					</div>
-					<div className="mainReviews">
-						<SortReview reviews={this.state.reviews} />
-						<SingleReview reviews={this.state.reviews}/>
-						<div className="reviewButtons">
-							<button>
-								MORE REVIEWS
-							</button>
-							<button>
-								ADD A REVIEW +
-							</button>
-						</div>
+	}
+
+	componentDidMount() {
+	Promise.all([
+		this.getReviews(this.props.productId),
+	])
+	.then((values) => {
+		this.setState({
+		reviews: values[0].data,
+		resultReview: values[0].data.results.slice(0, this.state.index),
+		isLoading: false
+		});
+	})
+	}
+
+	render() {
+	if(this.state.isLoading) {
+		return <div>Loading</div>
+	}
+	return(
+		<>
+			<div id="RatingsAndReviews">
+				<div className="sidebar">
+					<RatingBreakDown metaData={this.state.metaData} starRating={this.state.avgStarRating}/>
+				</div>
+				<div className="mainReviews">
+					<SortReview reviews={this.state.reviews} />
+					<SingleReview reviews={this.state.resultReview}/>
+					<div className="reviewButtons">
+						{(this.state.resultReview.length === this.state.reviews.results.length) ? <button onClick={this.loadMore}>LESS REVIEWS</button> : <button onClick={this.loadMore}>MORE REVIEWS</button>}
+						<button>
+							ADD A REVIEW +
+						</button>
 					</div>
 				</div>
-			</>
-		)
-	  }
+			</div>
+		</>
+	)
+	}
 }
 
 export default Ratings;
