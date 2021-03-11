@@ -13,10 +13,6 @@ header {
   border-bottom: 3px solid deepskyblue;
 }
 
-header:hover {
-  border-bottom: 3px solid deeppink;
-}
-
 #page-title {
   font-size: 24px;
   width: 125px;
@@ -137,13 +133,17 @@ body {
 }
 
 #related-items {
-  height: 400px;
-  margin-left: 17%;
-  margin-right: 17%;
+  height: 420px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 #related-title {
-  border-bottom: 1px solid white;
+  border-bottom: 2px solid deepskyblue;
+}
+
+.star-list {
+	padding-left: 18%;
 }
 
 #fav-button {
@@ -160,20 +160,21 @@ body {
 }
 
 #your-fit {
-  height: 400px;
-  margin-left: 17%;
-  margin-right: 17%;
+  height: 420px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 #yourfit-title {
-  border-bottom: 1px solid white;
+  border-bottom: 2px solid deeppink;
 }
 
 footer {
-  margin-left: 12%;
-  margin-right: 12%;
-  height: 160px;
-  color: lightcyan;
+  border-top: 2px solid deepskyblue;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 165px;
+  color: white;
   background-color: black;
   text-align: center;
 }

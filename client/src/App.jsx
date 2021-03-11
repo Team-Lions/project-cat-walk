@@ -94,7 +94,6 @@ class App extends React.Component {
       <div key={this.state.selectedProductId}>
         <Header />
         <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} />
-         RelatedItemsAndFit
         <RelatedItems productId={this.state.selectedProductId} handleProductChange={this.handleProductChange}/>
         <YourFit />
         <Ratings productId={this.state.selectedProductId}/>
