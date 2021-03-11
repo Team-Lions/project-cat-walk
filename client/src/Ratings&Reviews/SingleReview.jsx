@@ -1,14 +1,15 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
 import moment from 'moment';
+import 'font-awesome/css/font-awesome.min.css';
+import ModalImage from "react-modal-image";
 
 const SingleReview = ({ reviews }) => {
-  console.log('REVIEWS: ', reviews)
   return (
     <div>
-      {reviews.results.map((review) => {
+      {reviews.map((review) => {
         return (
-          <div className="reviewCard">
+          <div className="reviewCard"  key={review.review_id}>
             <div className="topReview">
               <div className='stars'>
                 <StarRatings
@@ -47,12 +48,19 @@ const SingleReview = ({ reviews }) => {
                   Yes &nbsp;
                 </span>({review.helpfulness}) 
                 <span>
-                 &nbsp;|&nbsp; Report
+                 &nbsp;|&nbsp; Report <i className="fa fa-flag"></i>
                 </span>
               </div>
-            {(review.photos.length > 1) ? review.photos.map((photo) => {
-              return <img src={photo.url} width="400" height="400"></img>
-            }) : ''}
+              <div className="modalReview">
+                {(review.photos.length > 1) ? review.photos.map((photo) => {
+                  return (
+                    <ModalImage
+                    small={photo.url}
+                    large={photo.url}
+                    className="modalImg"
+                    />
+                  )}) : ''}
+              </div>
           </div>
         )
       })}

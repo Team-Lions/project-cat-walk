@@ -3,6 +3,7 @@ import StarRatings from 'react-star-ratings';
 import { ProgressBar } from 'react-bootstrap';
 import roundStarRating from '../roundStarRating.js';
 import calculateRecommended from './calculateRecommended.js';
+import ProductBreakDown from './ProductBreakDown.jsx';
 
 const RatingBreakDown = ({ metaData, starRating }) => {
   let recommended = calculateRecommended(metaData.recommended);
@@ -22,6 +23,7 @@ const RatingBreakDown = ({ metaData, starRating }) => {
             />
           </div>
       </div>
+      <br/>
       <div className="RatingBreakdown">
         {recommended}% of reviews recommend this product
       </div>
@@ -33,11 +35,10 @@ const RatingBreakDown = ({ metaData, starRating }) => {
         2 stars <ProgressBar now={metaData.ratings['2']} max={10}/>
         1 stars <ProgressBar now={metaData.ratings['1']} max={10}/>
       </div>
-
-
+      <br/>
+      <ProductBreakDown metaData={metaData}/>
     </div>
   );
 };
 
 export default RatingBreakDown;
- 
