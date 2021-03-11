@@ -3,6 +3,13 @@ import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 import axios from 'axios';
 import token from '../../../public/token.js';
+import styled, { css } from 'styled-components';
+
+const Button = styled.button`
+  height: 30px;
+  width: 150px;
+  margin: 5px
+`;
 
 class AddToCart extends React.Component {
   //expects props to contain object called skus
@@ -13,7 +20,8 @@ class AddToCart extends React.Component {
       quantityEnabled: false,
       quantityAvailable: 0,
       quantitySelection: null,
-      hideSizeEnforcement: true
+      hideSizeEnforcement: true,
+      addedToCart: 0
     };
   }
 
@@ -60,7 +68,14 @@ class AddToCart extends React.Component {
       }
     })
     .then(() => {
-      console.log('added to cart')
+      this.setState({
+        sizeSelection: '',
+        quantityEnabled: false,
+        quantityAvailable: 0,
+        quantitySelection: null,
+        hideSizeEnforcement: true,
+        addedToCart: !this.state.addedToCart
+      });
     })
     .catch((err) => {
       console.log('error');
@@ -70,7 +85,7 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div className="AddToCart">
+      <div key={this.state.addedToCart}>
         <div hidden={this.state.hideSizeEnforcement}>Please select a size!</div>
         {this.props.sizes.length === 0 ?
           <select id="size" name="size" disabled>
@@ -82,20 +97,20 @@ class AddToCart extends React.Component {
         {this.state.quantityEnabled ?
           <QuantitySelector quantityAvailable={this.state.quantityAvailable} change={this.changeQuantity.bind(this)} />
           :
-          <select id="quantity" name="quantity" disabled>
+          <select style={{height: '30px', width: '40px', margin: '5px'}} id="quantity" name="quantity" disabled>
             <option> - </option>
           </select>
         }
         {this.props.sizes.length > 0 ?
           this.state.sizeSelection === "" ?
             /* there is quantity, but size is not selected. Button opens dropdown display message */
-            <button onClick={this.enforceSizeSelection.bind(this)}>Add to Cart</button>
+            <Button onClick={this.enforceSizeSelection.bind(this)}>Add to Cart</Button>
             :
             /* quantity and size selected. Button adds to cart */
-            <button onClick={this.addToCart.bind(this)}>Add to Cart</button>
+            <Button onClick={this.addToCart.bind(this)}>Add to Cart</Button>
           :
           /* hide button */
-          <button style={{visibility: 'hidden'}}>Add to Cart</button>
+          <Button style={{visibility: 'hidden'}}>Add to Cart</Button>
         }
       </div>
     )

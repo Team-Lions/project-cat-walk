@@ -24,10 +24,10 @@ class Answers extends React.Component {
         {this.props.answers.length > 0 ? this.props.answers.map((answer) => {
           return (
             <div>
-              <h2 style={{fontWeight: "Bold", color:"deepPink"}}>A:</h2>
-              <p style={{fontStyle: "italic", color:"deepPink"}}>{answer.body}</p>
-              <h2 style={{fontWeight: "Bold", color:"deepPink"}}>Answerer</h2>
-              <p style={{color:"deepPink", borderBottom:"1px solid deepPink"}}>{answer.answerer_name}</p>
+              <h2 style={{fontWeight: "Bold", color:"deepPink", padding: "5px"}}>A:</h2>
+              <p style={{fontStyle: "italic", color:"deepPink", padding: "5px"}}>{answer.body}</p>
+              <h2 style={{fontWeight: "Bold", color:"deepPink", padding: "5px"}}>Answerer</h2>
+              <p style={{color:"deepPink", borderBottom:"1px solid deepPink", padding: "5px"}}>{answer.answerer_name}</p>
             </div>
           )
         }) : <div>No answers</div>
