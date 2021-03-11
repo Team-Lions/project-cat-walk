@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddToYourFit = () => {
+const ComparisonModal = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -14,4 +14,4 @@ const AddToYourFit = () => {
   )
 };
 
-export default AddToYourFit;
+export default ComparisonModal;

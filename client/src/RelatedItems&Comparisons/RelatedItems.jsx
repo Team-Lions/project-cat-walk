@@ -2,12 +2,10 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from 'react-multi-carousel';
-import Card from 'react-bootstrap/Card';
 // Styling
 import "react-multi-carousel/lib/styles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // Misc.
-import AddToYourFit from './AddToYourFit.jsx';
 import token from '../../../public/token.js';
 import placeHolderImg from './content/placeholderimg.jpeg';
 // Helper Fn's
@@ -120,6 +118,7 @@ class RelatedItems extends React.Component {
     let id = e.target.id;
     let overviewChanger = this.props.handleProductChange;
     overviewChanger(id);
+    window.scrollTo(0,0);
   }
 
   render() {
@@ -135,11 +134,6 @@ class RelatedItems extends React.Component {
           ))}
         </Carousel> :
         'Loading...'}
-        {/* <Carousel responsive={this.responsive}>
-          {this.state.relatedProductsDetails.map((itemDetails) => (
-            <CardFormatter id={itemDetails[0].data.id} image={itemDetails[1].data.results[0].photos[0].thumnail_url} placeHolderImg={placeHolderImg} category={itemDetails[0].data.category} name={itemDetails[0].data.name} price={itemDetails[0].data.default_price} rating={'rating'} handleClick={this.handleCardClick} key={itemDetails[0].data.id}/>
-          ))}
-        </Carousel> */}
       </div>
     )
   }
