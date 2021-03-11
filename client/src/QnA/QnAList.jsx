@@ -1,10 +1,6 @@
 import React from "react";
 import Question from './Question.jsx';
 import Button from 'react-bootstrap/Button';
-<<<<<<< HEAD
-//import Questions from './style/Questions.js';
-=======
->>>>>>> staging
 
 
 class QnAList extends React.Component {
