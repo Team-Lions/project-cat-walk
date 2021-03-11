@@ -1,5 +1,4 @@
 import React from "react";
-// import Answers from "./Answers.jsx";
 import Button from 'react-bootstrap/button'
 
 class Answers extends React.Component {
@@ -25,10 +24,10 @@ class Answers extends React.Component {
         {this.props.answers.length > 0 ? this.props.answers.map((answer) => {
           return (
             <div>
-              <h2>A:</h2>
-              <p>{answer.body}</p>
-              <h2>Answerer</h2>
-              <p>{answer.answerer_name}</p>
+              <h2 style={{fontWeight: "Bold", color:"deepPink"}}>A:</h2>
+              <p style={{fontStyle: "italic", color:"deepPink"}}>{answer.body}</p>
+              <h2 style={{fontWeight: "Bold", color:"deepPink"}}>Answerer</h2>
+              <p style={{color:"deepPink", borderBottom:"1px solid deepPink"}}>{answer.answerer_name}</p>
             </div>
           )
         }) : <div>No answers</div>
