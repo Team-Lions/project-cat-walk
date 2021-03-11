@@ -1,15 +1,19 @@
 import React from 'react';
+import ModalBox from './Modal.jsx';
 
 const ComparisonModal = () => {
 
+  const [modalVisible, setModalVisible] = React.useState(false);
+
   const handleClick = (e) => {
     e.preventDefault();
-    console.log('Button Clicked');
+    setModalVisible(true);
   }
 
   return (
     <div>
       <button onClick={handleClick} id="fav-button">✰</button>
+      <ModalBox show={modalVisible} onHide={() => {setModalVisible(false)}}/>
     </div>
   )
 };

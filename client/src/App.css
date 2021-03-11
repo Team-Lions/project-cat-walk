@@ -96,6 +96,16 @@ body {
   border-bottom: 2px solid deeppink;
 }
 
+.modal {
+	color: white;
+	font-family: 'Poppins', sans-serif;
+}
+.modal-backdrop {
+	background-color: darkslateblue;
+}
+.modal .modal-content {
+	background-color: black;
+}
 /* RelatedItems and Fit End*/
 
 /* Ratings CSS Start */
