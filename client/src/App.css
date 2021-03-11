@@ -1,40 +1,95 @@
 /* everyone put their buttons/other clickable things here */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
+
 a:hover, button:hover, select:hover {
   cursor: pointer;
 }
 
 header {
-  margin-left: 5%;
-  margin-right: 5%;
-  height: 135px;
-  background-color: black;
-  border-bottom: 3px solid deepskyblue;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 135px;
+	background-color: black;
+	border-bottom: 3px solid deepskyblue;
 }
 
 header:hover {
-  border-bottom: 3px solid deeppink;
+	border-bottom: 3px solid deeppink;
 }
 
 #page-title {
-  font-size: 24px;
-  width: 125px;
-  height: 125px;
-  text-align: center;
-  color: deepskyblue;
-  border: 2px solid deepskyblue;
-  border-radius: 100%;
+	font-size: 24px;
+	width: 125px;
+	height: 125px;
+	text-align: center;
+	color: deepskyblue;
+	border: 2px solid deepskyblue;
+	border-radius: 100%;
 }
-
 
 body {
-  padding-left: 2px;
-  padding-right: 2px;
+	padding-left: 2px;
+	padding-right: 2px;
 	background-color: black;
 	color: white;
-  font-family: 'Poppins', sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
+
+#carousel-item {
+	padding-left: 75px;
+}
+
+.carousel-img {
+	max-height: 200px;
+	max-width: 260px;
+	height: 200px;
+	width: auto;
+}
+
+#related-items {
+	height: 400px;
+	margin-left: 17%;
+	margin-right: 17%;
+}
+
+#related-title {
+	border-bottom: 1px solid white;
+}
+
+#fav-button {
+	color: deepskyblue;
+	background-color: transparent;
+	float: right;
+	position: absolute;
+	font-size: 30px;
+	border: none;
+}
+
+#fav-button:hover {
+	color: deeppink;
+}
+
+#your-fit {
+	height: 400px;
+	margin-left: 17%;
+	margin-right: 17%;
+}
+
+#yourfit-title {
+	border-bottom: 1px solid white;
+}
+
+footer {
+	margin-left: 12%;
+	margin-right: 12%;
+	height: 160px;
+	color: lightcyan;
+	background-color: black;
+	text-align: center;
+}
+
+/* Ratings CSS Start */
 
 #RatingsAndReviews {
 	display: grid;
@@ -47,31 +102,10 @@ body {
 }
 
 .sidebar {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
+	grid-area: sidebar;
 	gap: 20px 20px;
 	height: 600px;
-	grid-template-areas:
-		'RatingSummary'
-		'RatingBreakdown'
-		'ProductBreakdown';
 	margin: 0 20px;
-}
-
-.RatingSummary {
-	grid-area: RatingSummary;
-	height: 100px;
-}
-
-.RatingBreakdown {
-	grid-area: RatingBreakdown;
-	height: 200px;
-}
-
-.ProductBreakdown {
-	grid-area: ProductBreakdown;
-	height: 200px;
 }
 
 .overallRating {
@@ -85,7 +119,6 @@ body {
 	padding-left: 20px;
 	padding-right: 20px;
 	height: 600px;
-	width: 850px;
 	overflow: auto;
 }
 
@@ -93,89 +126,47 @@ body {
 	position: relative;
 	display: flex;
 	align-items: center;
-	justify-content: right;
+	justify-content: center;
 	gap: 20px;
 	padding-right: 10px;
 	padding-top: 20px;
 }
 
+.topReview {
+	display: flex;
+	justify-content: space-between;
+}
 .reviewCard {
 	position: relative;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 0.2fr 1.8fr;
-	gap: 20px 20px;
-	height: 250px;
-	grid-template-areas:
-		'stars . date'
-		'ReviewText ReviewText ReviewText';
-	border: 2px solid black;
-	border-width: 0px 0px 2px 0px;
+	height: auto;
+	border-bottom: 1px solid white;
 	margin-bottom: 20px;
+	margin-top: 20px;
 	overflow: hidden;
 }
 
-.stars {
-	grid-area: stars;
-}
-.ReviewText {
-	grid-area: ReviewText;
-}
-.date {
-	grid-area: date;
+.sort {
+	border-bottom: 1px solid white;
+	font-size: 20px;
 }
 
-#carousel-item {
-	padding-left: 75px;
+.sortSelect {
+	font-style: bold;
+	border: none;
+	color: white;
+	text-decoration: underline;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
 }
 
-.carousel-img {
-  max-height: 200px;
-  max-width: 260px;
-  height: 200px;
-  width: auto;
+.helpfulAndReport {
+	padding-bottom: 25px;
 }
 
-#related-items {
-  height: 400px;
-  margin-left: 17%;
-  margin-right: 17%;
+.response {
+	padding: 20px;
+	background-color: grey;
 }
-
-#related-title {
-  border-bottom: 1px solid white;
-}
-
-#fav-button {
-  color: deepskyblue;
-  background-color: transparent;
-  float: right;
-  position: absolute;
-  font-size: 30px;
-  border: none;
-}
-
-#fav-button:hover {
-  color:deeppink;
-}
-
-#your-fit {
-  height: 400px;
-  margin-left: 17%;
-  margin-right: 17%;
-}
-
-#yourfit-title {
-  border-bottom: 1px solid white;
-}
-
-footer {
-  margin-left: 12%;
-  margin-right: 12%;
-  height: 160px;
-  color: lightcyan;
-  background-color: black;
-  text-align: center;
-}
-
-
+/* Ratings CSS End */

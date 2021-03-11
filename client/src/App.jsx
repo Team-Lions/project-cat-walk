@@ -15,7 +15,10 @@ import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
 //Misc
 import calculateStarReview from './calculateStarReview.js';
 import token from '../../public/token.js';
+
 import appCss from './App.css';
+import css from './App.css';
+import Spinner from 'react-bootstrap/Spinner'
 
 class App extends React.Component {
   constructor(props) {
@@ -63,7 +66,7 @@ class App extends React.Component {
       newState.reviewMetaData = reviewMetadata.data;
       newState.starRating = calculateStarReview(newState.reviewMetaData.ratings);
       newState.isLoading = false;
-      console.log('newstate: ', newState);
+      //console.log('newstate: ', newState);
       this.setState(newState);
     })
     .catch((err) => {
@@ -89,7 +92,11 @@ class App extends React.Component {
 
   render() {
     if(this.state.isLoading) {
-      return <div>Loading</div>
+      return (
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+    )
     }
     return (
       <div key={this.state.selectedProductId}>
@@ -98,7 +105,7 @@ class App extends React.Component {
          RelatedItemsAndFit
         <RelatedItems productId={this.state.selectedProductId} handleProductChange={this.handleProductChange}/>
         <YourFit />
-        <Ratings productId={this.state.selectedProductId}/>
+        <Ratings productId={this.state.selectedProductId} metaData={this.state.reviewMetaData} starRating={this.state.starRating}/>
         <QnA productID={this.state.selectedProductId}/>
         <Footer />
       </div>
