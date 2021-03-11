@@ -13,16 +13,19 @@ import token from '../../../public/token.js';
 import parseSizeFirstSkus from './sizeFirstSkus.js';
 
 const OverviewGrid = styled.div`
+  margin: 10px;
   display: grid;
-  grid-template-rows: 75% 25%;
-  grid-template-columns: 66% 34%;
+  grid-template-rows: 600px 150px;
+  grid-template-columns: 60% 40%;
+  justify-items: center;
 `;
 
 const Gallery = styled.div`
   grid-column: 1;
   grid-row: 1;
   align-self: center;
-  justify-self: center;
+  justify-self: end;
+  padding-right: 100px;
 `;
 
   const Selections = styled.div`
