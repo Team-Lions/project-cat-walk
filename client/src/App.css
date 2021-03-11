@@ -186,3 +186,8 @@ footer {
 	display: flex;
 }
 /* Ratings CSS End */
+
+.zquestions {
+	overflow-y: scroll;
+	height: 650px;
+}

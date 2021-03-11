@@ -59,8 +59,9 @@ class QnA extends Component {
     return (
       <div>
         <h1 style={{fontWeight:"Bold", padding:"2px", borderBottom:"1px solid deepskyblue", color:"deepskyblue"}}>Questions and Answers</h1>
-        {this.state.data && <QnAList style={{overflow: "auto"}}data={this.state.data} id={this.state.id} answers={this.state.data.answers} loadMore={this.loadMore}/>}
-
+        <div className="zquestions">
+        {this.state.data && <QnAList data={this.state.data} id={this.state.id} answers={this.state.data.answers} loadMore={this.loadMore}/>}
+        </div>
       </div>
     )
   }
