@@ -1,15 +1,42 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import AddToYourFit from './AddToYourFit.jsx';
+import ReactStarRating from "react-star-ratings-component";
 import placeHolderImg from './content/placeholderimg.jpeg';
 
-const CardFormatter = ({id, image, placeHolderImg, category, name, price, rating, handleClick}) => {
+
+const CardFormatter = ({productDetails, handleClick}) => {
+  let id = productDetails[0].data.id;
+  let category = productDetails[0].data.category
+  let name = productDetails[0].data.name
+  let price = productDetails[0].data.default_price
+  let image = productDetails[1].data.results[0].photos[0].thumbnail_url
+  let ratings = productDetails[2].data.ratings
+  let numberOfStars;
+
+  const starConverter = function(totalRatings) {
+    if (!Object.keys(totalRatings).length) {
+      return 0
+    }
+    let sumOfStars = 0;
+    let weightedStars = 0
+    for (var value in totalRatings) {
+      let ratingValue = value;
+      let numberOfRatings = parseInt(totalRatings[value]);
+      sumOfStars += numberOfRatings;
+      weightedStars += numberOfRatings * ratingValue;
+    }
+    let starRating = weightedStars/sumOfStars;
+    numberOfStars = starRating;
+  }
+
+  starConverter(ratings);
+
   return (
     <div>
-      <Card border="dark" style={{ width: '16rem', height: '22rem'}}>
+      <Card border="info" bg="dark" style={{ width: '16rem', height: '23rem'}}>
         <AddToYourFit />
-        {/* <Card.Img variant="top" src={image[0].thumbnail_url ? image[0].thumbnail_url : placeHolderImg} height="200px" width="auto" onClick={handleClick} id={id}/> */}
-          <img className="carousel-img" src={image[0].thumbnail_url ? image[0].thumbnail_url : placeHolderImg} onClick={handleClick} id={id}></img>
+          <img className="carousel-img" src={image ? image : placeHolderImg} onClick={handleClick} id={id}></img>
           <Card.Body className="text-center" onClick={handleClick} id={id}>
             <Card.Subtitle className="mb-2 text-muted" onClick={handleClick} id={id}>
               {category}
@@ -20,9 +47,13 @@ const CardFormatter = ({id, image, placeHolderImg, category, name, price, rating
             <Card.Subtitle className="mb-2 text-muted" onClick={handleClick} id={id}>
               {price}
             </Card.Subtitle>
-            <Card.Text onClick={handleClick} id={id}>
-              {rating}
-            </Card.Text>
+            <ReactStarRating
+                numberOfStar={5}
+                numberOfSelectedStar={numberOfStars}
+                colorFilledStar="deeppink"
+                colorEmptyStar="black"
+                starSize="15px"
+            />
           </Card.Body>
       </Card>
     </div>

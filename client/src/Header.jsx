@@ -16,8 +16,6 @@ const Header = () => {
           Den <br></br>
           Apparel
         </div>
-        <NavBar />
-        <Search />
       </header>
     </div>
   )
