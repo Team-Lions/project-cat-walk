@@ -1,16 +1,21 @@
 import React from "react";
 import Button from 'react-bootstrap/button';
 import dateFormat from 'dateformat';
+import QHelpfulness from './QHelpfulness';
 
 class Answers extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showButton: false
+      showButton: false,
+      disabled: false
     }
 
+
   }
+
+
 
   componentDidMount() {
     if (this.props.index === this.props.answers.length) {
@@ -27,10 +32,11 @@ class Answers extends React.Component {
               <h2 style={{fontWeight: "Bold", color:"deepPink"}}>A:</h2>
               <p style={{fontStyle: "italic", color:"deepPink"}}>{answer.body}</p>
               <h2 style={{fontWeight: "Bold", color:"deepPink"}}>Answerer</h2>
-              {console.log(answer)}
               {answer.answerer_name === 'Seller' ?
               <p style={{color:"deepPink", borderBottom:"1px solid deepPink", fontSize: "20px", fontWeight: "Bold"}}>By {answer.answerer_name}, {dateFormat(answer.date, "mmmm dS, yyyy")}</p> :
               <p style={{color:"deepPink", borderBottom:"1px solid deepPink", fontWeight: "normal"}}>By {answer.answerer_name}, {dateFormat(answer.date, "mmmm dS, yyyy")}</p>}
+              <div>Yes</div>
+              <QHelpfulness helpfulness={answer.helpfulness}/>
             </div>
           )
         }) : <div>No answers</div>
@@ -46,5 +52,7 @@ class Answers extends React.Component {
     )
   }
 }
+
+
 
 export default Answers;
