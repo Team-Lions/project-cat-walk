@@ -13,33 +13,27 @@ import placeHolderImg from './content/placeholderimg.jpeg';
 // Helper Fn's
 import CardFormatter from './CardFormatter.jsx';
 
-
-//WE NEED CONTENT LOADERS IN OUR WEBPACK CONFIG AND PACKAGE JSON
-
 class RelatedItems extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      relatedItems: [],
-      relatedItemsLoaded: false,
-      relatedProductsInfo: [],
-      favorites: []
+      relatedProductsDetails: [],
+      isLoaded: false
     }
 
     // carousel resizing
     this.responsive = {
       superLargeDesktop: {
-        // the naming can be any, depends on you.
         breakpoint: { max: 4000, min: 3000 },
         items: 5
       },
       desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 3
+        items: 4
       },
       tablet: {
         breakpoint: { max: 1024, min: 464 },
-        items: 2
+        items: 3
       },
       mobile: {
         breakpoint: { max: 464, min: 0 },
@@ -51,68 +45,74 @@ class RelatedItems extends React.Component {
   };
 
   componentDidMount() {
-    this.getRelatedItems()
-  }
-
-  getRelatedItems() {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${this.props.productId}/related`, {
-      headers: {
-        Authorization: token
-      }
-    })
-    .then((relatedItems) => {
-      let relatedItemsArray = relatedItems.data;
-      this.getRelatedItemsInfo(relatedItemsArray);
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
-
-  getRelatedItemsInfo(relatedItemsList) {
-    let products = [];
-    for (let i = 0; i < relatedItemsList.length; i++) {
-      let productSearchId = relatedItemsList[i];
-      let singleProduct = {}
-      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productSearchId}`, {
-        headers: {
-          Authorization: token
-        }
+    this._getRelatedItems(this.props.productId)
+      .then((relatedItems) => {
+        let searchIds = relatedItems.data
+        let results = searchIds.map((id) => {
+          return Promise.all(this._getRelatedItemData(id));
+        })
+        return Promise.all(results)
       })
-      .then((productInfo) => {
-        singleProduct.id = productInfo.data.id
-        singleProduct.name = productInfo.data.name
-        singleProduct.category = productInfo.data.category
-        singleProduct.price = productInfo.data.default_price
-        return singleProduct
+      .then((productData) => {
+        this.setState({relatedProductsDetails: productData})
       })
-      .then((singleProduct) => {
-        axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productSearchId}/styles`, {
-          headers: {
-            Authorization: token
-          }
-        })
-        .then((styles) => {
-          let imgs = styles.data.results[0].photos
-          singleProduct.images = imgs
-          return singleProduct;
-        })
-        .then((product) => {
-          products.push(product)
-        })
-        .then(() => {
-          this.setState({
-            relatedProductsInfo: products
-          })
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+      .then(() => {
+        this.setState({isLoaded: true})
       })
       .catch((err) => {
         console.log(err)
-      });
-    }
+      })
+  }
+
+  // Get related items <-- 1st request
+  _getRelatedItems(productId) {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}/related`, {
+      headers: {
+        Authorization: token
+      },
+      params: {
+        product_id: productId
+      }
+    })
+  }
+
+  // Gets all related items data in parallel
+  _getRelatedItemData(searchId) {
+    let getData = [this._getRelatedItemDetails(searchId), this._getRelatedItemImages(searchId), this._getRelatedItemReviews(searchId)];
+    return getData;
+  }
+
+  _getRelatedItemDetails(searchId) {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${searchId}`, {
+      headers: {
+        Authorization: token
+      },
+      params: {
+        id: searchId
+      }
+    })
+  }
+
+  _getRelatedItemImages(searchId) {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${searchId}/styles`, {
+      headers: {
+        Authorization: token
+      },
+      params: {
+        product_id: searchId
+      }
+    })
+  }
+
+  _getRelatedItemReviews(searchId) {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/meta`, {
+      headers: {
+        Authorization: token
+      },
+      params: {
+        product_id: searchId
+      }
+    })
   }
 
   handleCardClick(e) {
@@ -128,11 +128,18 @@ class RelatedItems extends React.Component {
         <h4 id="related-title">
           Related Items
         </h4>
+        {this.state.isLoaded ?
         <Carousel responsive={this.responsive}>
-          {this.state.relatedProductsInfo.map((item) => (
-            <CardFormatter id={item.id} image={item.images} placeHolderImg={placeHolderImg} category={item.category} name={item.name} price={item.price} rating='rating' handleClick={this.handleCardClick} key={item.id}/>
+          {this.state.relatedProductsDetails.map((itemDetails) => (
+            <CardFormatter productDetails={itemDetails} handleClick={this.handleCardClick}/>
           ))}
-        </Carousel>
+        </Carousel> :
+        'Loading...'}
+        {/* <Carousel responsive={this.responsive}>
+          {this.state.relatedProductsDetails.map((itemDetails) => (
+            <CardFormatter id={itemDetails[0].data.id} image={itemDetails[1].data.results[0].photos[0].thumnail_url} placeHolderImg={placeHolderImg} category={itemDetails[0].data.category} name={itemDetails[0].data.name} price={itemDetails[0].data.default_price} rating={'rating'} handleClick={this.handleCardClick} key={itemDetails[0].data.id}/>
+          ))}
+        </Carousel> */}
       </div>
     )
   }

@@ -150,6 +150,18 @@ footer {
 	font-size: 20px;
 }
 
+#related-items {
+  height: 420px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#related-title {
+  border-bottom: 2px solid deepskyblue;
+}
+
+.star-list {
+	padding-left: 18%;
 .sortSelect {
 	font-style: bold;
 	border: none;
@@ -170,6 +182,24 @@ footer {
 	background-color: grey;
 }
 
+#your-fit {
+  height: 420px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#yourfit-title {
+  border-bottom: 2px solid deeppink;
+}
+
+footer {
+  border-top: 2px solid deepskyblue;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 165px;
+  color: white;
+  background-color: black;
+  text-align: center;
 .sizeSlider {
 	display: flex;
 	justify-content: space-between;
@@ -186,3 +216,16 @@ footer {
 	display: flex;
 }
 /* Ratings CSS End */
+
+.zquestions {
+	overflow-y: scroll;
+	height: 650px;
+	transition: background-color 1.5s ease;
+	background-color: black;
+	border: 2px solid deepskyblue;
+	border-radius: 20px;
+}
+
+.zquestions:hover {
+	background-color: rgb(29, 18, 47);
+}

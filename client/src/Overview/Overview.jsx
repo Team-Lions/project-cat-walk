@@ -13,16 +13,19 @@ import token from '../../../public/token.js';
 import parseSizeFirstSkus from './sizeFirstSkus.js';
 
 const OverviewGrid = styled.div`
+  margin: 10px;
   display: grid;
-  grid-template-rows: 75% 25%;
-  grid-template-columns: 66% 34%;
+  grid-template-rows: 600px 150px;
+  grid-template-columns: 60% 40%;
+  justify-items: center;
 `;
 
 const Gallery = styled.div`
   grid-column: 1;
   grid-row: 1;
   align-self: center;
-  justify-self: center;
+  justify-self: end;
+  padding-right: 100px;
 `;
 
   const Selections = styled.div`
@@ -36,6 +39,7 @@ const Gallery = styled.div`
 `;
 
 const Description = styled.div`
+  width: 700px;
   grid-column: 1;
   grid-row: 2;
   justify-self: end;
@@ -58,6 +62,7 @@ class Overview extends React.Component {
       productInfo: {},
       styles: [],
       selectedStyle: {},
+      numReviews: null,
       isLoading: true
     }
   }
@@ -88,6 +93,17 @@ class Overview extends React.Component {
     });
   }
 
+  getReviews(productId) {
+    return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews', {
+      headers: {
+      'Authorization': token
+      },
+      params: {
+      product_id: productId
+      }
+    });
+  }
+
   changeStyle(index) {
     this.setState({
       selectedStyle: this.state.styles[index]
@@ -97,13 +113,15 @@ class Overview extends React.Component {
   componentDidMount() {
     Promise.all([
       this.getProductInfo(this.props.productId),
-      this.getStyles(this.props.productId)
+      this.getStyles(this.props.productId),
+      this.getReviews(this.props.productId)
     ])
     .then((values) => {
       this.setState({
         productInfo: values[0].data,
         styles: values[1].data.results,
         selectedStyle: values[1].data.results[0],
+        numReviews: values[2].data.results.length,
         isLoading: false
       });
     })
@@ -121,7 +139,7 @@ class Overview extends React.Component {
           <ImageGalleryDefault images={this.state.selectedStyle.photos} styleName={this.state.selectedStyle.name} />
         </Gallery>
         <Selections>
-          <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} ratings={this.props.ratings}/>
+          <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} numReviews={this.state.numReviews}/>
           <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
           <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} />
         </Selections>
