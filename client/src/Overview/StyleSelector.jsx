@@ -14,9 +14,12 @@ const StyleThumbnail = styled.img`
   height: 65px;
   width: 65px;
   margin: 10px;
+  :hover {
+    cursor: pointer;
+  }
 
   ${props => props.selected && css `
-    border: 3px solid black;
+    border: 3px solid deepskyblue;
   `}
 `;
 
