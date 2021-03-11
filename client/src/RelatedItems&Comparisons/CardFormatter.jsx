@@ -45,7 +45,7 @@ const CardFormatter = ({productDetails, handleClick}) => {
               {name}
             </Card.Title>
             <Card.Subtitle className="mb-2 text-muted" onClick={handleClick} id={id}>
-              {price}
+              {`$${price}`}
             </Card.Subtitle>
             <ReactStarRating
                 numberOfStar={5}
