@@ -29,18 +29,13 @@ const Name = styled.div`
   font-size: 50px;
 `;
 
-//recieved props ratings (object), productInfo (object), starRating (number), price (string), salePrice (string)
+//recieved props numReviews (int), productInfo (object), starRating (number), price (string), salePrice (string)
 var ProductTitleAndPrice = (props) => {
-  var numRatings = 0;
-  for (var k in props.ratings) {
-    numRatings += Number.parseInt(props.ratings[k]);
-  }
-
   return (
     <div id="productTitleAndPrice">
-      <RatingData hidden={numRatings === 0}>
+      <RatingData hidden={props.numReviews === 0}>
         <ReactStarRating numberOfStar={5} numberOfSelectedStar={roundStarRating(props.starRating)} colorFilledStar="gold" colorEmptyStar="grey" starSize="15px" spaceBetweenStar="3px" disableOnSelect={true} name="rating" />
-        <A id="ratingsLink" href="#RatingsAndReviews">Read all {numRatings} reviews</A>
+        <A id="ratingsLink" href="#RatingsAndReviews">Read all {props.numReviews} reviews</A>
       </RatingData>
       <Category>{props.productInfo.category}</Category>
       <Name><b>{props.productInfo.name}</b></Name>
