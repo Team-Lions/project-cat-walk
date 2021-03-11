@@ -40,8 +40,8 @@ class Question extends React.Component {
   render() {
     return (
       <div>
-        <h2>Q:</h2>
-        <h3>{this.props.question.question_body}</h3>
+        <h2 style={{color:"deepskyblue", fontWeight:"bold"}}>Q:</h2>
+        <h3 style={{color:"deepskyblue", fontWeight:"bold"}}>{this.props.question.question_body}</h3>
         <Answers answers={Object.values(this.props.answers).slice(0, this.state.index)} index={this.state.index} show={this.state.show} loadMoreAnswers={this.loadMoreAnswers} collapseAnswers={this.collapseAnswers}></Answers>
       </div>
       )

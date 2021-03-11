@@ -2,7 +2,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+<<<<<<< HEAD
 //import styled, { css } from 'styled-components';
+=======
+>>>>>>> staging
 // header and footer
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';

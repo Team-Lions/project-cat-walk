@@ -1,7 +1,10 @@
 import React from "react";
 import Question from './Question.jsx';
 import Button from 'react-bootstrap/Button';
+<<<<<<< HEAD
 //import Questions from './style/Questions.js';
+=======
+>>>>>>> staging
 
 
 class QnAList extends React.Component {
@@ -35,5 +38,4 @@ class QnAList extends React.Component {
   }
 }
 
-// this.props.answers.length > 0 ? this.props.answers : []} loadMoreAnswers={this.loadMoreAnswers
 export default QnAList;
