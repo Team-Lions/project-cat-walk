@@ -1,11 +1,9 @@
 /* everyone put their buttons/other clickable things here */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-.styleSelector:hover,
 a:hover,
 button:hover,
-select:hover,
-.imageGalleryList:hover {
+select:hover {
 	cursor: pointer;
 }
 
@@ -187,5 +185,18 @@ footer {
 
 .modalReview {
 	display: flex;
+}
+
+.ReviewBTN {
+	background-color: black;
+	border: 1px solid white;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
 }
 /* Ratings CSS End */

@@ -1,7 +1,7 @@
 import React from "react";
 import Question from './Question.jsx';
 import Button from 'react-bootstrap/Button';
-import Questions from './style/Questions.js';
+//import Questions from './style/Questions.js';
 
 
 class QnAList extends React.Component {

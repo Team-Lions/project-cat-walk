@@ -1,16 +1,55 @@
 //tools
 import React from 'react';
 import axios from 'axios';
+import styled, { css } from 'styled-components';
 //components
 import AddToCart from './AddToCart.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ProductTitleAndPrice from './ProductTitleAndPrice.jsx';
-import ProductDescription from './ProductDescription.jsx';
 import SocialMediaButtons from './SocialMediaButtons.jsx';
 import ImageGalleryDefault from './ImageGalleryDefault.jsx';
 //misc
 import token from '../../../public/token.js';
 import parseSizeFirstSkus from './sizeFirstSkus.js';
+
+const OverviewGrid = styled.div`
+  display: grid;
+  grid-template-rows: 75% 25%;
+  grid-template-columns: 66% 34%;
+`;
+
+const Gallery = styled.div`
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+`;
+
+  const Selections = styled.div`
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  justify-self: start;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+`;
+
+const Description = styled.div`
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+`;
+
+const Features = styled.ul`
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: start;
+  border-left: 2px solid deepskyblue;
+`;
 
 class Overview extends React.Component {
   constructor(props) {
@@ -77,14 +116,26 @@ class Overview extends React.Component {
     var sizeFirstSkus = parseSizeFirstSkus(this.state.selectedStyle.skus);
     var sizes = Object.keys(sizeFirstSkus);
     return(
-      <div className='overview' key={this.state.selectedStyle.name}>
-        <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} ratings={this.props.ratings}/>
-        <ImageGalleryDefault images={this.state.selectedStyle.photos} styleName={this.state.selectedStyle.name} />
-        <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} />
-        <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
-        <ProductDescription productInfo={this.state.productInfo} />
-        <SocialMediaButtons />
-      </div>
+      <OverviewGrid key={this.state.selectedStyle.name}>
+        <Gallery>
+          <ImageGalleryDefault images={this.state.selectedStyle.photos} styleName={this.state.selectedStyle.name} />
+        </Gallery>
+        <Selections>
+          <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} ratings={this.props.ratings}/>
+          <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
+          <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} />
+        </Selections>
+        <Description>
+          <div><b>{this.state.productInfo.slogan}</b></div>
+          <div>{this.state.productInfo.description}</div>
+          <SocialMediaButtons />
+        </Description>
+        <Features>
+          {this.state.productInfo.features.map((feature) => {
+            return <li>{feature.value} {feature.feature}</li>;
+          })}
+        </Features>
+      </OverviewGrid>
     )
   }
 }
