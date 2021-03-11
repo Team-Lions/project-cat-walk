@@ -39,6 +39,7 @@ const Gallery = styled.div`
 `;
 
 const Description = styled.div`
+  width: 700px;
   grid-column: 1;
   grid-row: 2;
   justify-self: end;

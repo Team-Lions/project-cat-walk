@@ -21,9 +21,8 @@ const Thumbnails = styled.div`
 const Gallery = styled.div`
   display: grid;
   grid-row-gap: 10px;
-  grid-template-columns: 50px 35px auto 30px;
+  grid-template-columns: 50px 35px 500px 30px;
   grid-template-rows: 590px;
-  align-content: center;
   grid-column-gap: 10px;
   `;
 
@@ -50,19 +49,25 @@ class ImageGalleryDefault extends React.Component {
 
   nextImageRight(e) {
     this.setState({
-      mainImageIndex: this.state.mainImageIndex + 1
+      mainImageIndex: this.state.mainImageIndex + 1,
+      mainImageHeight: '5px',
+      mainImageWidth: '5px'
     });
   }
 
   nextImageLeft(e) {
     this.setState({
-      mainImageIndex: this.state.mainImageIndex - 1
+      mainImageIndex: this.state.mainImageIndex - 1,
+      mainImageHeight: '5px',
+      mainImageWidth: '5px'
     });
   }
 
   changeImage(index) {
     this.setState({
-      mainImageIndex: index
+      mainImageIndex: index,
+      mainImageHeight: '5px',
+      mainImageWidth: '5px'
     });
   }
 
@@ -107,7 +112,7 @@ class ImageGalleryDefault extends React.Component {
           <ScrollButton style={{"gridColumn": 2}} onClick={this.nextImageLeft.bind(this)}><b>left</b></ScrollButton>
         }
         <img id="mainImage"
-          style = {{"gridColumn": 3, "height": this.state.mainImageHeight, "width": this.state.mainImageWidth}}
+          style = {{"gridColumn": 3, "height": this.state.mainImageHeight, "width": this.state.mainImageWidth, "alignSelf": "center", "justifySelf": "center"}}
           src={this.props.images[this.state.mainImageIndex].thumbnail_url}
           alt={this.props.name}
           onLoad={this.setImageSize.bind(this)}></img>

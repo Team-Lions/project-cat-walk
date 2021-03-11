@@ -20,7 +20,8 @@ class AddToCart extends React.Component {
       quantityEnabled: false,
       quantityAvailable: 0,
       quantitySelection: null,
-      hideSizeEnforcement: true
+      hideSizeEnforcement: true,
+      addedToCart: 0
     };
   }
 
@@ -67,7 +68,14 @@ class AddToCart extends React.Component {
       }
     })
     .then(() => {
-      console.log('added to cart')
+      this.setState({
+        sizeSelection: '',
+        quantityEnabled: false,
+        quantityAvailable: 0,
+        quantitySelection: null,
+        hideSizeEnforcement: true,
+        addedToCart: !this.state.addedToCart
+      });
     })
     .catch((err) => {
       console.log('error');
@@ -77,7 +85,7 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div className="AddToCart">
+      <div key={this.state.addedToCart}>
         <div hidden={this.state.hideSizeEnforcement}>Please select a size!</div>
         {this.props.sizes.length === 0 ?
           <select id="size" name="size" disabled>
