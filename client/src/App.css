@@ -96,6 +96,21 @@ body {
   border-bottom: 2px solid deeppink;
 }
 
+#add-button {
+	margin-left: 222px;
+	width: 32px;
+	position: absolute;
+	background-color: transparent;
+	color: deeppink;
+	border: 3px solid deeppink;
+	border-radius: 10%;
+}
+
+#add-button:hover {
+	color: deepskyblue;
+	border: 3px solid deepskyblue;
+}
+
 .modal {
 	color: white;
 	font-family: 'Poppins', sans-serif;

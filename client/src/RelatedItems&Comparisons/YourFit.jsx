@@ -40,7 +40,8 @@ class YourFit extends React.Component {
         </h4>
         <div>
         <Carousel responsive={this.responsive}>
-          <Card border="info" bg="dark" style={{ width: '16rem', height: '23rem'}}>
+          <Card border="dark" bg="dark" style={{ width: '16rem', height: '23rem'}}>
+            <button id='add-button'><span>&#43;</span></button>
               <img className="carousel-img" src={placeHolderImg}></img>
               <Card.Body className="text-center">
                 <Card.Subtitle className="mb-2 text-muted">
