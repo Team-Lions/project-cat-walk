@@ -34,5 +34,4 @@ class QnAList extends React.Component {
   }
 }
 
-// this.props.answers.length > 0 ? this.props.answers : []} loadMoreAnswers={this.loadMoreAnswers
 export default QnAList;
