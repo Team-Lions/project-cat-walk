@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import styled, { css } from 'styled-components';
 // header and footer
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
