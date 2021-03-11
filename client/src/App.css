@@ -186,3 +186,16 @@ footer {
 	display: flex;
 }
 /* Ratings CSS End */
+
+.zquestions {
+	overflow-y: scroll;
+	height: 650px;
+	transition: background-color 1.5s ease;
+	background-color: black;
+	border: 2px solid deepskyblue;
+	border-radius: 20px;
+}
+
+.zquestions:hover {
+	background-color: rgb(29, 18, 47);
+}
