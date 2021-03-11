@@ -162,6 +162,8 @@ footer {
 
 .star-list {
 	padding-left: 18%;
+}
+
 .sortSelect {
 	font-style: bold;
 	border: none;
@@ -200,6 +202,8 @@ footer {
   color: white;
   background-color: black;
   text-align: center;
+}
+
 .sizeSlider {
 	display: flex;
 	justify-content: space-between;
