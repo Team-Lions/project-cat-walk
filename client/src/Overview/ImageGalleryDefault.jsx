@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 
 const GalleryThumbnail = styled.img`
   padding: 2px;
+  height: 70px;
+  width: auto;
   :hover {
     cursor: pointer;
   }
@@ -13,9 +15,39 @@ const GalleryThumbnail = styled.img`
 `;
 
 const Thumbnails = styled.div`
+  grid-row: 2;
   align-self: center;
   display: flex;
   flex-direction: column;
+  align-content: space-around;
+`;
+
+const VerticalScrollButton = styled.button`
+  background-color: transparent;
+  color: deepskyblue;
+  border: none;
+  padding: 5px;
+  :hover{
+    color: deeppink;
+  }
+`;
+
+const VerticalCarousel = styled.div`
+  grid-column: 1;
+  display: grid;
+  grid-template-rows: 25px 530px 25px;
+  grid-template-columns: 50px;
+`;
+
+const HorizScrollButton = styled.button`
+  background-color: transparent;
+  color: deepskyblue;
+  border: none;
+  padding: 5px;
+  align-self: center;
+  :hover{
+    color: deeppink;
+  }
 `;
 
 const Gallery = styled.div`
@@ -26,16 +58,6 @@ const Gallery = styled.div`
   grid-column-gap: 10px;
   `;
 
-const ScrollButton = styled.button`
-  background-color: transparent;
-  color: deepskyblue;
-  border: none;
-  padding: 5px;
-  align-self: center;
-  :hover{
-    color: deeppink;
-  }
-`;
 
 //expected props images (array of objects), name (String)
 class ImageGalleryDefault extends React.Component {
@@ -54,10 +76,10 @@ class ImageGalleryDefault extends React.Component {
     var newCarouselStart = this.state.carouselStart;
     var newCarouselEnd = this.state.carouselEnd;
     if (newMainImageIndex > newCarouselEnd) {
-      newCarouselEnd = newMainImageIndex + 1;
+      newCarouselEnd = newMainImageIndex;
       newCarouselStart = newCarouselEnd - 6;
     } else if ( newMainImageIndex < newCarouselStart) {
-      newCarouselStart = newMainImageIndex - 1;
+      newCarouselStart = newMainImageIndex;
       newCarouselEnd = newCarouselStart + 6;
     }
     this.setState({
@@ -125,6 +147,7 @@ class ImageGalleryDefault extends React.Component {
   }
 
   render() {
+    //refactor so I don't have to do this for loop everytime!
     var thumbnails = this.props.images.map((image, index) => {
       var selected = false;
       if (index === this.state.mainImageIndex) {
@@ -133,32 +156,29 @@ class ImageGalleryDefault extends React.Component {
       return (
           <GalleryThumbnail selected={selected} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></GalleryThumbnail>
       );
-    })
-    console.log("start: ", this.state.carouselStart);
-    console.log('end: ', this.state.carouselEnd);
-    var shownThumbnails = thumbnails.slice(this.state.carouselStart, this.state.carouselEnd + 1)
-    console.log('num images: ', this.props.images.length);
+    });
+    var shownThumbnails = thumbnails.slice(this.state.carouselStart, this.state.carouselEnd + 1);
     return (
       <Gallery>
-        <div style={{"gridColumn": 1}}>
-          <Thumbnails>
+        <VerticalCarousel>
             {this.state.carouselStart === 0 ?
-              <div></div>
+              <div style={{"gridRow": 1}}></div>
               :
-              <button onClick={this.scrollUp.bind(this)}><i class="fas fa-caret-up"></i></button>
+              <VerticalScrollButton style={{"gridRow": 1}} onClick={this.scrollUp.bind(this)}><i class="fas fa-angle-up fa-lg" style={{"alignSelf": "end"}}></i></VerticalScrollButton>
             }
-            {shownThumbnails}
+            <Thumbnails>
+              {shownThumbnails}
+            </Thumbnails>
             {this.state.carouselEnd < (this.props.images.length - 1) ?
-              <button onClick={this.scrollDown.bind(this)}><i class="fas fa-caret-down"></i></button>
+              <VerticalScrollButton style={{"gridRow": 3}}onClick={this.scrollDown.bind(this)}><i class="fas fa-angle-down fa-lg" style={{"alignSelf": "start"}}></i></VerticalScrollButton>
               :
-              <div></div>
+              <div style={{"gridRow": 3}}></div>
             }
-          </Thumbnails>
-        </div>
+        </VerticalCarousel>
         {this.state.mainImageIndex === 0 ?
           <div style={{"gridColumn": 2}}></div>
           :
-          <ScrollButton style={{"gridColumn": 2, "justifySelf": "start"}} onClick={this.nextImageLeft.bind(this)}><i class="fas fa-angle-left fa-5x"></i></ScrollButton>
+          <HorizScrollButton style={{"gridColumn": 2, "justifySelf": "start"}} onClick={this.nextImageLeft.bind(this)}><i class="fas fa-angle-left fa-5x"></i></HorizScrollButton>
         }
         <img id="mainImage"
           style = {{"gridColumn": 3, "height": this.state.mainImageHeight, "width": this.state.mainImageWidth, "alignSelf": "center", "justifySelf": "center"}}
@@ -168,7 +188,7 @@ class ImageGalleryDefault extends React.Component {
         {this.state.mainImageIndex === (this.props.images.length - 1) ?
           <div style={{"gridColumn": 4}}></div>
           :
-          <ScrollButton style={{"gridColumn": 4, "justifySelf": "end"}} onClick={this.nextImageRight.bind(this)}><i class="fas fa-angle-right fa-5x"></i></ScrollButton>
+          <HorizScrollButton style={{"gridColumn": 4, "justifySelf": "end"}} onClick={this.nextImageRight.bind(this)}><i class="fas fa-angle-right fa-5x"></i></HorizScrollButton>
         }
       </Gallery>
     );
