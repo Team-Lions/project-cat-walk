@@ -42,7 +42,7 @@ class Question extends React.Component {
       <div>
         <h2 style={{color:"deepskyblue", fontWeight:"bold"}}>Q:</h2>
         <h3 style={{color:"deepskyblue", fontWeight:"bold"}}>{this.props.question.question_body}</h3>
-        <Answers questionID={this.props.question.question_id} answers={valAns} index={this.state.index} show={this.state.show} loadMoreAnswers={this.loadMoreAnswers} collapseAnswers={this.collapseAnswers}></Answers>
+        <Answers productID={this.props.productID} question={this.props.question} questionID={this.props.question.question_id} answers={valAns} index={this.state.index} show={this.state.show} loadMoreAnswers={this.loadMoreAnswers} collapseAnswers={this.collapseAnswers}></Answers>
       </div>
       )
   }
