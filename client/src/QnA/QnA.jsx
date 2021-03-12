@@ -60,7 +60,7 @@ class QnA extends Component {
       <div>
         <h1 style={{fontWeight:"Bold", padding:"5px", borderBottom:"1px solid deepskyblue", color:"deepskyblue"}}>Questions and Answers</h1>
         <div className="zquestions">
-        {this.state.data && <QnAList data={this.state.data} id={this.state.id} answers={this.state.data.answers} loadMore={this.loadMore}/>}
+        {this.state.data && <QnAList productID={this.state.id} data={this.state.data} id={this.state.id} answers={this.state.data.answers} loadMore={this.loadMore}/>}
         </div>
       </div>
     )

@@ -15,7 +15,7 @@ import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
 import calculateStarReview from './calculateStarReview.js';
 import token from '../../public/token.js';
 
-import appCss from './App.css';
+//import appCss from './App.css';
 import css from './App.css';
 import Spinner from 'react-bootstrap/Spinner'
 
@@ -100,9 +100,18 @@ class App extends React.Component {
   render() {
     if(this.state.isLoading) {
       return (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
+        <>
+          <div className="loading">
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+            <br/>
+            <div>
+              <h1>Loading Lion's Den Apparel</h1>
+            </div>
+            <h2>🦁</h2>
+          </div>
+        </>
     )
     }
     return (
