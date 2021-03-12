@@ -27,6 +27,7 @@ class Answers extends React.Component {
     return (
       <div>
         {this.props.answers.length > 0 ? this.props.answers.map((answer) => {
+          {console.log(answer)}
           return (
             <div>
               <h2 style={{fontWeight: "Bold", color:"deepPink"}}>A:</h2>
@@ -36,7 +37,7 @@ class Answers extends React.Component {
               <p style={{color:"deepPink", borderBottom:"1px solid deepPink", fontSize: "20px", fontWeight: "Bold"}}>By {answer.answerer_name}, {dateFormat(answer.date, "mmmm dS, yyyy")}</p> :
               <p style={{color:"deepPink", borderBottom:"1px solid deepPink", fontWeight: "normal"}}>By {answer.answerer_name}, {dateFormat(answer.date, "mmmm dS, yyyy")}</p>}
               <div>Yes</div>
-              <QHelpfulness questionID={this.props.questionID} helpfulness={answer.helpfulness}/>
+              <QHelpfulness questionID={this.props.questionID} answerID={answer.id} helpfulness={answer.helpfulness}/>
             </div>
           )
         }) : <div>No answers</div>
