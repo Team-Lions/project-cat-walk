@@ -188,9 +188,20 @@ body {
 	font-size: 20px;
 }
 
+#related-items {
+	height: 420px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#related-title {
+	border-bottom: 2px solid deepskyblue;
+}
+
 .star-list {
 	padding-left: 18%;
 }
+
 .sortSelect {
 	font-style: bold;
 	border: none;
