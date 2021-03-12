@@ -72,12 +72,12 @@ class Ratings extends React.Component {
 				<div className="mainReviews">
 					<SortReview reviews={this.state.reviews} />
 					<SingleReview reviews={this.state.resultReview}/>
-					<div className="reviewButtons">
-						{(this.state.resultReview.length === this.state.reviews.results.length) ? <button className="ReviewBTN" onClick={this.loadMore}>LESS REVIEWS</button> : <button className="ReviewBTN" onClick={this.loadMore}>MORE REVIEWS</button>}
-						<button className="ReviewBTN">
-							ADD A REVIEW +
-						</button>
-					</div>
+				</div>
+				<div className="reviewButtons">
+					{(this.state.resultReview.length === this.state.reviews.results.length) ? <button className="ReviewBTN" onClick={this.loadMore}>LESS REVIEWS</button> : <button className="ReviewBTN" onClick={this.loadMore}>MORE REVIEWS</button>}
+					<button className="ReviewBTN">
+						ADD A REVIEW +
+					</button>
 				</div>
 			</div>
 		</>
