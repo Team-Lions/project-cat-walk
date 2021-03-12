@@ -13,7 +13,7 @@ const GalleryThumbnail = styled.img`
 `;
 
 const Thumbnails = styled.div`
-  align-self: start;
+  align-self: center;
   display: flex;
   flex-direction: column;
 `;
@@ -44,32 +44,44 @@ class ImageGalleryDefault extends React.Component {
     this.state = {
       mainImageIndex: 0,
       mainImageHeight: '5px',
-      mainImageWidth: '5px'
+      mainImageWidth: '5px',
+      carouselStart: 0,
+      carouselEnd: 0
     };
   }
 
-  nextImageRight(e) {
+  shiftCarousel(newMainImageIndex) {
+    var newCarouselStart = this.state.carouselStart;
+    var newCarouselEnd = this.state.carouselEnd;
+    if (newMainImageIndex > newCarouselEnd) {
+      newCarouselEnd = newMainImageIndex + 1;
+      newCarouselStart = newCarouselEnd - 6;
+    } else if ( newMainImageIndex < newCarouselStart) {
+      newCarouselStart = newMainImageIndex - 1;
+      newCarouselEnd = newCarouselStart + 6;
+    }
     this.setState({
-      mainImageIndex: this.state.mainImageIndex + 1,
+      mainImageIndex: newMainImageIndex,
       mainImageHeight: '5px',
-      mainImageWidth: '5px'
+      mainImageWidth: '5px',
+      carouselStart: newCarouselStart,
+      carouselEnd: newCarouselEnd
     });
+  }
+
+  nextImageRight(e) {
+    var newMainImageIndex = this.state.mainImageIndex + 1;
+    this.shiftCarousel(newMainImageIndex);
   }
 
   nextImageLeft(e) {
-    this.setState({
-      mainImageIndex: this.state.mainImageIndex - 1,
-      mainImageHeight: '5px',
-      mainImageWidth: '5px'
-    });
+    var newMainImageIndex = this.state.mainImageIndex - 1;
+    this.shiftCarousel(newMainImageIndex);
   }
 
   changeImage(index) {
-    this.setState({
-      mainImageIndex: index,
-      mainImageHeight: '5px',
-      mainImageWidth: '5px'
-    });
+    var newMainImageIndex = index;
+    this.shiftCarousel(newMainImageIndex);
   }
 
   setImageSize(e) {
@@ -86,8 +98,34 @@ class ImageGalleryDefault extends React.Component {
     }
   }
 
+  scrollUp() {
+    this.setState({
+      carouselStart: this.state.carouselStart - 1,
+      carouselEnd: this.state.carouselEnd - 1
+    });
+  }
+
+  scrollDown() {
+    this.setState({
+      carouselStart: this.state.carouselStart + 1,
+      carouselEnd: this.state.carouselEnd + 1
+    });
+  }
+
+  componentDidMount() {
+    if (this.props.images.length >= 7) {
+      this.setState({
+        carouselEnd: 6
+      });
+    } else {
+      this.setState({
+        carouselEnd: this.props.images.length - 1
+      });
+    }
+  }
+
   render() {
-    var images = this.props.images.map((image, index) => {
+    var thumbnails = this.props.images.map((image, index) => {
       var selected = false;
       if (index === this.state.mainImageIndex) {
         selected = true;
@@ -96,15 +134,25 @@ class ImageGalleryDefault extends React.Component {
           <GalleryThumbnail selected={selected} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></GalleryThumbnail>
       );
     })
-    //for now only going to show at max 7 images and ignore the scrolling
-    if(images.length > 7) {
-      images = images.slice(0, 7);
-    }
+    console.log("start: ", this.state.carouselStart);
+    console.log('end: ', this.state.carouselEnd);
+    var shownThumbnails = thumbnails.slice(this.state.carouselStart, this.state.carouselEnd + 1)
+    console.log('num images: ', this.props.images.length);
     return (
       <Gallery>
         <div style={{"gridColumn": 1}}>
           <Thumbnails>
-            {images}
+            {this.state.carouselStart === 0 ?
+              <div></div>
+              :
+              <button onClick={this.scrollUp.bind(this)}><i class="fas fa-caret-up"></i></button>
+            }
+            {shownThumbnails}
+            {this.state.carouselEnd < (this.props.images.length - 1) ?
+              <button onClick={this.scrollDown.bind(this)}><i class="fas fa-caret-down"></i></button>
+              :
+              <div></div>
+            }
           </Thumbnails>
         </div>
         {this.state.mainImageIndex === 0 ?
