@@ -13,7 +13,7 @@ var QuantitySelector = (props) => {
     return <option value={item}>{item}</option>
   });
   return (
-    <select id="quantity" name="quantity" onChange={props.change}>
+    <select style={{height: '30px', width: '40px', margin: '5px'}} id="quantity" name="quantity" onChange={props.change}>
       {listOptions}
     </select>
   );
