@@ -6,6 +6,8 @@ a:hover, button:hover, select:hover {
   cursor: pointer;
 }
 
+/* Header Start */
+
 header {
 	margin-left: 5%;
 	margin-right: 5%;
@@ -28,6 +30,8 @@ header:hover {
 	border-radius: 100%;
 }
 
+/* Header End */
+
 body {
 	padding-left: 2px;
 	padding-right: 2px;
@@ -35,6 +39,8 @@ body {
 	color: white;
 	font-family: 'Poppins', sans-serif;
 }
+
+/*Related Items and Fit Start*/
 
 #carousel-item {
 	padding-left: 75px;
@@ -47,14 +53,24 @@ body {
 	width: auto;
 }
 
+.card {
+	width: 16rem;
+	cursor: pointer;
+	margin-bottom: 30px;
+}
+
+.card:hover {
+	box-shadow: 10px 15px 20px indigo;
+}
+
 #related-items {
-	height: 400px;
-	margin-left: 17%;
-	margin-right: 17%;
+  height: 430px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 #related-title {
-	border-bottom: 1px solid white;
+  border-bottom: 2px solid deepskyblue;
 }
 
 #fav-button {
@@ -71,23 +87,41 @@ body {
 }
 
 #your-fit {
-	height: 400px;
-	margin-left: 17%;
-	margin-right: 17%;
+  height: 450px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 #yourfit-title {
-	border-bottom: 1px solid white;
+  border-bottom: 2px solid deeppink;
 }
 
-footer {
-	margin-left: 12%;
-	margin-right: 12%;
-	height: 160px;
-	color: lightcyan;
-	background-color: black;
-	text-align: center;
+#add-button {
+	margin-left: 222px;
+	width: 32px;
+	position: absolute;
+	background-color: transparent;
+	color: deeppink;
+	border: 3px solid deeppink;
+	border-radius: 10%;
 }
+
+#add-button:hover {
+	color: deepskyblue;
+	border: 3px solid deepskyblue;
+}
+
+.modal {
+	color: white;
+	font-family: 'Poppins', sans-serif;
+}
+.modal-backdrop {
+	background-color: darkslateblue;
+}
+.modal .modal-content {
+	background-color: black;
+}
+/* RelatedItems and Fit End*/
 
 /* Ratings CSS Start */
 
@@ -150,15 +184,7 @@ footer {
 	font-size: 20px;
 }
 
-#related-items {
-  height: 420px;
-  margin-left: 10%;
-  margin-right: 10%;
-}
 
-#related-title {
-  border-bottom: 2px solid deepskyblue;
-}
 
 .star-list {
 	padding-left: 18%;
@@ -184,15 +210,7 @@ footer {
 	background-color: grey;
 }
 
-#your-fit {
-  height: 420px;
-  margin-left: 10%;
-  margin-right: 10%;
-}
 
-#yourfit-title {
-  border-bottom: 2px solid deeppink;
-}
 
 footer {
   border-top: 2px solid deepskyblue;
@@ -221,6 +239,16 @@ footer {
 }
 /* Ratings CSS End */
 
+/* Footer */
+footer {
+  border-top: 2px solid deepskyblue;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 165px;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
 .zquestions {
 	overflow-y: scroll;
 	height: 650px;
