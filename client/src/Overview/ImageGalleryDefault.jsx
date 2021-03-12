@@ -8,7 +8,7 @@ const GalleryThumbnail = styled.img`
   }
 
   ${props => props.selected && css `
-    border-bottom: 3px solid deepskyblue;
+    border-bottom: 3px solid deeppink;
   `}
 `;
 
@@ -21,15 +21,16 @@ const Thumbnails = styled.div`
 const Gallery = styled.div`
   display: grid;
   grid-row-gap: 10px;
-  grid-template-columns: 50px 35px 500px 30px;
+  grid-template-columns: 55px 40px 520px 40px;
   grid-template-rows: 590px;
   grid-column-gap: 10px;
   `;
 
 const ScrollButton = styled.button`
-  height: 20px;
   background-color: transparent;
   color: deepskyblue;
+  border: none;
+  padding: 5px;
   align-self: center;
   :hover{
     color: deeppink;
@@ -109,7 +110,7 @@ class ImageGalleryDefault extends React.Component {
         {this.state.mainImageIndex === 0 ?
           <div style={{"gridColumn": 2}}></div>
           :
-          <ScrollButton style={{"gridColumn": 2}} onClick={this.nextImageLeft.bind(this)}><b>left</b></ScrollButton>
+          <ScrollButton style={{"gridColumn": 2, "justifySelf": "start"}} onClick={this.nextImageLeft.bind(this)}><i class="fas fa-angle-left fa-5x"></i></ScrollButton>
         }
         <img id="mainImage"
           style = {{"gridColumn": 3, "height": this.state.mainImageHeight, "width": this.state.mainImageWidth, "alignSelf": "center", "justifySelf": "center"}}
@@ -119,7 +120,7 @@ class ImageGalleryDefault extends React.Component {
         {this.state.mainImageIndex === (this.props.images.length - 1) ?
           <div style={{"gridColumn": 4}}></div>
           :
-          <ScrollButton style={{"gridColumn": 4}} onClick={this.nextImageRight.bind(this)}><b>right</b></ScrollButton>
+          <ScrollButton style={{"gridColumn": 4, "justifySelf": "end"}} onClick={this.nextImageRight.bind(this)}><i class="fas fa-angle-right fa-5x"></i></ScrollButton>
         }
       </Gallery>
     );

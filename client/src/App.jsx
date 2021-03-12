@@ -26,7 +26,8 @@ class App extends React.Component {
       selectedProductId: null,
       reviewMetaData: {},
       starRating: 0,
-      isLoading: true
+      isLoading: true,
+      cartCount: 0
     }
     this.changeProduct = this.changeProduct.bind(this)
     this.handleProductChange = this.handleProductChange.bind(this)
@@ -89,6 +90,13 @@ class App extends React.Component {
     this.changeProduct(newProductId);
   }
 
+  updateCart(quantity) {
+    let newCount = this.state.cartCount + Number.parseInt(quantity);
+    this.setState({
+      cartCount: newCount
+    });
+  }
+
   render() {
     if(this.state.isLoading) {
       return (
@@ -99,8 +107,8 @@ class App extends React.Component {
     }
     return (
       <div key={this.state.selectedProductId}>
-        <Header />
-        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} />
+        <Header cartCount={this.state.cartCount}/>
+        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} updateCart={this.updateCart.bind(this)} />
         <RelatedItems productId={this.state.selectedProductId} handleProductChange={this.handleProductChange}/>
         <YourFit />
         <Ratings productId={this.state.selectedProductId} metaData={this.state.reviewMetaData} starRating={this.state.starRating}/>
