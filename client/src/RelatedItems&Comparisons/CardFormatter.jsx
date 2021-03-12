@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import AddToYourFit from './AddToYourFit.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 import ReactStarRating from "react-star-ratings-component";
 import placeHolderImg from './content/placeholderimg.jpeg';
 
@@ -33,9 +33,9 @@ const CardFormatter = ({productDetails, handleClick}) => {
   starConverter(ratings);
 
   return (
-    <div>
+    <div id='card'>
       <Card border="info" bg="dark" style={{ width: '16rem', height: '23rem'}}>
-        <AddToYourFit />
+        <ComparisonModal />
           <img className="carousel-img" src={image ? image : placeHolderImg} onClick={handleClick} id={id}></img>
           <Card.Body className="text-center" onClick={handleClick} id={id}>
             <Card.Subtitle className="mb-2 text-muted" onClick={handleClick} id={id}>
@@ -45,7 +45,7 @@ const CardFormatter = ({productDetails, handleClick}) => {
               {name}
             </Card.Title>
             <Card.Subtitle className="mb-2 text-muted" onClick={handleClick} id={id}>
-              {price}
+              {`$${price}`}
             </Card.Subtitle>
             <ReactStarRating
                 numberOfStar={5}
