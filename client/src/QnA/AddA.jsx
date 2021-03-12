@@ -42,6 +42,8 @@ function AddA(props) {
                     <Form.Label>Your answer</Form.Label>
                     <Form.Control plaintext readOnly placeholder="Answer" />
                 </Form.Group>
+                <label class="form-label" for="customFile">Default file input example</label>
+                <input type="file" class="form-control" id="customFile" multiple/>
                 <Button variant="primary" type="submit">
                     Submit Your Answer
                 </Button>
