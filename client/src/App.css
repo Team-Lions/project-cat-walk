@@ -14,6 +14,7 @@ header {
 	height: 135px;
 	background-color: black;
 	border-bottom: 3px solid deepskyblue;
+	position: relative;
 }
 
 header:hover {
@@ -31,6 +32,62 @@ header:hover {
 }
 
 /* Header End */
+#mode {
+	width: 22px;
+	height: 22px;
+	border: 2px solid darkorange;
+	background-color: orange;
+	color: transparent;
+	position: absolute;
+	bottom: 55px;
+	right: 5px;
+	border-radius: 100%;
+}
+
+#NavBar {
+	position: absolute;
+	left: 20%;
+	bottom: 5px;
+}
+ul {
+	list-style-type: none;
+}
+.nav-li {
+	float: left;
+	padding: 50px;
+	text-align: center;
+	font-size: 18px;
+}
+.nav-li:hover {
+	font-style: italic;
+	color: deeppink;
+}
+#thanos {
+	color: black;
+}
+
+#search {
+	position: absolute;
+	right: 5px;
+	bottom: 10px;
+	border: transparent
+}
+#form {
+	border-bottom: 2px solid white;
+}
+#input {
+	background-color: transparent;
+	color: white;
+	border: transparent;
+	font-style: italic;
+}
+#input:hover {
+	color:deeppink;
+}
+#form:hover {
+	border-bottom: 2px solid deeppink;
+}
+
 
 body {
 	padding-left: 2px;
@@ -38,6 +95,25 @@ body {
 	background-color: black;
 	color: white;
 	font-family: 'Poppins', sans-serif;
+}
+
+.light-mode {
+  background-color: white;
+  color: black;
+}
+.light-mode header {
+	background-color: white;
+}
+.light-mode footer {
+	background-color: white;
+}
+.light-mode #form {
+	border-bottom: 2px solid black;
+}
+.light-mode #input {
+	background-color: transparent;
+	color: black;
+	border: transparent;
 }
 
 /*Related Items and Fit Start*/
