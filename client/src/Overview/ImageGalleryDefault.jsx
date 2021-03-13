@@ -68,7 +68,8 @@ class ImageGalleryDefault extends React.Component {
       mainImageHeight: '5px',
       mainImageWidth: '5px',
       carouselStart: 0,
-      carouselEnd: 0
+      carouselEnd: -1,
+      allThumbnails: []
     };
   }
 
@@ -136,28 +137,35 @@ class ImageGalleryDefault extends React.Component {
 
   componentDidMount() {
     if (this.props.images.length >= 7) {
-      this.setState({
-        carouselEnd: 6
-      });
+      var carouselEnd = 6;
     } else {
-      this.setState({
-        carouselEnd: this.props.images.length - 1
-      });
+      var carouselEnd = this.props.images.length - 1;
     }
+
+    var allThumbnails = this.props.images.map((image, index) => {
+      return (
+          <GalleryThumbnail selected={false} id={index} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></GalleryThumbnail>
+      );
+    });
+
+    this.setState({
+      carouselEnd: carouselEnd,
+      allThumbnails: allThumbnails
+    });
   }
 
   render() {
-    //refactor so I don't have to do this for loop everytime!
-    var thumbnails = this.props.images.map((image, index) => {
-      var selected = false;
-      if (index === this.state.mainImageIndex) {
-        selected = true;
+    var shownThumbnails = [];
+    for (var i = this.state.carouselStart; i <= this.state.carouselEnd; i++) {
+      if (i === this.state.mainImageIndex) {
+        shownThumbnails.push(
+          <GalleryThumbnail selected={true} id={i} src={this.props.images[i].thumbnail_url} alt="alternate image"></GalleryThumbnail>
+        );
+      } else {
+        shownThumbnails.push(this.state.allThumbnails[i]);
       }
-      return (
-          <GalleryThumbnail selected={selected} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></GalleryThumbnail>
-      );
-    });
-    var shownThumbnails = thumbnails.slice(this.state.carouselStart, this.state.carouselEnd + 1);
+    }
+
     return (
       <Gallery>
         <VerticalCarousel>

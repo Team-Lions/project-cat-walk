@@ -117,7 +117,7 @@ class App extends React.Component {
     return (
       <div key={this.state.selectedProductId}>
         <Header cartCount={this.state.cartCount} handleProductChange={this.handleProductChange}/>
-        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} updateCart={this.updateCart.bind(this)} />
+        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} updateCart={this.updateCart.bind(this)} cartCount={this.state.cartCount}/>
         <RelatedItems productId={this.state.selectedProductId} handleProductChange={this.handleProductChange}/>
         <YourFit productId={this.state.selectedProductId}/>
         <Ratings productId={this.state.selectedProductId} metaData={this.state.reviewMetaData} starRating={this.state.starRating}/>

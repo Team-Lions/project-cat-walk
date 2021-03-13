@@ -234,6 +234,11 @@ body {
 .modal .modal-content {
 	background-color: black;
 }
+
+.star-rating-container {
+	display: flex;
+	justify-content: center;
+}
 /* RelatedItems and Fit End*/
 
 /* Ratings CSS Start */
@@ -308,10 +313,6 @@ body {
 
 #related-title {
 	border-bottom: 2px solid deepskyblue;
-}
-
-.star-list {
-	padding-left: 18%;
 }
 
 .sortSelect {

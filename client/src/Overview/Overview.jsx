@@ -2,6 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled, { css } from 'styled-components';
+import Spinner from 'react-bootstrap/Spinner'
 //components
 import AddToCart from './AddToCart.jsx';
 import StyleSelector from './StyleSelector.jsx';
@@ -12,12 +13,22 @@ import ImageGalleryDefault from './ImageGalleryDefault.jsx';
 import token from '../../../public/token.js';
 import parseSizeFirstSkus from './sizeFirstSkus.js';
 
-const OverviewGrid = styled.div`
+const Placeholder = styled.div`
   margin: 10px;
   display: grid;
   grid-template-rows: 600px 150px;
   grid-template-columns: 60% 40%;
   justify-items: center;
+  grid-row-gap: 25px;
+`;
+
+const OverviewGrid = styled.div`
+  margin: 10px;
+  display: grid;
+  grid-template-rows: max-content 150px;
+  grid-template-columns: 60% 40%;
+  justify-items: center;
+  grid-row-gap: 25px;
 `;
 
 const Gallery = styled.div`
@@ -129,7 +140,13 @@ class Overview extends React.Component {
 
   render() {
     if(this.state.isLoading) {
-      return <div>Styles loading</div>
+      return (
+        <Placeholder>
+          <div style={{"gridColumn": 1, "gridRow": 1}}>
+            {/* <Spinner animation="border" role="status"></Spinner> */}
+          </div>
+        </Placeholder>
+      )
     }
     var sizeFirstSkus = parseSizeFirstSkus(this.state.selectedStyle.skus);
     var sizes = Object.keys(sizeFirstSkus);
@@ -139,7 +156,7 @@ class Overview extends React.Component {
           <ImageGalleryDefault images={this.state.selectedStyle.photos} styleName={this.state.selectedStyle.name} />
         </Gallery>
         <Selections>
-          <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} numReviews={this.state.numReviews}/>
+          <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} numReviews={this.state.numReviews} cartCount={this.props.cartCount}/>
           <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
           <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} updateCart={this.props.updateCart}/>
           <SocialMediaButtons />
