@@ -35,16 +35,16 @@ const YourOutfitCardFormatter = ({productDetails, handleClick}) => {
   return (
     <div id='yourfit-card'>
       <Card className="yourfit-rendered-cards" border="info" style={{ width: '16rem', height: '23rem'}}>
-          <button id='remove-button' onClick={handleClick}>✗</button>
-          <img className="carousel-img" src={image ? image : placeHolderImg} onClick={handleClick} id={id}></img>
-          <Card.Body className="text-center" onClick={handleClick} id={id}>
-            <Card.Subtitle className="mb-2 text-muted" onClick={handleClick} id={id}>
+          <button id='remove-button' className={id} onClick={handleClick}>✗</button>
+          <img className="carousel-img" src={image ? image : placeHolderImg}></img>
+          <Card.Body className="text-center" >
+            <Card.Subtitle className="mb-2 text-muted"  >
               {category}
             </Card.Subtitle>
-            <Card.Title onClick={handleClick} id={id}>
+            <Card.Title  >
               {name}
             </Card.Title>
-            <Card.Subtitle className="mb-2 text-muted" onClick={handleClick} id={id}>
+            <Card.Subtitle className="mb-2 text-muted"  >
               {`$${price}`}
             </Card.Subtitle>
             <ReactStarRating

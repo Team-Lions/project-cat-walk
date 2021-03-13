@@ -40,14 +40,23 @@ class YourFit extends React.Component {
 
   addToFavorites(e) {
     e.preventDefault();
+    if (this.state.favorites.length) {
+      for (var i = 0; i < this.state.favorites.length; i++) {
+        if (this.state.favorites[i][0].data.id === this.props.id) {
+          alert('Already in cart')
+          break;
+        }
+        return null
+      }
+    }
     return Promise.all(this._getRelatedItemData(this.props.productId))
       .then((productData) => {
         this.setState({
           favorites: [...this.state.favorites, ...[productData]]
         })
       })
-      .then(()=>{
-        console.log(this.state.favorites)
+      .then(() => {
+        window.sessionStorage.setItem('favorites', this.state.favorites);
       })
       .catch((err) => {
         console.log(err)
@@ -94,7 +103,12 @@ class YourFit extends React.Component {
 
   handleRemoveCard(e) {
     e.preventDefault();
-    console.log('remove me')
+    let id = e.target.className;
+    let remainingOutfits = this.state.favorites.filter(item => item[0].data.id === id);
+    console.log(remainingOutfits);
+    this.setState({
+      favorites: remainingOutfits
+    });
   }
 
   render() {
