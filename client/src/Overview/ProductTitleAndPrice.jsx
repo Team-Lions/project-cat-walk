@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 
 const RatingData = styled.div`
   width: 250px;
+  margin-right: 0px;
   display: flex;
   align-items: center;
   justify-content: right;
