@@ -3,6 +3,7 @@ import Answers from "./Answers.jsx";
 import Button from 'react-bootstrap/button';
 
 
+
 class Question extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,8 @@ class Question extends React.Component {
     this.collapseAnswers = this.collapseAnswers.bind(this);
     this.setShow = this.setShow.bind(this);
   }
+
+
 
   //move loadMore
   loadMoreAnswers() {
@@ -37,7 +40,7 @@ class Question extends React.Component {
   }
 
   render() {
-    var valAns = Object.values(this.props.answers).slice(0, this.state.index)
+    var valAns = Object.values(this.props.answers).sort((a, b) => (a.helpfulness > b.helpfulness) ? -1 : 1).slice(0, this.state.index)
     return (
       <div>
         <h2 style={{color:"deepskyblue", fontWeight:"bold"}}>Q:</h2>

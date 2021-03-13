@@ -16,8 +16,13 @@ class Answers extends React.Component {
       product: null
     }
 
-
+    const mystyle = {
+      padding: "10px",
+      backgroundColor: "rgb(29, 18, 47)",
+      border: "1px solid deepPink"
+    }
   }
+
 
   getProduct() {
     return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${this.props.productID}`, {
@@ -37,8 +42,26 @@ class Answers extends React.Component {
     this.getProduct();
   }
 
-  render() {
+  sendAnswer(e, ansData, questionID) {
+    e.preventDefault();
+    console.log(ansData);
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions/${questionID}/answers`,
+    ansData,
+    {
+      headers: {
+        "Authorization": token
+      }
+    }
+    )
+    .then((results) => {
+      console.log(results);
+    })
+    .catch((err) => {
+      console.log('error', err.response.data)
+    })
+  }
 
+  render() {
     return (
       <div>
         {this.props.answers.length > 0 ? this.props.answers.map((answer) => {
@@ -56,10 +79,10 @@ class Answers extends React.Component {
           )
         }) : <div>No answers</div>
       }
-      <AddA product={this.state.product} question={this.props.question}/>
+      <AddA product={this.state.product} sendAnswer={this.sendAnswer} question={this.props.question}/>
         {this.state.showButton ?
         this.props.show ?
-          <Button onClick={this.props.loadMoreAnswers}>Load More Answers</Button>
+          <Button onClick={this.props.loadMoreAnswers} style={{padding: "10px", backgroundColor: "rgb(29, 18, 47)", border: "1px solid deepPink"}}>Load More Answers</Button>
           : <Button onClick={this.props.collapseAnswers}>Collapse Answers</Button>
 
           : <div></div>
