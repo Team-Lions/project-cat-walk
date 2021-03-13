@@ -6,3 +6,5 @@ public/src
 public/dist/bundle.js
 public/dist/index.html
 public/src
+bundle.js
+client/dist/bundle.js

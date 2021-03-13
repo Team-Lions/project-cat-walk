@@ -35,11 +35,6 @@ const Header = (props) => {
   const changeMode = (e) => {
     e.preventDefault;
     document.body.classList.toggle('light-mode');
-    cardBackgroundToggle();
-  }
-
-  const cardBackgroundToggle = () => {
-    document.getElementById('rendered-card').class = 'bg="light"';
   }
 
   // redo logo tomorrow
@@ -58,7 +53,7 @@ const Header = (props) => {
           <Search />
         </div>
         <div>
-          <span class="material-icons md-48" id="mode" onClick={changeMode}>tungsten</span>
+          <span className="material-icons md-48" id="mode" onClick={changeMode}>tungsten</span>
         </div>
       </header>
       <div id="banner">

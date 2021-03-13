@@ -47,7 +47,7 @@ class RelatedItems extends React.Component {
       .then((relatedItems) => {
         let searchIds = relatedItems.data
         let results = searchIds.map((id) => {
-          return Promise.all(this._getRelatedItemData(id));
+          return Promise.all(this._getRelatedItemData(id, this.props.productId));
         })
         return Promise.all(results)
       })
@@ -75,8 +75,8 @@ class RelatedItems extends React.Component {
   }
 
   // Gets all related items data in parallel
-  _getRelatedItemData(searchId) {
-    let getData = [this._getRelatedItemDetails(searchId), this._getRelatedItemImages(searchId), this._getRelatedItemReviews(searchId)];
+  _getRelatedItemData(searchId, currentId) {
+    let getData = [this._getRelatedItemDetails(searchId), this._getRelatedItemImages(searchId), this._getRelatedItemReviews(searchId), this._getCurrentProductData(currentId)];
     return getData;
   }
 
@@ -113,6 +113,17 @@ class RelatedItems extends React.Component {
     })
   }
 
+  _getCurrentProductData(searchId) {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${searchId}`, {
+      headers: {
+        Authorization: token
+      },
+      params: {
+        id: searchId
+      }
+    })
+  }
+
   handleCardClick(e) {
     e.preventDefault();
     let id = e.target.id;
@@ -120,6 +131,8 @@ class RelatedItems extends React.Component {
     overviewChanger(id);
     window.scrollTo(0,0);
   }
+
+  // Get current product data// pass data down to CardFormatter// Pass down to ComparisonModal// down to Modal
 
   render() {
     return (
@@ -130,7 +143,7 @@ class RelatedItems extends React.Component {
         {this.state.isLoaded ?
         <Carousel responsive={this.responsive}>
           {this.state.relatedProductsDetails.map((itemDetails) => (
-            <CardFormatter productDetails={itemDetails} handleClick={this.handleCardClick}/>
+            <CardFormatter productDetails={itemDetails} handleClick={this.handleCardClick} key={itemDetails}/>
           ))}
         </Carousel> :
         'Loading...'}
