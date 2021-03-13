@@ -33,7 +33,7 @@ const Header = (props) => {
           <Search />
         </div>
         <div>
-          <span class="material-icons md-48" id="mode" onClick={changeMode}>tungsten</span>
+          <span className="material-icons md-48" id="mode" onClick={changeMode}>tungsten</span>
         </div>
       </header>
       <div id="banner">

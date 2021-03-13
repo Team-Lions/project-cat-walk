@@ -31,23 +31,23 @@ const SingleReview = ({ reviews }) => {
               <br />
             </div>
             {(review.recommend) ? ''
-            : 
+            :
             <div className='recommend'>
               <span>
-                <i class="fa fa-check" style={{"color":"deeppink"}}></i>
-              </span> 
+                <i className="fa fa-check" style={{"color":"deeppink"}}></i>
+              </span>
               <strong >&nbsp; I recommend this product</strong>
             </div>
             }
             <br />
             {(review.response === '' || review.response === null) ? ''
-            : 
+            :
             <div className='response'>
               <strong>Response: {review.response}</strong>
             </div>
             }
             <br />
-            
+
             <div className='helpfulAndReport'>
                 Helpful? &nbsp;
                 <span
@@ -56,7 +56,7 @@ const SingleReview = ({ reviews }) => {
                   }}
                 >
                   Yes &nbsp;
-                </span>({review.helpfulness}) 
+                </span>({review.helpfulness})
                 <span>
                  &nbsp;|&nbsp; Report <i className="fa fa-flag" style={{"color":"deeppink"}}></i>
                 </span>
@@ -79,4 +79,3 @@ const SingleReview = ({ reviews }) => {
 };
 
 export default SingleReview;
- 

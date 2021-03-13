@@ -4,7 +4,7 @@ var SizeSelector = (props) => {
   //returns a drop down form of available sizes
   //expects props of available sizes array and onchange function
   let listOptions = props.sizes.map((item) => {
-    return <option value={item}>{item}</option>
+    return <option key={item} value={item}>{item}</option>
   });
   return (
     <select style={{height: '30px', width: '125px', margin: '5px'}}id="size" name="size" onChange={props.change}>

@@ -10,7 +10,7 @@ var QuantitySelector = (props) => {
     var quantities = _.range(1, props.quantityAvailable + 1);
   }
   var listOptions = quantities.map((item) => {
-    return <option value={item}>{item}</option>
+    return <option key={item} value={item}>{item}</option>
   });
   return (
     <select style={{height: '30px', width: '40px', margin: '5px'}} id="quantity" name="quantity" onChange={props.change}>

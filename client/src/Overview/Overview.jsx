@@ -153,7 +153,7 @@ class Overview extends React.Component {
         </Description>
         <Features>
           {this.state.productInfo.features.map((feature) => {
-            return <li>{feature.value} {feature.feature}</li>;
+            return <li key={feature.value}>{feature.value} {feature.feature}</li>;
           })}
         </Features>
       </OverviewGrid>

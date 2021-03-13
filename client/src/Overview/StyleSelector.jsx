@@ -27,12 +27,7 @@ const StyleThumbnail = styled.img`
 //expects props: styles as an array of style objects, changeStyle as a function, selectedStyle as an object
 var StyleSelector  = (props) => {
   var thumbnails = props.styles.map((style, index) => {
-    var selected = false;
-    if (style.name === props.selectedStyle.name) {
-      selected = true;
-      //update style above to show a checkmark instead
-    }
-    return <StyleThumbnail selected={selected} src={style.photos[0].thumbnail_url} alt={style.name} onClick={() => {props.changeStyle(index)}}></StyleThumbnail>
+    return <StyleThumbnail key={style.name} selected={style.name === props.selectedStyle.name} src={style.photos[0].thumbnail_url} alt={style.name} onClick={() => {props.changeStyle(index)}}></StyleThumbnail>
   });
   return (
     <div>

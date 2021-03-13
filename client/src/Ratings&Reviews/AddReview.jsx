@@ -126,10 +126,10 @@ function AddReview({ metaData }) {
 								We'll never share your email with anyone else.
 							</Form.Text>
 						</Form.Group>
-						<label class="form-label" for="customFile">
+						<label className="form-label" for="customFile">
 							Include Pictures
 						</label>
-						<input type="file" class="form-control" id="customFile" multiple />
+						<input type="file" className="form-control" id="customFile" multiple />
 					</Form>
 				</Modal.Body>
 				<Modal.Footer>

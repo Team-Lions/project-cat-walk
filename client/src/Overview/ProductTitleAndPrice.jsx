@@ -60,7 +60,7 @@ var ProductTitleAndPrice = (props) => {
           <A id="ratingsLink" href="#RatingsAndReviews">Read all reviews</A>
         </RatingData>
         <Shoppingcart>
-          <i class="fas fa-shopping-cart fa-lg" style={{"gridColumn": 1, "alignSelf": "center"}}></i>
+          <i className="fas fa-shopping-cart fa-lg" style={{"gridColumn": 1, "alignSelf": "center"}}></i>
           <Num>{props.cartCount}</Num>
         </Shoppingcart>
       </TopLineContainer>
