@@ -9,7 +9,7 @@ const StarRating = ({ rating, setRating }) => {
 
 				return (
 					<>
-						<label>
+						<label key={ratingVal}>
 							<input
 								type="radio"
 								name="rating"

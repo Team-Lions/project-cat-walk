@@ -6,7 +6,7 @@ import StarRating from './StarRating.jsx';
 import CharacteristicsBreakDown from './CharacteristicsBreakdown.jsx';
 import { submitReview } from './PostReq.js';
 
-function AddReview({ metaData }) {
+function AddReview({ metaData, renderAddReview }) {
 	const [show, setShow] = useState(false);
 	const [rating, setRating] = useState(null);
 	const [recommended, setRecommended] = useState(null);
@@ -42,7 +42,7 @@ function AddReview({ metaData }) {
 				<Modal.Header closeButton>
 					<Modal.Title>Write Your Review</Modal.Title>
 				</Modal.Header>
-				<p>&nbsp;&nbsp;&nbsp;About the "product name here"</p>
+				<p>&nbsp;&nbsp;&nbsp;About the product</p>
 				<Modal.Body>
 					<Form>
 						<Form.Group>
@@ -54,7 +54,7 @@ function AddReview({ metaData }) {
 						<Form.Group>
 							<Form.Label>Do you recommend this product?</Form.Label>
 							<Form.Check
-								value="true"
+								value={true}
 								type="radio"
 								aria-label="radio 1"
 								label="Yes"
@@ -64,7 +64,7 @@ function AddReview({ metaData }) {
 								}}
 							/>
 							<Form.Check
-								value="false"
+								value={false}
 								type="radio"
 								aria-label="radio 2"
 								label="No"
@@ -142,6 +142,7 @@ function AddReview({ metaData }) {
 						onClick={() => {
 							handleSubmit();
 							handleClose();
+							renderAddReview();
 						}}
 					>
 						Add Review

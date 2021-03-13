@@ -1,6 +1,9 @@
 import React from "react";
 import Question from './Question.jsx';
 import Button from 'react-bootstrap/Button';
+import AddQ from './AddQ';
+import axios from 'axios';
+import token from '../../../public/token.js';
 
 
 class QnAList extends React.Component {
@@ -17,10 +20,31 @@ class QnAList extends React.Component {
     this.setState({isLoading: false})
   }
 
+  sendQuestion(e, modalData) {
+    e.preventDefault();
+    console.log(modalData);
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions',
+    modalData,
+    {
+      headers: {
+        "Authorization": token
+      }
+    }
+    )
+    .then((results) => {
+      console.log(results);
+    })
+    .catch((err) => {
+      console.log('error', err.response.data)
+    })
+  }
+
   render() {
     const {data} = this.props
+    {console.log(this.props)}
     return (
       <div>
+        <AddQ question={this.props.question} productID={this.props.productID} sendQuestion={this.sendQuestion}/>
         {this.state.isLoading ? <div>isLoading</div> : data.map((question) => {
           return (
           <Question productID={this.props.productID} question={question} answers={Object.values(question.answers)} id={this.props.id} loadMoreAnswers={this.loadMoreAnswers} show={this.state.show}/>
