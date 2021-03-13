@@ -1,11 +1,24 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
+
+const Link = styled.a`
+  color: deepskyblue;
+  padding-right: 10px;
+  :hover {
+    cursor: pointer;
+    color: deeppink;
+  }
+`;
 
 var SocialMediaButtons = (props) => (
   <div className="SocialMediaButtons">
+    <p></p>
     Share this item!
-    <a href="https://facebook.com">facebook</a>
-    <a href="https://twitter.com">Twitter</a>
-    <a href="https://pinterest.com">Pinterest</a>
+    <div>
+      <Link href="https://facebook.com"><i class="fab fa-facebook-square fa-2x"></i></Link>
+      <Link href="https://twitter.com"><i class="fab fa-twitter-square fa-2x"></i></Link>
+      <Link href="https://pinterest.com"><i class="fab fa-pinterest-square fa-2x"></i></Link>
+    </div>
   </div>
 );
 

@@ -7,16 +7,30 @@ select:hover {
 	cursor: pointer;
 }
 
+/* Header Start */
+
 header {
 	margin-left: 5%;
 	margin-right: 5%;
 	height: 135px;
 	background-color: black;
 	border-bottom: 3px solid deepskyblue;
+	position: relative;
+	padding-top: 2px;
 }
 
 header:hover {
 	border-bottom: 3px solid deeppink;
+}
+
+#banner {
+	padding-top: 5px;
+	margin-left: 5%;
+	margin-right: 5%;
+	color: deeppink;
+	background-color: black;
+	font-size: 15px;
+	text-align: center;
 }
 
 #page-title {
@@ -29,6 +43,68 @@ header:hover {
 	border-radius: 100%;
 }
 
+/* Header End */
+#mode {
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	bottom: 55px;
+	right: 0px;
+}
+.material-icons {
+	font-size: 32px;
+	transform: rotate(180deg)
+}
+
+#NavBar {
+	position: absolute;
+	left: 17%;
+	bottom: 5px;
+}
+ul {
+	list-style-type: none;
+}
+.nav-li {
+	float: left;
+	padding: 50px;
+	text-align: center;
+	font-size: 18px;
+}
+.nav-li:hover {
+	font-style: italic;
+	color: deeppink;
+	cursor: pointer;
+}
+#thanos {
+	color: black;
+}
+
+#search {
+	position: absolute;
+	right: 5px;
+	bottom: 10px;
+	border: transparent
+}
+#form {
+	border-bottom: 2px solid white;
+}
+#input {
+	background-color: transparent;
+	color: white;
+	border: transparent;
+	font-style: italic;
+}
+#input:hover {
+	color:deeppink;
+}
+#form:hover {
+	border-bottom: 2px solid deeppink;
+}
+#thanos:hover {
+	color: deeppink;
+}
+
+
 body {
 	padding-left: 2px;
 	padding-right: 2px;
@@ -36,6 +112,46 @@ body {
 	color: white;
 	font-family: 'Poppins', sans-serif;
 }
+
+.light-mode {
+  background-color: white;
+  color: black;
+}
+.light-mode header {
+	background-color: white;
+}
+.light-mode footer {
+	background-color: white;
+}
+.light-mode #form {
+	border-bottom: 2px solid black;
+}
+.light-mode #input {
+	background-color: transparent;
+	color: black;
+	border: transparent;
+}
+.light-mode footer {
+	color: black;
+}
+.light-mode #thanos {
+	color: white;
+}
+.light-mode #thanos:hover {
+	color:deeppink
+}
+.light-mode .zquestions {
+	background-color: white;
+}
+.light-mode .card {
+	background: whitesmoke;
+}
+.light-mode #banner {
+	background-color: white;
+}
+
+
+/*Related Items and Fit Start*/
 
 #carousel-item {
 	padding-left: 75px;
@@ -48,14 +164,25 @@ body {
 	width: auto;
 }
 
+.card {
+	width: 16rem;
+	cursor: pointer;
+	margin-bottom: 30px;
+	background: rgb(29, 18, 47);
+}
+
+.card:hover {
+	box-shadow: 15px 15px 20px indigo;
+}
+
 #related-items {
-	height: 400px;
-	margin-left: 17%;
-	margin-right: 17%;
+	height: 430px;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 #related-title {
-	border-bottom: 1px solid white;
+	border-bottom: 2px solid deepskyblue;
 }
 
 #fav-button {
@@ -65,6 +192,7 @@ body {
 	position: absolute;
 	font-size: 30px;
 	border: none;
+	right: 0px
 }
 
 #fav-button:hover {
@@ -72,23 +200,41 @@ body {
 }
 
 #your-fit {
-	height: 400px;
-	margin-left: 17%;
-	margin-right: 17%;
+	height: 450px;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 #yourfit-title {
-	border-bottom: 1px solid white;
+	border-bottom: 2px solid deeppink;
 }
 
-footer {
-	margin-left: 12%;
-	margin-right: 12%;
-	height: 160px;
-	color: lightcyan;
-	background-color: black;
-	text-align: center;
+#add-button {
+	margin-left: 222px;
+	width: 32px;
+	position: absolute;
+	background-color: transparent;
+	color: deeppink;
+	border: 3px solid deeppink;
+	border-radius: 10%;
 }
+
+#add-button:hover {
+	color: deepskyblue;
+	border: 3px solid deepskyblue;
+}
+
+.modal {
+	color: white;
+	font-family: 'Poppins', sans-serif;
+}
+.modal-backdrop {
+	background-color: darkslateblue;
+}
+.modal .modal-content {
+	background-color: black;
+}
+/* RelatedItems and Fit End*/
 
 /* Ratings CSS Start */
 
@@ -96,7 +242,9 @@ footer {
 	display: grid;
 	grid-template-columns: 0.5fr 1.5fr;
 	gap: 0px 0px;
-	grid-template-areas: 'sidebar mainReviews';
+	grid-template-areas:
+		'sidebar mainReviews'
+		'. reviewButtons';
 	margin: 15px 0;
 	border: 1px solid black;
 	padding: 15px;
@@ -105,7 +253,7 @@ footer {
 .sidebar {
 	grid-area: sidebar;
 	gap: 20px 20px;
-	height: 700px;
+	height: 800px;
 	margin: 0 20px;
 }
 
@@ -119,11 +267,12 @@ footer {
 	grid-area: mainReviews;
 	padding-left: 20px;
 	padding-right: 20px;
-	height: 600px;
+	height: 800px;
 	overflow: auto;
 }
 
 .reviewButtons {
+	grid-area: reviewButtons;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -164,6 +313,10 @@ footer {
 .star-list {
 	padding-left: 18%;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4dd140ad3c5b1adc050a7fc1537fa39b2d75ef96
 .sortSelect {
 	font-style: bold;
 	border: none;
@@ -184,6 +337,7 @@ footer {
 	background-color: grey;
 }
 
+<<<<<<< HEAD
 #your-fit {
 	height: 420px;
 	margin-left: 10%;
@@ -203,10 +357,23 @@ footer {
 	background-color: black;
 	text-align: center;
 }
+=======
+footer {
+	border-top: 2px solid deepskyblue;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 165px;
+	color: white;
+	background-color: black;
+	text-align: center;
+}
+
+>>>>>>> 4dd140ad3c5b1adc050a7fc1537fa39b2d75ef96
 .sizeSlider {
 	display: flex;
 	justify-content: space-between;
 	font-size: 14px;
+	padding-bottom: 10px;
 }
 
 .modalImg {
@@ -218,7 +385,60 @@ footer {
 .modalReview {
 	display: flex;
 }
+
+.ReviewBTN {
+	background-color: black;
+	border: 1px solid white;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.progress-bar {
+	background-color: deeppink;
+}
+
+.tAddStar {
+	cursor: pointer;
+	transition: color 200ms;
+}
+
+.characteristicsForm {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 10px;
+}
+
+.RatingSummary {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.characteristics {
+	padding: 0px 5px 0px 5px;
+	margin-top: 5px;
+}
 /* Ratings CSS End */
+
+/* Footer */
+footer {
+	margin-top: 5px;
+  border-top: 2px solid deepskyblue;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 165px;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
 
 .zquestions {
 	overflow-y: scroll;
@@ -231,4 +451,12 @@ footer {
 
 .zquestions:hover {
 	background-color: rgb(29, 18, 47);
+}
+
+.loading {
+	padding-top: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }

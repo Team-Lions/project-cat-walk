@@ -30,7 +30,16 @@ const SingleReview = ({ reviews }) => {
               <div>{review.body}</div>
               <br />
             </div>
-            
+            {(review.recommend) ? ''
+            : 
+            <div className='recommend'>
+              <span>
+                <i class="fa fa-check" style={{"color":"deeppink"}}></i>
+              </span> 
+              <strong >&nbsp; I recommend this product</strong>
+            </div>
+            }
+            <br />
             {(review.response === '' || review.response === null) ? ''
             : 
             <div className='response'>
@@ -38,6 +47,7 @@ const SingleReview = ({ reviews }) => {
             </div>
             }
             <br />
+            
             <div className='helpfulAndReport'>
                 Helpful? &nbsp;
                 <span
@@ -48,7 +58,7 @@ const SingleReview = ({ reviews }) => {
                   Yes &nbsp;
                 </span>({review.helpfulness}) 
                 <span>
-                 &nbsp;|&nbsp; Report <i className="fa fa-flag"></i>
+                 &nbsp;|&nbsp; Report <i className="fa fa-flag" style={{"color":"deeppink"}}></i>
                 </span>
               </div>
               <div className="modalReview">
