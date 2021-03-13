@@ -9,6 +9,42 @@ import Col from 'react-bootstrap/Col';
 // import ModalBody from 'react-bootstrap/ModalBody';
 
 const ModalBox = (props) => {
+  let currentProductFeatures = props.currentProduct;
+  let currentChecks = currentProductFeatures.length;
+  let comparisonProductFeatures = props.comparisonProduct;
+  let comparisonChecks = comparisonProductFeatures.length;
+  let divMaker = currentProductFeatures.map((div) => (
+      <div>
+        <div id='to-be-empty'>
+          {'ignore me'}
+        </div>
+      </div>
+      ))
+
+  let data = currentProductFeatures.concat(comparisonProductFeatures).map((feature) => (
+    <div>
+      {`${feature.value} ${feature.feature}`}
+    </div>
+  ))
+  let formattedFeatures = (
+    <div>
+      {data}
+    </div>
+  )
+
+  let check = <span id='check-mark'>&#10003;</span>;
+
+  let checkL = currentProductFeatures.map((feat) => (
+    <div>
+      {check}
+    </div>
+  ))
+  let checkR = comparisonProductFeatures.map((feat)=>(
+    <div>
+      {check}
+    </div>
+  ))
+
   return (
     <div>
       <Modal
@@ -16,32 +52,34 @@ const ModalBox = (props) => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        key={props.id}
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton >
           <Modal.Title id="contained-modal-title-vcenter">
             Product Comparison
           </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+        </Modal.Header >
+        <Modal.Body key={props.id}>
           <Container>
             <Row>
               <Col xs={12} md={8}>
-                Current Product
+                {props.currentProductName}
               </Col>
               <Col xs={6} md={4}>
-                Compared Product
+                {props.comparisonProductName}
               </Col>
             </Row>
 
             <Row>
               <Col xs={6} md={4}>
-              <span>&#10003;</span>
+              {checkL}
               </Col>
               <Col xs={6} md={4}>
-                Awesome
+                {data}
               </Col>
               <Col xs={6} md={4}>
-              <span>&#10003;</span>
+              {divMaker}
+              {checkR}
               </Col>
             </Row>
           </Container>
