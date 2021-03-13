@@ -40,20 +40,41 @@ export const submitReview = (data) => {
 		});
 };
 
-export const submitHelp = (count, reviewId) => {
-	let data = count + 1;
-	axios({
-		method: 'put',
-		url: `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${reviewId}/helpful`,
-		params: data,
-		headers: {
-			Authorization: token,
-		},
-	})
-		.then((res) => {
-			res.send(201);
+export const submitHelp = (count, reviewId, help) => {
+	console.log(help);
+	if (help) {
+		axios({
+			method: 'put',
+			url: `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${reviewId}/helpful`,
+			params: count + 1,
+			headers: {
+				Authorization: token,
+			},
 		})
-		.catch((error) => {
-			console.log('ERRRR:: ', error.response.data);
-		});
+			.then((res) => {
+				res.send(201);
+			})
+			.catch((error) => {
+				console.log('ERRRR:: ', error.response.data);
+			});
+	} else {
+		axios({
+			method: 'put',
+			url: `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${reviewId}/helpful`,
+			params: count - 1,
+			headers: {
+				Authorization: token,
+			},
+		})
+			.then((res) => {
+				res.send(201);
+			})
+			.catch((error) => {
+				console.log('ERRRR:: ', error.response.data);
+			});
+	}
+};
+
+export const reportReview = () => {
+	console.log('REPORTED');
 };

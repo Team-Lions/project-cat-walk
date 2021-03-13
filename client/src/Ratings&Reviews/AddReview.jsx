@@ -47,12 +47,12 @@ function AddReview({ metaData, renderAddReview }) {
 					<Form>
 						<Form.Group>
 							<Form.Label>
-								Overall Rating &nbsp;&nbsp;
+								Overall Rating* &nbsp;&nbsp;
 								<StarRating rating={rating} setRating={setRating} />
 							</Form.Label>
 						</Form.Group>
 						<Form.Group>
-							<Form.Label>Do you recommend this product?</Form.Label>
+							<Form.Label>Do you recommend this product?*</Form.Label>
 							<Form.Check
 								value={true}
 								type="radio"
@@ -75,7 +75,7 @@ function AddReview({ metaData, renderAddReview }) {
 							/>
 						</Form.Group>
 						<Form.Group>
-							<Form.Label>Characteristics</Form.Label>
+							<Form.Label>Characteristics*</Form.Label>
 							<CharacteristicsBreakDown
 								metaData={metaData}
 								setCharacteristics={setCharacteristics}
@@ -93,7 +93,7 @@ function AddReview({ metaData, renderAddReview }) {
 							/>
 						</Form.Group>
 						<Form.Group>
-							<Form.Label>Review Body</Form.Label>
+							<Form.Label>Review Body*</Form.Label>
 							<Form.Control
 								as="textarea"
 								rows={3}
@@ -104,7 +104,7 @@ function AddReview({ metaData, renderAddReview }) {
 							/>
 						</Form.Group>
 						<Form.Group>
-							<Form.Label>Name</Form.Label>
+							<Form.Label>Name*</Form.Label>
 							<Form.Control
 								type="text"
 								placeholder="Enter Name"
@@ -114,9 +114,10 @@ function AddReview({ metaData, renderAddReview }) {
 							/>
 						</Form.Group>
 						<Form.Group controlId="formBasicEmail">
-							<Form.Label>Email</Form.Label>
+							<Form.Label>Email*</Form.Label>
 							<Form.Control
-								type="email"
+								required
+								type="text"
 								placeholder="Enter email"
 								onChange={(e) => {
 									setEmail(e.target.value);
@@ -125,6 +126,9 @@ function AddReview({ metaData, renderAddReview }) {
 							<Form.Text className="text-muted">
 								We'll never share your email with anyone else.
 							</Form.Text>
+							<Form.Control.Feedback type="invalid">
+								Please provide a valid email.
+							</Form.Control.Feedback>
 						</Form.Group>
 						<label class="form-label" for="customFile">
 							Include Pictures

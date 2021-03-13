@@ -13,7 +13,7 @@ const RatingBreakDown = ({ metaData, starRating }) => {
       <b style={{"fontSize":"25px"}}>Ratings & Reviews</b>
       <div className='RatingSummary'>
         <div className='overallRating'>{overallRating}</div>
-        <div className='stars'>
+        <div className='tstars'>
           <StarRatings
             rating={overallRating}
             starRatedColor='deeppink'
@@ -28,14 +28,12 @@ const RatingBreakDown = ({ metaData, starRating }) => {
         {recommended}% of reviews recommend this product
       </div>
       <div className="Progress">
-        <br/>
         5 stars <ProgressBar now={metaData.ratings['5']} max={10} />
         4 stars <ProgressBar now={metaData.ratings['4']} max={10}/>
         3 stars <ProgressBar now={metaData.ratings['3']} max={10}/>
         2 stars <ProgressBar now={metaData.ratings['2']} max={10}/>
         1 stars <ProgressBar now={metaData.ratings['1']} max={10}/>
       </div>
-      <br/>
       <ProductBreakDown metaData={metaData}/>
     </div>
   );

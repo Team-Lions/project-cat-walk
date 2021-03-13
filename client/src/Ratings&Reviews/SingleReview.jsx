@@ -30,8 +30,18 @@ const SingleReview = ({ reviews }) => {
 						</div>
 						<br />
 						<div className="ReviewText">
-							<strong>{review.summary}</strong>
-							<div>{review.body}</div>
+							<div style={{ fontSize: '20px', fontWeight: '700' }}>
+								{review.summary}
+							</div>
+							<div
+								style={{
+									fontSize: '14px',
+									fontWeight: '100',
+									fontStyle: 'italic',
+								}}
+							>
+								{review.body}
+							</div>
 							<br />
 						</div>
 						{review.recommend ? (
@@ -49,24 +59,39 @@ const SingleReview = ({ reviews }) => {
 							''
 						) : (
 							<div className="response">
-								<strong>Response: {review.response}</strong>
+								<strong>Response from seller: {review.response}</strong>
 							</div>
 						)}
 						<br />
 
 						<div className="helpfulAndReport">
 							Helpful? &nbsp;
-							<span
+							{help
+								? `(${review.helpfulness + 1})`
+								: `(${review.helpfulness - 1})`}{' '}
+							&nbsp;&nbsp;
+							<a
 								onClick={(e) => {
 									let helpCount = review.helpfulness;
 									let reviewId = review.review_id;
-									submitHelp(helpCount, reviewId);
+									let help = true;
+									submitHelp(helpCount, reviewId, help);
 									setHelp(true);
 								}}
 							>
 								Yes &nbsp;
-							</span>
-							{help ? review.helpfulness + 1 : review.helpfulness}
+							</a>
+							<a
+								onClick={(e) => {
+									let helpCount = review.helpfulness;
+									let reviewId = review.review_id;
+									let help = false;
+									submitHelp(helpCount, reviewId, help);
+									setHelp(false);
+								}}
+							>
+								No &nbsp;
+							</a>
 							<span>
 								&nbsp;|&nbsp; Report{' '}
 								<i className="fa fa-flag" style={{ color: 'deeppink' }}></i>

@@ -32,7 +32,7 @@ class Ratings extends React.Component {
 				},
 				params: {
 					product_id: productId,
-					count: 100
+					count: 100,
 				},
 			}
 		);
@@ -92,7 +92,9 @@ class Ratings extends React.Component {
 							resultReview={this.state.resultReview}
 							sortReviews={this.sortReviews}
 						/>
-						<SingleReview reviews={this.state.resultReview} />
+						<div className="reviewList">
+							<SingleReview reviews={this.state.resultReview} />
+						</div>
 					</div>
 					<div className="reviewButtons">
 						{this.state.resultReview.length ===
