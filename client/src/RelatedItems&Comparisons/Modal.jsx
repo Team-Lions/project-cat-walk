@@ -32,7 +32,7 @@ const ModalBox = (props) => {
     </div>
   )
 
-  let check = <span>&#10003;</span>;
+  let check = <span id='check-mark'>&#10003;</span>;
 
   let checkL = currentProductFeatures.map((feat) => (
     <div>

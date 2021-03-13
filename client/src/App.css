@@ -242,6 +242,9 @@ body {
 #to-be-empty {
 	color: transparent;
 }
+#check-mark {
+	color: deeppink
+}
 /* RelatedItems and Fit End*/
 
 /* Ratings CSS Start */
