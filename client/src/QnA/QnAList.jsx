@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import AddQ from './AddQ';
 import axios from 'axios';
 import token from '../../../public/token.js';
-import SearchBar from './SearchBar';
+
 
 
 class QnAList extends React.Component {
@@ -13,12 +13,17 @@ class QnAList extends React.Component {
 
     this.state = {
       isLoading: true,
-      answers: []
+      answers: [],
+      data: this.props
     }
+
+    this.sendQuestion = this.sendQuestion.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
-    this.setState({isLoading: false})
+    var data = this.props
+    this.setState({isLoading: false, data: data})
   }
 
   sendQuestion(e, modalData) {
@@ -40,12 +45,17 @@ class QnAList extends React.Component {
     })
   }
 
+  handleSearch() {
+    console.log('changed');
+  }
+
+
   render() {
-    const {data} = this.props
-    {console.log(this.props)}
+    const {data} = this.props;
+    {console.log(this.state.data)}
     return (
       <div>
-        <SearchBar/>
+        <input type="text" onChange={this.handleSearch}/>
         <AddQ question={this.props.question} productID={this.props.productID} sendQuestion={this.sendQuestion}/>
         {this.state.isLoading ? <div>isLoading</div> : data.map((question) => {
           return (

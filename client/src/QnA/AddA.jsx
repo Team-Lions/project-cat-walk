@@ -26,7 +26,7 @@ function AddA(props) {
 
 
     const mystyle = {
-      padding: "10px",
+      padding: "20",
       backgroundColor: "rgb(29, 18, 47)",
       border: "1px solid deepPink"
     }
