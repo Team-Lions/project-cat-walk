@@ -3,10 +3,12 @@ import StarRatings from 'react-star-ratings';
 import moment from 'moment';
 import 'font-awesome/css/font-awesome.min.css';
 import ModalImage from 'react-modal-image';
-import { submitHelp } from './PostReq';
+import { submitHelp, reportReview } from './PostReq';
 
-const SingleReview = ({ reviews }) => {
+const SingleReview = ({ reviews, renderAddReview }) => {
 	const [help, setHelp] = useState(false);
+	const [report, setReport] = useState(false);
+	const [count, setCount] = useState(0);
 
 	return (
 		<div>
@@ -66,17 +68,20 @@ const SingleReview = ({ reviews }) => {
 
 						<div className="helpfulAndReport">
 							Helpful? &nbsp;
-							{help
+							{count > 0
 								? `(${review.helpfulness + 1})`
-								: `(${review.helpfulness - 1})`}{' '}
+								: count < 0
+								? `(${review.helpfulness - 1})`
+								: `(${review.helpfulness})`}{' '}
 							&nbsp;&nbsp;
 							<a
 								onClick={(e) => {
 									let helpCount = review.helpfulness;
 									let reviewId = review.review_id;
-									let help = true;
 									submitHelp(helpCount, reviewId, help);
 									setHelp(true);
+
+									setCount(count + 1);
 								}}
 							>
 								Yes &nbsp;
@@ -85,17 +90,27 @@ const SingleReview = ({ reviews }) => {
 								onClick={(e) => {
 									let helpCount = review.helpfulness;
 									let reviewId = review.review_id;
-									let help = false;
 									submitHelp(helpCount, reviewId, help);
 									setHelp(false);
+
+									setCount(count - 1);
 								}}
 							>
 								No &nbsp;
 							</a>
-							<span>
-								&nbsp;|&nbsp; Report{' '}
-								<i className="fa fa-flag" style={{ color: 'deeppink' }}></i>
-							</span>
+							<a
+								onClick={(e) => {
+									let reviewId = review.review_id;
+									reportReview(reviewId);
+									setReport(true);
+									renderAddReview();
+								}}
+							>
+								<span>
+									&nbsp;|&nbsp; Report{' '}
+									<i className="fa fa-flag" style={{ color: 'deeppink' }}></i>
+								</span>
+							</a>
 						</div>
 						<div className="modalReview">
 							{review.photos.length > 1

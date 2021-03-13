@@ -93,7 +93,7 @@ class Ratings extends React.Component {
 							sortReviews={this.sortReviews}
 						/>
 						<div className="reviewList">
-							<SingleReview reviews={this.state.resultReview} />
+							<SingleReview reviews={this.state.resultReview} renderAddReview={this.renderAddReview}/>
 						</div>
 					</div>
 					<div className="reviewButtons">

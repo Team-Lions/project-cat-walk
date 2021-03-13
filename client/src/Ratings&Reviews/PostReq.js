@@ -75,6 +75,19 @@ export const submitHelp = (count, reviewId, help) => {
 	}
 };
 
-export const reportReview = () => {
-	console.log('REPORTED');
+export const reportReview = (reviewId) => {
+	console.log(reviewId);
+	axios({
+		method: 'put',
+		url: `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${reviewId}/report`,
+		headers: {
+			Authorization: token,
+		},
+	})
+		.then((res) => {
+			res.send(201);
+		})
+		.catch((error) => {
+			console.log('ERRRR:: ', error.response.data);
+		});
 };

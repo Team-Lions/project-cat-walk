@@ -30,6 +30,14 @@ function AddReview({ metaData, renderAddReview }) {
 			email,
 		};
 		submitReview(reviewData);
+		renderAddReview();
+		setRating(null);
+		setRecommended(null);
+		setCharacteristics([]);
+		setSummary('');
+		setBody('');
+		setName('');
+		setEmail('');
 	};
 
 	return (
