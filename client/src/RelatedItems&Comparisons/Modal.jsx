@@ -14,7 +14,7 @@ const ModalBox = (props) => {
   let comparisonProductFeatures = props.comparisonProduct;
   let comparisonChecks = comparisonProductFeatures.length;
   let divMaker = currentProductFeatures.map((div) => (
-      <div>
+      <div key={Math.random()}>
         <div id='to-be-empty'>
           {'ignore me'}
         </div>
@@ -22,7 +22,7 @@ const ModalBox = (props) => {
       ))
 
   let data = currentProductFeatures.concat(comparisonProductFeatures).map((feature) => (
-    <div>
+    <div key={feature.value}>
       {`${feature.value} ${feature.feature}`}
     </div>
   ))
@@ -35,12 +35,12 @@ const ModalBox = (props) => {
   let check = <span id='check-mark'>&#10003;</span>;
 
   let checkL = currentProductFeatures.map((feat) => (
-    <div>
+    <div key={feat.value}>
       {check}
     </div>
   ))
   let checkR = comparisonProductFeatures.map((feat)=>(
-    <div>
+    <div key={feat.feature}>
       {check}
     </div>
   ))
@@ -52,14 +52,14 @@ const ModalBox = (props) => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        key={props.id}
+
       >
         <Modal.Header closeButton >
           <Modal.Title id="contained-modal-title-vcenter">
             Product Comparison
           </Modal.Title>
         </Modal.Header >
-        <Modal.Body key={props.id}>
+        <Modal.Body >
           <Container>
             <Row>
               <Col xs={12} md={8}>

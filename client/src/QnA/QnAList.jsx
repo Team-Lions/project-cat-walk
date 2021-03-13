@@ -57,7 +57,7 @@ class QnAList extends React.Component {
         <AddQ question={this.props.question} productID={this.props.productID} sendQuestion={this.sendQuestion}/>
         {this.state.isLoading ? <div>isLoading</div> : data.map((question) => {
           return (
-          <Question productID={this.props.productID} question={question} answers={Object.values(question.answers)} id={this.props.id} loadMoreAnswers={this.loadMoreAnswers} show={this.state.show}/>
+          <Question key={question.question_id} productID={this.props.productID} question={question} answers={Object.values(question.answers)} id={this.props.id} loadMoreAnswers={this.loadMoreAnswers} show={this.state.show}/>
           )
         })}
         <Button size="lg" onClick={this.props.loadMore}>

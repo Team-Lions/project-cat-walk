@@ -66,7 +66,7 @@ class Answers extends React.Component {
       <div>
         {this.props.answers.length > 0 ? this.props.answers.map((answer) => {
           return (
-            <div>
+            <div key={answer.id}>
               <h2 style={{fontWeight: "Bold", color:"deepPink"}}>A:</h2>
               <p style={{fontStyle: "italic", color:"deepPink"}}>{answer.body}</p>
               <h2 style={{fontWeight: "Bold", color:"deepPink"}}>Answerer</h2>

@@ -50,7 +50,7 @@ const SingleReview = ({ reviews, renderAddReview }) => {
 						{review.recommend ? (
 							<div className="recommend">
 								<span>
-									<i class="fa fa-check" style={{ color: 'deeppink' }}></i>
+									<i className="fa fa-check" style={{ color: 'deeppink' }}></i>
 								</span>
 								<strong>&nbsp; I recommend this product</strong>
 							</div>

@@ -8,8 +8,8 @@ const StarRating = ({ rating, setRating }) => {
 				const ratingVal = i + 1;
 
 				return (
-					<>
-						<label key={ratingVal}>
+					<span key={ratingVal}>
+						<label>
 							<input
 								type="radio"
 								name="rating"
@@ -26,7 +26,7 @@ const StarRating = ({ rating, setRating }) => {
 								className="tAddStar"
 							/>
 						</label>
-					</>
+					</span>
 				);
 			})}
 			{rating === 5 ? (
