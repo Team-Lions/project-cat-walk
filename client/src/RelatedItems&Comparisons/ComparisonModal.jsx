@@ -1,7 +1,7 @@
 import React from 'react';
 import ModalBox from './Modal.jsx';
 
-const ComparisonModal = ({currentProduct, comparisonProduct, currentProductName, comparisonProductName}) => {
+const ComparisonModal = ({currentProduct, comparisonProduct, currentProductName, comparisonProductName, id}) => {
 
   const [modalVisible, setModalVisible] = React.useState(false);
 
@@ -13,7 +13,7 @@ const ComparisonModal = ({currentProduct, comparisonProduct, currentProductName,
   return (
     <div>
       <button onClick={handleClick} id="fav-button">✰</button>
-      <ModalBox show={modalVisible} onHide={() => {setModalVisible(false)}} currentProduct={currentProduct} comparisonProduct={comparisonProduct} currentProductName={currentProductName} comparisonProductName={comparisonProductName}/>
+      <ModalBox show={modalVisible} onHide={() => {setModalVisible(false)}} currentProduct={currentProduct} comparisonProduct={comparisonProduct} currentProductName={currentProductName} comparisonProductName={comparisonProductName} id={id} key={id}/>
     </div>
   )
 };

@@ -143,7 +143,7 @@ class RelatedItems extends React.Component {
         {this.state.isLoaded ?
         <Carousel responsive={this.responsive}>
           {this.state.relatedProductsDetails.map((itemDetails) => (
-            <CardFormatter productDetails={itemDetails} handleClick={this.handleCardClick} key={itemDetails}/>
+            <CardFormatter productDetails={itemDetails} handleClick={this.handleCardClick} key={itemDetails[0].data.name}/>
           ))}
         </Carousel> :
         'Loading...'}

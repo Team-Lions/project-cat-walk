@@ -123,7 +123,7 @@ class YourFit extends React.Component {
           <Carousel responsive={this.responsive}>
             {this.state.favorites ?
             this.state.favorites.map((itemDetails) => (
-              <YourOutfitCardFormatter productDetails={itemDetails} handleClick={this.handleRemoveCard}/>
+              <YourOutfitCardFormatter productDetails={itemDetails} handleClick={this.handleRemoveCard} key={itemDetails[0].data.name}/>
             )):
               ''
             }

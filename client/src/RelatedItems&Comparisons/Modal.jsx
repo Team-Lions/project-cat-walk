@@ -52,13 +52,14 @@ const ModalBox = (props) => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        key={props.id}
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton >
           <Modal.Title id="contained-modal-title-vcenter">
             Product Comparison
           </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+        </Modal.Header >
+        <Modal.Body key={props.id}>
           <Container>
             <Row>
               <Col xs={12} md={8}>
