@@ -27,7 +27,8 @@ class QnA extends Component {
         'Authorization': token
       },
       params: {
-        product_id: id
+        product_id: id,
+        count: 100
       }
     })
     .then((questions) => {
