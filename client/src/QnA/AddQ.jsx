@@ -34,14 +34,14 @@ function AddQ(props) {
             Add Question +
         </Button>
 
-        <Modal show={show} onHide={handleClose} style={{color:"black"}}>
+        <Modal show={show} onHide={handleClose} style={{color:"rgb(29, 18, 47)"}}>
           <Modal.Header closeButton>
             <Modal.Title >{props.product}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
                 <Form.Group controlId="formBasicName">
-                    <Form.Label>Your nickname</Form.Label>
+                    <Form.Label style={{color:"deeppink"}}>Your nickname</Form.Label>
                     <Form.Control type="text" placeholder="Enter nickname"
                     onChange={(e) => {
                       setName(e.target.value)}}/>
@@ -49,20 +49,20 @@ function AddQ(props) {
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Your email</Form.Label>
+                    <Form.Label style={{color:"deeppink"}}>Your email</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" onChange={(e) => {
                       setEmail(e.target.value)}}/>
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Your Question</Form.Label>
+                    <Form.Label style={{color:"deeppink"}}>Your Question</Form.Label>
                     <Form.Control type="text" placeholder="Question" onChange={(e) => {
                       setBody(e.target.value)}}/>
                 </Form.Group>
-                <label class="form-label" for="customFile">Default file input example</label>
+                <label class="form-label" for="customFile" style={{color:"deeppink"}}>Default file input example</label>
                 <input type="file" class="form-control" id="customFile" multiple/>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                <Button variant="primary" type="submit" style={mystyle} onClick={handleSubmit}>
                     Submit Your Question
                 </Button>
             </Form>
