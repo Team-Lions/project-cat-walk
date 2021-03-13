@@ -13,6 +13,9 @@ const CardFormatter = ({productDetails, handleClick}) => {
   let ratings = productDetails[2].data.ratings
   let numberOfStars;
 
+  let currentProductFeatures = productDetails[3].data.features;
+  let comparisonProductFeatures = productDetails[0].data.features;
+
   const starConverter = function(totalRatings) {
     if (!Object.keys(totalRatings).length) {
       return 0
@@ -33,8 +36,8 @@ const CardFormatter = ({productDetails, handleClick}) => {
 
   return (
     <div id='card'>
-      <Card className="rendered-cards" border="info" style={{ width: '16rem', height: '23rem'}}>
-        <ComparisonModal />
+      <Card className="rendered-cards" border="info" style={{ width: '16rem', height: '23rem'}} key={id}>
+        <ComparisonModal currentProduct={currentProductFeatures} currentProductName={productDetails[3].data.name} comparisonProduct={comparisonProductFeatures} comparisonProductName={name} id={id}/>
           <img className="carousel-img" src={image ? image : placeHolderImg} onClick={handleClick} id={id}></img>
           <Card.Body className="text-center" onClick={handleClick} id={id}>
             <Card.Subtitle className="mb-2 text-muted" onClick={handleClick} id={id}>
