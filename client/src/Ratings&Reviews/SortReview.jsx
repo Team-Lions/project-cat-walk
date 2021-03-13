@@ -20,7 +20,7 @@ const SortReview = ({ allReview, resultReview, sortReviews }) => {
 
     if (e.target.value === 'Relevence') {
       let relevent = allReview.results.sort((a,b) => {
-        return b.review_id / 1000 + b.helpfulness - (a.review_id / 1000 + a.helpfulness);
+        return (b.review_id / 1000 + b.helpfulness) - (a.review_id / 1000 + a.helpfulness);
       })
   
       sortReviews(relevent);

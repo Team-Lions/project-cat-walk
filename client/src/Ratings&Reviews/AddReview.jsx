@@ -6,7 +6,7 @@ import StarRating from './StarRating.jsx';
 import CharacteristicsBreakDown from './CharacteristicsBreakdown.jsx';
 import { submitReview } from './PostReq.js';
 
-function AddReview({ metaData }) {
+function AddReview({ metaData, renderAddReview }) {
 	const [show, setShow] = useState(false);
 	const [rating, setRating] = useState(null);
 	const [recommended, setRecommended] = useState(null);
@@ -142,6 +142,7 @@ function AddReview({ metaData }) {
 						onClick={() => {
 							handleSubmit();
 							handleClose();
+							renderAddReview();
 						}}
 					>
 						Add Review
