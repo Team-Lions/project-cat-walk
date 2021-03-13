@@ -318,7 +318,10 @@ body {
 .star-list {
 	padding-left: 18%;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4dd140ad3c5b1adc050a7fc1537fa39b2d75ef96
 .sortSelect {
 	font-style: bold;
 	border: none;
@@ -339,6 +342,27 @@ body {
 	background-color: grey;
 }
 
+<<<<<<< HEAD
+#your-fit {
+	height: 420px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#yourfit-title {
+	border-bottom: 2px solid deeppink;
+}
+
+footer {
+	border-top: 2px solid deepskyblue;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 165px;
+	color: white;
+	background-color: black;
+	text-align: center;
+}
+=======
 footer {
 	border-top: 2px solid deepskyblue;
 	margin-left: 5%;
@@ -349,6 +373,7 @@ footer {
 	text-align: center;
 }
 
+>>>>>>> 4dd140ad3c5b1adc050a7fc1537fa39b2d75ef96
 .sizeSlider {
 	display: flex;
 	justify-content: space-between;
