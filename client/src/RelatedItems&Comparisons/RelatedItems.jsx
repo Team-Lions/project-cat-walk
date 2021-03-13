@@ -124,9 +124,9 @@ class RelatedItems extends React.Component {
   render() {
     return (
       <div id="related-items">
-        <h4 id="related-title">
+        <h5 id="related-title">
           Related Items
-        </h4>
+        </h5>
         {this.state.isLoaded ?
         <Carousel responsive={this.responsive}>
           {this.state.relatedProductsDetails.map((itemDetails) => (

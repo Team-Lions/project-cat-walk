@@ -3,6 +3,9 @@ import Carousel from 'react-multi-carousel';
 import placeHolderImg from './content/placeholderimg.jpeg';
 import Card from 'react-bootstrap/Card';
 import ReactStarRating from "react-star-ratings-component";
+import axios from 'axios';
+import token from '../../../public/token.js';
+import CardFormatter from './CardFormatter.jsx';
 
 class YourFit extends React.Component {
   constructor(props) {
@@ -29,19 +32,74 @@ class YourFit extends React.Component {
         items: 1
       }
     }
+
+    this.addToFavorites = this.addToFavorites.bind(this);
   }
 
+  addToFavorites(e) {
+    e.preventDefault();
+    return Promise.all(this._getRelatedItemData(this.props.productId))
+      .then((productData) => {
+        this.setState({
+          favorites: [...this.state.favorites, ...[productData]]
+        })
+      })
+      .then(()=>{
+        console.log(this.state.favorites)
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  }
+
+  _getRelatedItemData(searchId) {
+    let getData = [this._getRelatedItemDetails(searchId), this._getRelatedItemImages(searchId), this._getRelatedItemReviews(searchId)];
+    return getData;
+  }
+
+  _getRelatedItemDetails(searchId) {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${searchId}`, {
+      headers: {
+        Authorization: token
+      },
+      params: {
+        id: searchId
+      }
+    })
+  }
+
+  _getRelatedItemImages(searchId) {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${searchId}/styles`, {
+      headers: {
+        Authorization: token
+      },
+      params: {
+        product_id: searchId
+      }
+    })
+  }
+
+  _getRelatedItemReviews(searchId) {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/meta`, {
+      headers: {
+        Authorization: token
+      },
+      params: {
+        product_id: searchId
+      }
+    })
+  }
 
   render() {
     return (
       <div id="your-fit">
-        <h4 id="yourfit-title">
+        <h5 id="yourfit-title">
           Your Outfit
-        </h4>
+        </h5>
         <div>
         <Carousel responsive={this.responsive}>
-          <Card border="dark" bg="dark" style={{ width: '16rem', height: '23rem'}}>
-            <button id='add-button'><span>&#43;</span></button>
+          <Card border="info" bg="whitesmoke" style={{ width: '16rem', height: '23rem'}}>
+            <button id='add-button' onClick={this.addToFavorites}><span>&#43;</span></button>
               <img className="carousel-img" src={placeHolderImg}></img>
               <Card.Body className="text-center">
                 <Card.Subtitle className="mb-2 text-muted">
@@ -62,6 +120,12 @@ class YourFit extends React.Component {
                 />
               </Card.Body>
           </Card>
+          {this.state.favorites ?
+          this.state.favorites.map((itemDetails) => (
+            <CardFormatter productDetails={itemDetails} handleClick={null}/>
+          )):
+            ''
+          }
         </Carousel>
         </div>
       </div>

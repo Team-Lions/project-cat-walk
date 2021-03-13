@@ -3,7 +3,9 @@ import React from 'react';
 const Search = () => {
   return (
     <div>
-      {/* // create Search form for header */}
+      <form id='form'>
+        <input type="text" value='Search...' id='input'></input>
+      </form>
     </div>
   )
 }
