@@ -1,10 +1,10 @@
 /* everyone put their buttons/other clickable things here */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-
-
-a:hover, button:hover, select:hover {
-  cursor: pointer;
+a:hover,
+button:hover,
+select:hover {
+	cursor: pointer;
 }
 
 /* Header Start */
@@ -176,13 +176,13 @@ body {
 }
 
 #related-items {
-  height: 430px;
-  margin-left: 20%;
-  margin-right: 20%;
+	height: 430px;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 #related-title {
-  border-bottom: 2px solid deepskyblue;
+	border-bottom: 2px solid deepskyblue;
 }
 
 #fav-button {
@@ -200,13 +200,13 @@ body {
 }
 
 #your-fit {
-  height: 450px;
-  margin-left: 20%;
-  margin-right: 20%;
+	height: 450px;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 #yourfit-title {
-  border-bottom: 2px solid deeppink;
+	border-bottom: 2px solid deeppink;
 }
 
 #add-button {
@@ -242,7 +242,9 @@ body {
 	display: grid;
 	grid-template-columns: 0.5fr 1.5fr;
 	gap: 0px 0px;
-	grid-template-areas: 'sidebar mainReviews';
+	grid-template-areas:
+		'sidebar mainReviews'
+		'. reviewButtons';
 	margin: 15px 0;
 	border: 1px solid black;
 	padding: 15px;
@@ -251,7 +253,7 @@ body {
 .sidebar {
 	grid-area: sidebar;
 	gap: 20px 20px;
-	height: 700px;
+	height: 800px;
 	margin: 0 20px;
 }
 
@@ -265,11 +267,12 @@ body {
 	grid-area: mainReviews;
 	padding-left: 20px;
 	padding-right: 20px;
-	height: 600px;
+	height: 800px;
 	overflow: auto;
 }
 
 .reviewButtons {
+	grid-area: reviewButtons;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -297,7 +300,15 @@ body {
 	font-size: 20px;
 }
 
+#related-items {
+	height: 420px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
 
+#related-title {
+	border-bottom: 2px solid deepskyblue;
+}
 
 .star-list {
 	padding-left: 18%;
@@ -323,22 +334,21 @@ body {
 	background-color: grey;
 }
 
-
-
 footer {
-  border-top: 2px solid deepskyblue;
-  margin-left: 5%;
-  margin-right: 5%;
-  height: 165px;
-  color: white;
-  background-color: black;
-  text-align: center;
+	border-top: 2px solid deepskyblue;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 165px;
+	color: white;
+	background-color: black;
+	text-align: center;
 }
 
 .sizeSlider {
 	display: flex;
 	justify-content: space-between;
 	font-size: 14px;
+	padding-bottom: 10px;
 }
 
 .modalImg {
@@ -349,6 +359,47 @@ footer {
 
 .modalReview {
 	display: flex;
+}
+
+.ReviewBTN {
+	background-color: black;
+	border: 1px solid white;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.progress-bar {
+	background-color: deeppink;
+}
+
+.tAddStar {
+	cursor: pointer;
+	transition: color 200ms;
+}
+
+.characteristicsForm {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 10px;
+}
+
+.RatingSummary {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.characteristics {
+	padding: 0px 5px 0px 5px;
+	margin-top: 5px;
 }
 /* Ratings CSS End */
 
@@ -363,6 +414,7 @@ footer {
   background-color: black;
   text-align: center;
 }
+
 .zquestions {
 	overflow-y: scroll;
 	height: 650px;
@@ -374,4 +426,12 @@ footer {
 
 .zquestions:hover {
 	background-color: rgb(29, 18, 47);
+}
+
+.loading {
+	padding-top: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }

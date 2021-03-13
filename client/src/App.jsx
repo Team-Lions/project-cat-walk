@@ -15,7 +15,7 @@ import YourFit from './RelatedItems&Comparisons/YourFit.jsx'
 import calculateStarReview from './calculateStarReview.js';
 import token from '../../public/token.js';
 
-import appCss from './App.css';
+//import appCss from './App.css';
 import css from './App.css';
 import Spinner from 'react-bootstrap/Spinner'
 
@@ -26,7 +26,8 @@ class App extends React.Component {
       selectedProductId: null,
       reviewMetaData: {},
       starRating: 0,
-      isLoading: true
+      isLoading: true,
+      cartCount: 0
     }
     this.changeProduct = this.changeProduct.bind(this)
     this.handleProductChange = this.handleProductChange.bind(this)
@@ -89,18 +90,34 @@ class App extends React.Component {
     this.changeProduct(newProductId);
   }
 
+  updateCart(quantity) {
+    let newCount = this.state.cartCount + Number.parseInt(quantity);
+    this.setState({
+      cartCount: newCount
+    });
+  }
+
   render() {
     if(this.state.isLoading) {
       return (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
+        <>
+          <div className="loading">
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+            <br/>
+            <div>
+              <h1>Loading Lion's Den Apparel</h1>
+            </div>
+            <h2>🦁</h2>
+          </div>
+        </>
     )
     }
     return (
       <div key={this.state.selectedProductId}>
-        <Header handleProductChange={this.handleProductChange}/>
-        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} />
+        <Header cartCount={this.state.cartCount} handleProductChange={this.handleProductChange}/>
+        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} updateCart={this.updateCart.bind(this)} />
         <RelatedItems productId={this.state.selectedProductId} handleProductChange={this.handleProductChange}/>
         <YourFit productId={this.state.selectedProductId}/>
         <Ratings productId={this.state.selectedProductId} metaData={this.state.reviewMetaData} starRating={this.state.starRating}/>
