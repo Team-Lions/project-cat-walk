@@ -15,10 +15,22 @@ header {
 	height: 135px;
 	background-color: black;
 	border-bottom: 3px solid deepskyblue;
+	position: relative;
+	padding-top: 2px;
 }
 
 header:hover {
 	border-bottom: 3px solid deeppink;
+}
+
+#banner {
+	padding-top: 5px;
+	margin-left: 5%;
+	margin-right: 5%;
+	color: deeppink;
+	background-color: black;
+	font-size: 15px;
+	text-align: center;
 }
 
 #page-title {
@@ -32,6 +44,66 @@ header:hover {
 }
 
 /* Header End */
+#mode {
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	bottom: 55px;
+	right: 0px;
+}
+.material-icons {
+	font-size: 32px;
+	transform: rotate(180deg)
+}
+
+#NavBar {
+	position: absolute;
+	left: 17%;
+	bottom: 5px;
+}
+ul {
+	list-style-type: none;
+}
+.nav-li {
+	float: left;
+	padding: 50px;
+	text-align: center;
+	font-size: 18px;
+}
+.nav-li:hover {
+	font-style: italic;
+	color: deeppink;
+	cursor: pointer;
+}
+#thanos {
+	color: black;
+}
+
+#search {
+	position: absolute;
+	right: 5px;
+	bottom: 10px;
+	border: transparent
+}
+#form {
+	border-bottom: 2px solid white;
+}
+#input {
+	background-color: transparent;
+	color: white;
+	border: transparent;
+	font-style: italic;
+}
+#input:hover {
+	color:deeppink;
+}
+#form:hover {
+	border-bottom: 2px solid deeppink;
+}
+#thanos:hover {
+	color: deeppink;
+}
+
 
 body {
 	padding-left: 2px;
@@ -40,6 +112,44 @@ body {
 	color: white;
 	font-family: 'Poppins', sans-serif;
 }
+
+.light-mode {
+  background-color: white;
+  color: black;
+}
+.light-mode header {
+	background-color: white;
+}
+.light-mode footer {
+	background-color: white;
+}
+.light-mode #form {
+	border-bottom: 2px solid black;
+}
+.light-mode #input {
+	background-color: transparent;
+	color: black;
+	border: transparent;
+}
+.light-mode footer {
+	color: black;
+}
+.light-mode #thanos {
+	color: white;
+}
+.light-mode #thanos:hover {
+	color:deeppink
+}
+.light-mode .zquestions {
+	background-color: white;
+}
+.light-mode .card {
+	background: whitesmoke;
+}
+.light-mode #banner {
+	background-color: white;
+}
+
 
 /*Related Items and Fit Start*/
 
@@ -58,10 +168,11 @@ body {
 	width: 16rem;
 	cursor: pointer;
 	margin-bottom: 30px;
+	background: rgb(29, 18, 47);
 }
 
 .card:hover {
-	box-shadow: 10px 15px 20px indigo;
+	box-shadow: 15px 15px 20px indigo;
 }
 
 #related-items {
@@ -81,6 +192,7 @@ body {
 	position: absolute;
 	font-size: 30px;
 	border: none;
+	right: 0px
 }
 
 #fav-button:hover {
@@ -293,14 +405,16 @@ footer {
 
 /* Footer */
 footer {
-	border-top: 2px solid deepskyblue;
-	margin-left: 5%;
-	margin-right: 5%;
-	height: 165px;
-	color: white;
-	background-color: black;
-	text-align: center;
+	margin-top: 5px;
+  border-top: 2px solid deepskyblue;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 165px;
+  color: white;
+  background-color: black;
+  text-align: center;
 }
+
 .zquestions {
 	overflow-y: scroll;
 	height: 650px;
