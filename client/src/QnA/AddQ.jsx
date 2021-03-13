@@ -1,51 +1,49 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function AddA(props) {
+function AddQ(props) {
     const [show, setShow] = useState(false);
     const [body, setBody] = useState(null);
     const [name, setName] = useState(null);
     const [email, setEmail] = useState(null);
     const [product_id, setProduct_id] = useState(null);
 
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleSubmit = (e) => {
       e.preventDefault();
-      let ansData = {
+      let modalData = {
         body,
         name,
         email,
-        question_id: props.question.question_id
+        product_id: props.productID
       };
-      props.sendAnswer(e, ansData, props.question.question_id);
+      props.sendQuestion(e, modalData);
     }
-
 
     const mystyle = {
       padding: "10px",
       backgroundColor: "rgb(29, 18, 47)",
       border: "1px solid deepPink"
     }
-
     return (
       <>
         <Button onClick={handleShow} style={mystyle}>
-            Add Answer +
+            Add Question +
         </Button>
 
         <Modal show={show} onHide={handleClose} style={{color:"black"}}>
           <Modal.Header closeButton>
-            <Modal.Title >{props.product}: {props.question.question_body}</Modal.Title>
+            <Modal.Title >{props.product}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
                 <Form.Group controlId="formBasicName">
                     <Form.Label>Your nickname</Form.Label>
-                    <Form.Control type="text" placeholder="Enter nickname" onChange={(e) => {
+                    <Form.Control type="text" placeholder="Enter nickname"
+                    onChange={(e) => {
                       setName(e.target.value)}}/>
                     <Form.Text className="text-muted">
                     </Form.Text>
@@ -58,14 +56,14 @@ function AddA(props) {
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Your answer</Form.Label>
-                    <Form.Control type="text" placeholder="Answer" onChange={(e) => {
+                    <Form.Label>Your Question</Form.Label>
+                    <Form.Control type="text" placeholder="Question" onChange={(e) => {
                       setBody(e.target.value)}}/>
                 </Form.Group>
                 <label class="form-label" for="customFile">Default file input example</label>
                 <input type="file" class="form-control" id="customFile" multiple/>
-                <Button variant="primary" type="submit" style={mystyle} onSubmit={handleSubmit}>
-                    Submit Your Answer
+                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                    Submit Your Question
                 </Button>
             </Form>
           </Modal.Body>
@@ -75,4 +73,4 @@ function AddA(props) {
   }
 
 
-export default AddA;
+export default AddQ;
