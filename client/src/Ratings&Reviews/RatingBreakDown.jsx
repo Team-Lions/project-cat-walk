@@ -10,18 +10,18 @@ const RatingBreakDown = ({ metaData, starRating }) => {
   let overallRating = roundStarRating(starRating);
   return (
     <div>
-      <b>Ratings & Reviews</b>
+      <b style={{"fontSize":"25px"}}>Ratings & Reviews</b>
       <div className='RatingSummary'>
         <div className='overallRating'>{overallRating}</div>
-          <div className='stars'>
-            <StarRatings
-              rating={overallRating}
-              starRatedColor='deeppink'
-              numberOfStars={5}
-              name='rating'
-              starDimension='20px'
-            />
-          </div>
+        <div className='stars'>
+          <StarRatings
+            rating={overallRating}
+            starRatedColor='deeppink'
+            numberOfStars={5}
+            name='rating'
+            starDimension='20px'
+          />
+        </div>
       </div>
       <br/>
       <div className="RatingBreakdown">
@@ -29,7 +29,7 @@ const RatingBreakDown = ({ metaData, starRating }) => {
       </div>
       <div className="Progress">
         <br/>
-        5 stars <ProgressBar now={metaData.ratings['5']} max={10}/>
+        5 stars <ProgressBar now={metaData.ratings['5']} max={10} />
         4 stars <ProgressBar now={metaData.ratings['4']} max={10}/>
         3 stars <ProgressBar now={metaData.ratings['3']} max={10}/>
         2 stars <ProgressBar now={metaData.ratings['2']} max={10}/>
