@@ -34,7 +34,7 @@ const CardFormatter = ({productDetails, handleClick}) => {
 
   return (
     <div id='card'>
-      <Card border="info" bg="dark" style={{ width: '16rem', height: '23rem'}}>
+      <Card className="rendered-cards" border="info" style={{ width: '16rem', height: '23rem'}}>
         <ComparisonModal />
           <img className="carousel-img" src={image ? image : placeHolderImg} onClick={handleClick} id={id}></img>
           <Card.Body className="text-center" onClick={handleClick} id={id}>
