@@ -20,8 +20,7 @@ class AddToCart extends React.Component {
       quantityEnabled: false,
       quantityAvailable: 0,
       quantitySelection: null,
-      hideSizeEnforcement: true,
-      addedToCart: 0
+      hideSizeEnforcement: true
     };
   }
 
@@ -68,14 +67,7 @@ class AddToCart extends React.Component {
       }
     })
     .then(() => {
-      this.setState({
-        sizeSelection: '',
-        quantityEnabled: false,
-        quantityAvailable: 0,
-        quantitySelection: null,
-        hideSizeEnforcement: true,
-        addedToCart: !this.state.addedToCart
-      });
+      this.props.updateCart(this.state.quantitySelection);
     })
     .catch((err) => {
       console.log('error');
@@ -85,8 +77,14 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div key={this.state.addedToCart}>
-        <div hidden={this.state.hideSizeEnforcement}>Please select a size!</div>
+      <div>
+        <div style={{height: "20px"}}>
+          {this.state.hideSizeEnforcement ?
+            <div></div>
+            :
+            <div style={{color: "deepskyblue"}}>Please select a size!</div>
+          }
+        </div>
         {this.props.sizes.length === 0 ?
           <select id="size" name="size" disabled>
             <option>OUT OF STOCK</option>
