@@ -3,10 +3,13 @@ import StarRatings from 'react-star-ratings';
 import moment from 'moment';
 import 'font-awesome/css/font-awesome.min.css';
 import ModalImage from 'react-modal-image';
-import { submitHelp } from './PostReq';
+import { submitHelp, reportReview } from './PostReq';
 
-const SingleReview = ({ reviews }) => {
+
+const SingleReview = ({ reviews, renderAddReview }) => {
 	const [help, setHelp] = useState(false);
+	const [report, setReport] = useState(false);
+	const [count, setCount] = useState(0);
 
 	return (
 		<div>
@@ -30,14 +33,24 @@ const SingleReview = ({ reviews }) => {
 						</div>
 						<br />
 						<div className="ReviewText">
-							<strong>{review.summary}</strong>
-							<div>{review.body}</div>
+							<div style={{ fontSize: '20px', fontWeight: '700' }}>
+								{review.summary}
+							</div>
+							<div
+								style={{
+									fontSize: '14px',
+									fontWeight: '100',
+									fontStyle: 'italic',
+								}}
+							>
+								{review.body}
+							</div>
 							<br />
 						</div>
 						{review.recommend ? (
 							<div className="recommend">
 								<span>
-									<i class="fa fa-check" style={{ color: 'deeppink' }}></i>
+									<i className="fa fa-check" style={{ color: 'deeppink' }}></i>
 								</span>
 								<strong>&nbsp; I recommend this product</strong>
 							</div>
@@ -49,28 +62,56 @@ const SingleReview = ({ reviews }) => {
 							''
 						) : (
 							<div className="response">
-								<strong>Response: {review.response}</strong>
+								<strong>Response from seller: {review.response}</strong>
 							</div>
 						)}
 						<br />
 
 						<div className="helpfulAndReport">
 							Helpful? &nbsp;
-							<span
+							{count > 0
+								? `(${review.helpfulness + 1})`
+								: count < 0
+								? `(${review.helpfulness - 1})`
+								: `(${review.helpfulness})`}{' '}
+							&nbsp;&nbsp;
+							<a
 								onClick={(e) => {
 									let helpCount = review.helpfulness;
 									let reviewId = review.review_id;
-									submitHelp(helpCount, reviewId);
+									submitHelp(helpCount, reviewId, help);
 									setHelp(true);
+
+									setCount(count + 1);
 								}}
 							>
 								Yes &nbsp;
-							</span>
-							{help ? review.helpfulness + 1 : review.helpfulness}
-							<span>
-								&nbsp;|&nbsp; Report{' '}
-								<i className="fa fa-flag" style={{ color: 'deeppink' }}></i>
-							</span>
+							</a>
+							<a
+								onClick={(e) => {
+									let helpCount = review.helpfulness;
+									let reviewId = review.review_id;
+									submitHelp(helpCount, reviewId, help);
+									setHelp(false);
+
+									setCount(count - 1);
+								}}
+							>
+								No &nbsp;
+							</a>
+							<a
+								onClick={(e) => {
+									let reviewId = review.review_id;
+									reportReview(reviewId);
+									setReport(true);
+									renderAddReview();
+								}}
+							>
+								<span>
+									&nbsp;|&nbsp; Report{' '}
+									<i className="fa fa-flag" style={{ color: 'deeppink' }}></i>
+								</span>
+							</a>
 						</div>
 						<div className="modalReview">
 							{review.photos.length > 1

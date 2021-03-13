@@ -20,7 +20,7 @@ export const submitReview = (data) => {
 		photos: [],
 		characteristics: characteristics,
 	};
-	console.log(reviewData);
+
 	let stringifyData = JSON.stringify(reviewData);
 
 	axios({
@@ -32,20 +32,49 @@ export const submitReview = (data) => {
 			'Content-Type': 'application/json',
 		},
 	})
-		.then((res) => {
-			console.log(res.status);
-		})
 		.catch((error) => {
 			console.log('ERRRR:: ', error.response.data);
 		});
 };
 
-export const submitHelp = (count, reviewId) => {
-	let data = count + 1;
+export const submitHelp = (count, reviewId, help) => {
+	if (help) {
+		axios({
+			method: 'put',
+			url: `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${reviewId}/helpful`,
+			params: count + 1,
+			headers: {
+				Authorization: token,
+			},
+		})
+			.then((res) => {
+				res.send(201);
+			})
+			.catch((error) => {
+				console.log('ERRRR:: ', error.response.data);
+			});
+	} else {
+		axios({
+			method: 'put',
+			url: `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${reviewId}/helpful`,
+			params: count - 1,
+			headers: {
+				Authorization: token,
+			},
+		})
+			.then((res) => {
+				res.send(201);
+			})
+			.catch((error) => {
+				console.log('ERRRR:: ', error.response.data);
+			});
+	}
+};
+
+export const reportReview = (reviewId) => {
 	axios({
 		method: 'put',
-		url: `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${reviewId}/helpful`,
-		params: data,
+		url: `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${reviewId}/report`,
 		headers: {
 			Authorization: token,
 		},

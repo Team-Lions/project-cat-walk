@@ -15,9 +15,9 @@ var SocialMediaButtons = (props) => (
     <p></p>
     Share this item!
     <div>
-      <Link href="https://facebook.com"><i class="fab fa-facebook-square fa-2x"></i></Link>
-      <Link href="https://twitter.com"><i class="fab fa-twitter-square fa-2x"></i></Link>
-      <Link href="https://pinterest.com"><i class="fab fa-pinterest-square fa-2x"></i></Link>
+      <Link href="https://facebook.com"><i className="fab fa-facebook-square fa-2x"></i></Link>
+      <Link href="https://twitter.com"><i className="fab fa-twitter-square fa-2x"></i></Link>
+      <Link href="https://pinterest.com"><i className="fab fa-pinterest-square fa-2x"></i></Link>
     </div>
   </div>
 );

@@ -6,23 +6,28 @@ import axios from 'axios';
 import token from '../../../public/token.js';
 
 
+
 class QnAList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isLoading: true,
-      answers: []
+      answers: [],
+      data: this.props
     }
+
+    this.sendQuestion = this.sendQuestion.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
-    this.setState({isLoading: false})
+    var data = this.props
+    this.setState({isLoading: false, data: data})
   }
 
   sendQuestion(e, modalData) {
     e.preventDefault();
-    console.log(modalData);
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions',
     modalData,
     {
@@ -31,23 +36,24 @@ class QnAList extends React.Component {
       }
     }
     )
-    .then((results) => {
-      console.log(results);
-    })
     .catch((err) => {
       console.log('error', err.response.data)
     })
   }
 
+  handleSearch() {
+
+  }
+
   render() {
-    const {data} = this.props
-    {console.log(this.props)}
+    const {data} = this.props;
     return (
       <div>
+        <input type="text" onChange={this.handleSearch}/>
         <AddQ question={this.props.question} productID={this.props.productID} sendQuestion={this.sendQuestion}/>
         {this.state.isLoading ? <div>isLoading</div> : data.map((question) => {
           return (
-          <Question productID={this.props.productID} question={question} answers={Object.values(question.answers)} id={this.props.id} loadMoreAnswers={this.loadMoreAnswers} show={this.state.show}/>
+          <Question key={question.question_id} productID={this.props.productID} question={question} answers={Object.values(question.answers)} id={this.props.id} loadMoreAnswers={this.loadMoreAnswers} show={this.state.show}/>
           )
         })}
         <Button size="lg" onClick={this.props.loadMore}>
