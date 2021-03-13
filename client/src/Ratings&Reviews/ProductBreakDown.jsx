@@ -42,7 +42,7 @@ export default function ProductBreakDown({ metaData }) {
 	return characteristics.map((character) => {
 		return (
 			<ThemeProvider theme={muiTheme}>
-				<div className="characteristics">
+				<div className="characteristics" key={metaDataCharacteristics[character].id}>
 					<Typography id="disabled-slider" gutterBottom>
 						{character}
 					</Typography>
