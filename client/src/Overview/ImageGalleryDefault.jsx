@@ -2,9 +2,9 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const GalleryThumbnail = styled.img`
-  padding: 2px;
   height: 70px;
-  width: auto;
+  padding: 2px;
+  object-fit: cover;
   :hover {
     cursor: pointer;
   }
@@ -67,8 +67,11 @@ class ImageGalleryDefault extends React.Component {
       mainImageIndex: 0,
       mainImageHeight: '5px',
       mainImageWidth: '5px',
+      thumbnailHeight: "70px",
+      thumbnailWidth: "auto",
       carouselStart: 0,
-      carouselEnd: 0
+      carouselEnd: -1,
+      allThumbnails: []
     };
   }
 
@@ -134,43 +137,51 @@ class ImageGalleryDefault extends React.Component {
     });
   }
 
+
   componentDidMount() {
     if (this.props.images.length >= 7) {
-      this.setState({
-        carouselEnd: 6
-      });
+      var carouselEnd = 6;
     } else {
-      this.setState({
-        carouselEnd: this.props.images.length - 1
-      });
+      var carouselEnd = this.props.images.length - 1;
     }
+
+    var allThumbnails = this.props.images.map((image, index) => {
+      return (
+          <GalleryThumbnail selected={false} key={image.thumbnail_url} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}} ></GalleryThumbnail>
+      );
+    });
+
+    this.setState({
+      carouselEnd: carouselEnd,
+      allThumbnails: allThumbnails
+    });
   }
 
   render() {
-    //refactor so I don't have to do this for loop everytime!
-    var thumbnails = this.props.images.map((image, index) => {
-      var selected = false;
-      if (index === this.state.mainImageIndex) {
-        selected = true;
+    var shownThumbnails = [];
+    for (var i = this.state.carouselStart; i <= this.state.carouselEnd; i++) {
+      if (i === this.state.mainImageIndex) {
+        shownThumbnails.push(
+          <GalleryThumbnail selected={true} key={this.props.images[i].thumbnail_url} id={i} src={this.props.images[i].thumbnail_url} alt="alternate image" ></GalleryThumbnail>
+        );
+      } else {
+        shownThumbnails.push(this.state.allThumbnails[i]);
       }
-      return (
-          <GalleryThumbnail selected={selected} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></GalleryThumbnail>
-      );
-    });
-    var shownThumbnails = thumbnails.slice(this.state.carouselStart, this.state.carouselEnd + 1);
+    }
+
     return (
       <Gallery>
         <VerticalCarousel>
             {this.state.carouselStart === 0 ?
               <div style={{"gridRow": 1}}></div>
               :
-              <VerticalScrollButton style={{"gridRow": 1}} onClick={this.scrollUp.bind(this)}><i class="fas fa-angle-up fa-lg" style={{"alignSelf": "end"}}></i></VerticalScrollButton>
+              <VerticalScrollButton style={{"gridRow": 1}} onClick={this.scrollUp.bind(this)}><i className="fas fa-angle-up fa-lg" style={{"alignSelf": "end"}}></i></VerticalScrollButton>
             }
             <Thumbnails>
               {shownThumbnails}
             </Thumbnails>
             {this.state.carouselEnd < (this.props.images.length - 1) ?
-              <VerticalScrollButton style={{"gridRow": 3}}onClick={this.scrollDown.bind(this)}><i class="fas fa-angle-down fa-lg" style={{"alignSelf": "start"}}></i></VerticalScrollButton>
+              <VerticalScrollButton style={{"gridRow": 3}} onClick={this.scrollDown.bind(this)}><i className="fas fa-angle-down fa-lg" style={{"alignSelf": "start"}}></i></VerticalScrollButton>
               :
               <div style={{"gridRow": 3}}></div>
             }
@@ -178,7 +189,7 @@ class ImageGalleryDefault extends React.Component {
         {this.state.mainImageIndex === 0 ?
           <div style={{"gridColumn": 2}}></div>
           :
-          <HorizScrollButton style={{"gridColumn": 2, "justifySelf": "start"}} onClick={this.nextImageLeft.bind(this)}><i class="fas fa-angle-left fa-5x"></i></HorizScrollButton>
+          <HorizScrollButton style={{"gridColumn": 2, "justifySelf": "start"}} onClick={this.nextImageLeft.bind(this)}><i className="fas fa-angle-left fa-5x"></i></HorizScrollButton>
         }
         <img id="mainImage"
           style = {{"gridColumn": 3, "height": this.state.mainImageHeight, "width": this.state.mainImageWidth, "alignSelf": "center", "justifySelf": "center"}}
@@ -188,7 +199,7 @@ class ImageGalleryDefault extends React.Component {
         {this.state.mainImageIndex === (this.props.images.length - 1) ?
           <div style={{"gridColumn": 4}}></div>
           :
-          <HorizScrollButton style={{"gridColumn": 4, "justifySelf": "end"}} onClick={this.nextImageRight.bind(this)}><i class="fas fa-angle-right fa-5x"></i></HorizScrollButton>
+          <HorizScrollButton style={{"gridColumn": 4, "justifySelf": "end"}} onClick={this.nextImageRight.bind(this)}><i className="fas fa-angle-right fa-5x"></i></HorizScrollButton>
         }
       </Gallery>
     );

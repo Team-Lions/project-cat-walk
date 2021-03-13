@@ -4,7 +4,6 @@ import ComparisonModal from './ComparisonModal.jsx';
 import ReactStarRating from "react-star-ratings-component";
 import placeHolderImg from './content/placeholderimg.jpeg';
 
-
 const CardFormatter = ({productDetails, handleClick}) => {
   let id = productDetails[0].data.id;
   let category = productDetails[0].data.category
@@ -51,11 +50,11 @@ const CardFormatter = ({productDetails, handleClick}) => {
               {`$${price}`}
             </Card.Subtitle>
             <ReactStarRating
-                numberOfStar={5}
-                numberOfSelectedStar={numberOfStars}
-                colorFilledStar="deeppink"
-                colorEmptyStar="black"
-                starSize="15px"
+              numberOfStar={5}
+              numberOfSelectedStar={numberOfStars}
+              colorFilledStar="deeppink"
+              colorEmptyStar="black"
+              starSize="15px"
             />
           </Card.Body>
       </Card>

@@ -262,11 +262,17 @@ body {
 	background-color: black;
 }
 
+
+.star-rating-container {
+	display: flex;
+	justify-content: center;
+
 #to-be-empty {
 	color: transparent;
 }
 #check-mark {
 	color: deeppink
+
 }
 /* RelatedItems and Fit End*/
 
@@ -341,10 +347,6 @@ body {
 }
 
 
-
-.star-list {
-	padding-left: 18%;
-}
 
 .sortSelect {
 	font-style: bold;
