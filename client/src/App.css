@@ -266,6 +266,7 @@ body {
 .star-rating-container {
 	display: flex;
 	justify-content: center;
+}
 
 #to-be-empty {
 	color: transparent;
@@ -366,12 +367,6 @@ body {
 .response {
 	padding: 20px;
 	background-color: grey;
-}
-
-#your-fit {
-	height: 420px;
-	margin-left: 10%;
-	margin-right: 10%;
 }
 
 #yourfit-title {
