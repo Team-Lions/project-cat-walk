@@ -207,10 +207,34 @@ body {
 	height: 450px;
 	margin-left: 20%;
 	margin-right: 20%;
+	position: relative;
+}
+
+#yourfit-carousel {
+	height: 400px;
+	width: 770px;
+	position: absolute;
+	right: 0px;
+	bottom: 16px;
 }
 
 #yourfit-title {
 	border-bottom: 2px solid deeppink;
+}
+
+#remove-button {
+	height: 35px;
+	width: 35px;
+	font-size: 32px;
+	border: transparent;
+	background-color: transparent;
+	color: deepskyblue;
+	position: absolute;
+	right:5px;
+}
+
+#remove-button:hover {
+	color: deeppink;
 }
 
 #add-button {

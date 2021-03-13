@@ -5,7 +5,8 @@ import Card from 'react-bootstrap/Card';
 import ReactStarRating from "react-star-ratings-component";
 import axios from 'axios';
 import token from '../../../public/token.js';
-import CardFormatter from './CardFormatter.jsx';
+import YourOutfitCardFormatter from './YourOutfitCardFormatter.jsx';
+import StockCard from './StockCard.jsx';
 
 class YourFit extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class YourFit extends React.Component {
       },
       desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 3
+        items: 2
       },
       tablet: {
         breakpoint: { max: 1024, min: 464 },
@@ -34,6 +35,7 @@ class YourFit extends React.Component {
     }
 
     this.addToFavorites = this.addToFavorites.bind(this);
+    this.handleRemoveCard = this.handleRemoveCard.bind(this);
   }
 
   addToFavorites(e) {
@@ -90,6 +92,11 @@ class YourFit extends React.Component {
     })
   }
 
+  handleRemoveCard(e) {
+    e.preventDefault();
+    console.log('remove me')
+  }
+
   render() {
     return (
       <div id="your-fit">
@@ -97,36 +104,17 @@ class YourFit extends React.Component {
           Your Outfit
         </h5>
         <div>
-        <Carousel responsive={this.responsive}>
-          <Card border="info" bg="whitesmoke" style={{ width: '16rem', height: '23rem'}}>
-            <button id='add-button' onClick={this.addToFavorites}><span>&#43;</span></button>
-              <img className="carousel-img" src={placeHolderImg}></img>
-              <Card.Body className="text-center">
-                <Card.Subtitle className="mb-2 text-muted">
-                  Click to
-                </Card.Subtitle>
-                <Card.Title>
-                  Add
-                </Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  Items
-                </Card.Subtitle>
-                <ReactStarRating
-                    numberOfStar={5}
-                    numberOfSelectedStar={5}
-                    colorFilledStar="deeppink"
-                    colorEmptyStar="black"
-                    starSize="15px"
-                />
-              </Card.Body>
-          </Card>
-          {this.state.favorites ?
-          this.state.favorites.map((itemDetails) => (
-            <CardFormatter productDetails={itemDetails} handleClick={null}/>
-          )):
-            ''
-          }
-        </Carousel>
+        <StockCard favButton={this.addToFavorites}/>
+        <div id='yourfit-carousel'>
+          <Carousel responsive={this.responsive}>
+            {this.state.favorites ?
+            this.state.favorites.map((itemDetails) => (
+              <YourOutfitCardFormatter productDetails={itemDetails} handleClick={this.handleRemoveCard}/>
+            )):
+              ''
+            }
+          </Carousel>
+        </div>
         </div>
       </div>
     )

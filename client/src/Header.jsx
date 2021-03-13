@@ -59,13 +59,22 @@ const Header = (props) => {
       <div id="banner">
       <Carousel controls={false} indicators={false}>
         <Carousel.Item interval={3000}>
-            <p>50000 styles added this week!</p>
+            <p>50,000 styles added this week!</p>
         </Carousel.Item>
         <Carousel.Item interval={3000}>
             <p><u>Claim</u> 20% off your first order now!</p>
         </Carousel.Item>
         <Carousel.Item interval={3000}>
             <p>Hot new finds: Infinity Stones! Get 'em while they're still hot!</p>
+        </Carousel.Item>
+        <Carousel.Item interval={3000}>
+            <p>Orders over $1.00 qualify for free half-day shipping!</p>
+        </Carousel.Item>
+        <Carousel.Item interval={3000}>
+            <p>Now partnered with <u>Afform</u>, Buy now, Pay Later!</p>
+        </Carousel.Item>
+        <Carousel.Item interval={3000}>
+            <p>Now accepting Dogecoin!</p>
         </Carousel.Item>
       </Carousel>
       </div>
