@@ -5,6 +5,7 @@ a:hover,
 button:hover,
 select:hover {
 	cursor: pointer;
+	color: deeppink;
 }
 
 /* Header Start */
@@ -87,7 +88,7 @@ ul {
 	position: absolute;
 	right: 5px;
 	bottom: 10px;
-	border: transparent
+	border: transparent;
 }
 #form {
 	border-bottom: 2px solid white;
@@ -99,7 +100,7 @@ ul {
 	font-style: italic;
 }
 #input:hover {
-	color:deeppink;
+	color: deeppink;
 }
 #form:hover {
 	border-bottom: 2px solid deeppink;
@@ -107,7 +108,6 @@ ul {
 #thanos:hover {
 	color: deeppink;
 }
-
 
 body {
 	padding-left: 2px;
@@ -118,8 +118,8 @@ body {
 }
 
 .light-mode {
-  background-color: white;
-  color: black;
+	background-color: white;
+	color: black;
 }
 .light-mode header {
 	background-color: white;
@@ -142,7 +142,7 @@ body {
 	color: white;
 }
 .light-mode #thanos:hover {
-	color:deeppink
+	color: deeppink;
 }
 .light-mode .zquestions {
 	background-color: white;
@@ -153,7 +153,6 @@ body {
 .light-mode #banner {
 	background-color: white;
 }
-
 
 /*Related Items and Fit Start*/
 
@@ -196,7 +195,7 @@ body {
 	position: absolute;
 	font-size: 30px;
 	border: none;
-	right: 0px
+	right: 0px;
 }
 
 #fav-button:hover {
@@ -285,6 +284,7 @@ body {
 	gap: 0px 0px;
 	grid-template-areas:
 		'sidebar mainReviews'
+		'. reviewList'
 		'. reviewButtons';
 	margin: 15px 0;
 	border: 1px solid black;
@@ -295,6 +295,7 @@ body {
 	grid-area: sidebar;
 	gap: 20px 20px;
 	height: 800px;
+	width: 400px;
 	margin: 0 20px;
 }
 
@@ -308,6 +309,10 @@ body {
 	grid-area: mainReviews;
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+.reviewList {
+	grid-area: reviewList;
 	height: 800px;
 	overflow: auto;
 }
@@ -363,6 +368,16 @@ body {
 	background-color: grey;
 }
 
+#your-fit {
+	height: 420px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#yourfit-title {
+	border-bottom: 2px solid deeppink;
+}
+
 footer {
 	border-top: 2px solid deepskyblue;
 	margin-left: 5%;
@@ -407,6 +422,11 @@ footer {
 	background-color: deeppink;
 }
 
+.Progress {
+	display: flex;
+	flex-direction: column;
+}
+
 .tAddStar {
 	cursor: pointer;
 	transition: color 200ms;
@@ -435,13 +455,13 @@ footer {
 /* Footer */
 footer {
 	margin-top: 5px;
-  border-top: 2px solid deepskyblue;
-  margin-left: 5%;
-  margin-right: 5%;
-  height: 165px;
-  color: white;
-  background-color: black;
-  text-align: center;
+	border-top: 2px solid deepskyblue;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 165px;
+	color: white;
+	background-color: black;
+	text-align: center;
 }
 
 .zquestions {
