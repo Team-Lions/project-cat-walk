@@ -66,7 +66,6 @@ class App extends React.Component {
       newState.reviewMetaData = reviewMetadata.data;
       newState.starRating = calculateStarReview(newState.reviewMetaData.ratings);
       newState.isLoading = false;
-      //console.log('newstate: ', newState);
       this.setState(newState);
     })
     .catch((err) => {

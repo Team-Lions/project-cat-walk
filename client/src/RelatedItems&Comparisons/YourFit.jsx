@@ -105,7 +105,6 @@ class YourFit extends React.Component {
     e.preventDefault();
     let id = e.target.className;
     let remainingOutfits = this.state.favorites.filter(item => item[0].data.id === id);
-    console.log(remainingOutfits);
     this.setState({
       favorites: remainingOutfits
     });

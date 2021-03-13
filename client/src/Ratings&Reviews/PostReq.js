@@ -20,7 +20,7 @@ export const submitReview = (data) => {
 		photos: [],
 		characteristics: characteristics,
 	};
-	console.log(reviewData);
+
 	let stringifyData = JSON.stringify(reviewData);
 
 	axios({
@@ -32,16 +32,12 @@ export const submitReview = (data) => {
 			'Content-Type': 'application/json',
 		},
 	})
-		.then((res) => {
-			console.log(res.status);
-		})
 		.catch((error) => {
 			console.log('ERRRR:: ', error.response.data);
 		});
 };
 
 export const submitHelp = (count, reviewId, help) => {
-	console.log(help);
 	if (help) {
 		axios({
 			method: 'put',
@@ -76,7 +72,6 @@ export const submitHelp = (count, reviewId, help) => {
 };
 
 export const reportReview = (reviewId) => {
-	console.log(reviewId);
 	axios({
 		method: 'put',
 		url: `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${reviewId}/report`,

@@ -28,7 +28,6 @@ class QnAList extends React.Component {
 
   sendQuestion(e, modalData) {
     e.preventDefault();
-    console.log(modalData);
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions',
     modalData,
     {
@@ -37,16 +36,13 @@ class QnAList extends React.Component {
       }
     }
     )
-    .then((results) => {
-      console.log(results);
-    })
     .catch((err) => {
       console.log('error', err.response.data)
     })
   }
 
   handleSearch() {
-    console.log('changed');
+
   }
 
   render() {

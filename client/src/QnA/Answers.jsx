@@ -44,7 +44,6 @@ class Answers extends React.Component {
 
   sendAnswer(e, ansData, questionID) {
     e.preventDefault();
-    console.log(ansData);
     axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions/${questionID}/answers`,
     ansData,
     {
@@ -53,9 +52,6 @@ class Answers extends React.Component {
       }
     }
     )
-    .then((results) => {
-      console.log(results);
-    })
     .catch((err) => {
       console.log('error', err.response.data)
     })
