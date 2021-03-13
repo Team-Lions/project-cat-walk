@@ -25,7 +25,7 @@ const Gallery = styled.div`
   grid-row: 1;
   align-self: center;
   justify-self: end;
-  padding-right: 100px;
+  padding-right: 25px;
 `;
 
   const Selections = styled.div`
@@ -141,12 +141,12 @@ class Overview extends React.Component {
         <Selections>
           <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} numReviews={this.state.numReviews}/>
           <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
-          <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} />
+          <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} updateCart={this.props.updateCart}/>
+          <SocialMediaButtons />
         </Selections>
         <Description>
-          <div><b>{this.state.productInfo.slogan}</b></div>
+          <div style={{fontSize: "20px"}}><b>{this.state.productInfo.slogan}</b></div>
           <div>{this.state.productInfo.description}</div>
-          <SocialMediaButtons />
         </Description>
         <Features>
           {this.state.productInfo.features.map((feature) => {

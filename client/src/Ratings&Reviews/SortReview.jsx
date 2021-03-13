@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SortReview = ({ reviews }) => {
-  console.log('REVIEWS: ', reviews)
   return (
     <div>
         <div className="sort">
