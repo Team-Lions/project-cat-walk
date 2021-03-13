@@ -49,10 +49,8 @@ class QnAList extends React.Component {
     console.log('changed');
   }
 
-
   render() {
     const {data} = this.props;
-    {console.log(this.state.data)}
     return (
       <div>
         <input type="text" onChange={this.handleSearch}/>
