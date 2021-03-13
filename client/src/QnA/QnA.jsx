@@ -3,6 +3,7 @@ import bootstrap from "react-bootstrap";
 import QnAList from './QnAList.jsx';
 import axios from 'axios';
 import token from '../../../public/token.js';
+import SearchBar from './SearchBar';
 
 const itemsPerPage = 2;
 
@@ -27,7 +28,8 @@ class QnA extends Component {
         'Authorization': token
       },
       params: {
-        product_id: id
+        product_id: id,
+        count: 100
       }
     })
     .then((questions) => {
@@ -54,6 +56,8 @@ class QnA extends Component {
   componentDidMount() {
     this.getQuestions(this.props.productID, this.state.index);
   }
+
+
 
   render() {
     return (

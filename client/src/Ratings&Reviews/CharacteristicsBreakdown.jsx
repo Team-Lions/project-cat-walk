@@ -14,7 +14,7 @@ export default function CharacteristicsBreakDown({
 				<Form.Group>
 					<Form.Label>{character[0]} &nbsp;</Form.Label>
 				</Form.Group>
-				<div className="characteristicsForm">
+				<div className="characteristicsForm" key={character[1].id}>
 					<Form.Check
 						value="1"
 						type="radio"
@@ -25,7 +25,8 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									key:character[1].id,
+									value: Number(e.target.value),
 								},
 							]);
 						}}
@@ -40,7 +41,8 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									key:character[1].id,
+									value: Number(e.target.value),
 								},
 							]);
 						}}
@@ -55,7 +57,8 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									key:character[1].id,
+									value: Number(e.target.value),
 								},
 							]);
 						}}
@@ -70,7 +73,8 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									key:character[1].id,
+									value: Number(e.target.value),
 								},
 							]);
 						}}
@@ -85,7 +89,8 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									key:character[1].id,
+									value: Number(e.target.value),
 								},
 							]);
 						}}
