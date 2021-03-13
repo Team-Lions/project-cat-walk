@@ -13,6 +13,7 @@ const StyleThumbnail = styled.img`
   border-radius: 50%;
   height: 65px;
   width: 65px;
+  object-fit: cover;
   margin: 10px;
   :hover {
     cursor: pointer;
