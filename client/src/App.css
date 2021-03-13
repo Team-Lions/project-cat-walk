@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 
+
 a:hover, button:hover, select:hover {
   cursor: pointer;
 }
@@ -15,10 +16,21 @@ header {
 	background-color: black;
 	border-bottom: 3px solid deepskyblue;
 	position: relative;
+	padding-top: 2px;
 }
 
 header:hover {
 	border-bottom: 3px solid deeppink;
+}
+
+#banner {
+	padding-top: 5px;
+	margin-left: 5%;
+	margin-right: 5%;
+	color: deeppink;
+	background-color: black;
+	font-size: 15px;
+	text-align: center;
 }
 
 #page-title {
@@ -35,18 +47,18 @@ header:hover {
 #mode {
 	width: 22px;
 	height: 22px;
-	border: 2px solid darkorange;
-	background-color: orange;
-	color: transparent;
 	position: absolute;
 	bottom: 55px;
-	right: 5px;
-	border-radius: 100%;
+	right: 0px;
+}
+.material-icons {
+	font-size: 32px;
+	transform: rotate(180deg)
 }
 
 #NavBar {
 	position: absolute;
-	left: 20%;
+	left: 17%;
 	bottom: 5px;
 }
 ul {
@@ -61,6 +73,7 @@ ul {
 .nav-li:hover {
 	font-style: italic;
 	color: deeppink;
+	cursor: pointer;
 }
 #thanos {
 	color: black;
@@ -86,6 +99,9 @@ ul {
 }
 #form:hover {
 	border-bottom: 2px solid deeppink;
+}
+#thanos:hover {
+	color: deeppink;
 }
 
 
@@ -115,6 +131,25 @@ body {
 	color: black;
 	border: transparent;
 }
+.light-mode footer {
+	color: black;
+}
+.light-mode #thanos {
+	color: white;
+}
+.light-mode #thanos:hover {
+	color:deeppink
+}
+.light-mode .zquestions {
+	background-color: white;
+}
+.light-mode .card {
+	background: whitesmoke;
+}
+.light-mode #banner {
+	background-color: white;
+}
+
 
 /*Related Items and Fit Start*/
 
@@ -133,10 +168,11 @@ body {
 	width: 16rem;
 	cursor: pointer;
 	margin-bottom: 30px;
+	background: rgb(29, 18, 47);
 }
 
 .card:hover {
-	box-shadow: 10px 15px 20px indigo;
+	box-shadow: 15px 15px 20px indigo;
 }
 
 #related-items {
@@ -156,6 +192,7 @@ body {
 	position: absolute;
 	font-size: 30px;
 	border: none;
+	right: 0px
 }
 
 #fav-button:hover {
@@ -317,6 +354,7 @@ footer {
 
 /* Footer */
 footer {
+	margin-top: 5px;
   border-top: 2px solid deepskyblue;
   margin-left: 5%;
   margin-right: 5%;

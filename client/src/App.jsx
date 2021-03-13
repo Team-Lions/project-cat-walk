@@ -99,10 +99,10 @@ class App extends React.Component {
     }
     return (
       <div key={this.state.selectedProductId}>
-        <Header />
+        <Header handleProductChange={this.handleProductChange}/>
         <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} />
         <RelatedItems productId={this.state.selectedProductId} handleProductChange={this.handleProductChange}/>
-        <YourFit />
+        <YourFit productId={this.state.selectedProductId}/>
         <Ratings productId={this.state.selectedProductId} metaData={this.state.reviewMetaData} starRating={this.state.starRating}/>
         <QnA productID={this.state.selectedProductId}/>
         <Footer />
