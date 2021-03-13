@@ -19,6 +19,7 @@ class Ratings extends React.Component {
 		  isLoading: true
 		}
 		this.loadMore = this.loadMore.bind(this);
+		this.sortReviews = this.sortReviews.bind(this);
 	}
 	
 	getReviews(productId) {
@@ -46,6 +47,12 @@ class Ratings extends React.Component {
 		}
 	}
 
+	sortReviews (resultReview) {
+		this.setState({
+			resultReview
+		})
+	}
+
 	componentDidMount() {
 	Promise.all([
 		this.getReviews(this.props.productId),
@@ -63,6 +70,7 @@ class Ratings extends React.Component {
 	if(this.state.isLoading) {
 		return <div>Loading</div>
 	}
+
 	return(
 		<>
 			<div id="RatingsAndReviews">
@@ -70,7 +78,7 @@ class Ratings extends React.Component {
 					<RatingBreakDown metaData={this.state.metaData} starRating={this.state.avgStarRating}/>
 				</div>
 				<div className="mainReviews">
-					<SortReview reviews={this.state.reviews} />
+					<SortReview allReview={this.state.reviews} resultReview={this.state.resultReview} sortReviews={this.sortReviews}/>
 					<SingleReview reviews={this.state.resultReview}/>
 				</div>
 				<div className="reviewButtons">

@@ -7,27 +7,24 @@ export const submitReview = (data) => {
 		rating: Number(data.rating),
 		summary: data.summary,
 		body: data.body,
-		recommend: data.recommended,
+		recommend: JSON.parse(data.recommended),
 		name: data.name,
 		email: data.email,
 		photos: [],
 		characteristics: data.characteristics,
 	};
-
+	console.log(reviewData.characteristics);
 	let stringifyData = JSON.stringify(reviewData);
-	console.log(stringifyData);
-	axios
-		.post(
-			'https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews',
-			stringifyData,
-			{
-				headers: {
-					Authorization: token,
-					'Content-Type': 'application/json',
-				},
-			}
-		)
-		.catch((error) => {
-			console.error(error);
-		});
+
+	axios({
+		method: 'post',
+		url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/',
+		params: stringifyData,
+		headers: {
+			Authorization: token,
+			'Content-Type': 'application/json',
+		},
+	}).catch((error) => {
+		console.log('ERRRR:: ', error.response.data);
+	});
 };

@@ -25,7 +25,7 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									[character[1].id]: Number(e.target.value),
 								},
 							]);
 						}}
@@ -40,7 +40,7 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									[character[1].id]: Number(e.target.value),
 								},
 							]);
 						}}
@@ -55,7 +55,7 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									[character[1].id]: Number(e.target.value),
 								},
 							]);
 						}}
@@ -70,7 +70,7 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									[character[1].id]: Number(e.target.value),
 								},
 							]);
 						}}
@@ -85,7 +85,7 @@ export default function CharacteristicsBreakDown({
 							setCharacteristics([
 								...characteristics,
 								{
-									[character[1].id]: e.target.value,
+									[character[1].id]: Number(e.target.value),
 								},
 							]);
 						}}
