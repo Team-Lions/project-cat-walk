@@ -2,9 +2,9 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const GalleryThumbnail = styled.img`
-  padding: 2px;
   height: 70px;
-  width: auto;
+  padding: 2px;
+  object-fit: cover;
   :hover {
     cursor: pointer;
   }
@@ -67,6 +67,8 @@ class ImageGalleryDefault extends React.Component {
       mainImageIndex: 0,
       mainImageHeight: '5px',
       mainImageWidth: '5px',
+      thumbnailHeight: "70px",
+      thumbnailWidth: "auto",
       carouselStart: 0,
       carouselEnd: -1,
       allThumbnails: []
@@ -135,6 +137,7 @@ class ImageGalleryDefault extends React.Component {
     });
   }
 
+
   componentDidMount() {
     if (this.props.images.length >= 7) {
       var carouselEnd = 6;
@@ -144,7 +147,7 @@ class ImageGalleryDefault extends React.Component {
 
     var allThumbnails = this.props.images.map((image, index) => {
       return (
-          <GalleryThumbnail selected={false} id={index} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}}></GalleryThumbnail>
+          <GalleryThumbnail selected={false} id={index} src={image.thumbnail_url} alt="alternate image" onClick={() => {this.changeImage(index)}} ></GalleryThumbnail>
       );
     });
 
@@ -159,7 +162,7 @@ class ImageGalleryDefault extends React.Component {
     for (var i = this.state.carouselStart; i <= this.state.carouselEnd; i++) {
       if (i === this.state.mainImageIndex) {
         shownThumbnails.push(
-          <GalleryThumbnail selected={true} id={i} src={this.props.images[i].thumbnail_url} alt="alternate image"></GalleryThumbnail>
+          <GalleryThumbnail selected={true} id={i} src={this.props.images[i].thumbnail_url} alt="alternate image" ></GalleryThumbnail>
         );
       } else {
         shownThumbnails.push(this.state.allThumbnails[i]);
@@ -178,7 +181,7 @@ class ImageGalleryDefault extends React.Component {
               {shownThumbnails}
             </Thumbnails>
             {this.state.carouselEnd < (this.props.images.length - 1) ?
-              <VerticalScrollButton style={{"gridRow": 3}}onClick={this.scrollDown.bind(this)}><i class="fas fa-angle-down fa-lg" style={{"alignSelf": "start"}}></i></VerticalScrollButton>
+              <VerticalScrollButton style={{"gridRow": 3}} onClick={this.scrollDown.bind(this)}><i class="fas fa-angle-down fa-lg" style={{"alignSelf": "start"}}></i></VerticalScrollButton>
               :
               <div style={{"gridRow": 3}}></div>
             }

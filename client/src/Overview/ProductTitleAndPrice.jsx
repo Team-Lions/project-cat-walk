@@ -57,7 +57,7 @@ var ProductTitleAndPrice = (props) => {
       <TopLineContainer>
         <RatingData hidden={props.numReviews === 0}>
           <ReactStarRating numberOfStar={5} numberOfSelectedStar={roundStarRating(props.starRating)} colorFilledStar="deeppink" colorEmptyStar="grey" starSize="15px" spaceBetweenStar="3px" disableOnSelect={true} name="rating" />
-          <A id="ratingsLink" href="#RatingsAndReviews">Read all {props.numReviews} reviews</A>
+          <A id="ratingsLink" href="#RatingsAndReviews">Read all reviews</A>
         </RatingData>
         <Shoppingcart>
           <i class="fas fa-shopping-cart fa-lg" style={{"gridColumn": 1, "alignSelf": "center"}}></i>

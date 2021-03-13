@@ -73,7 +73,6 @@ class Overview extends React.Component {
       productInfo: {},
       styles: [],
       selectedStyle: {},
-      numReviews: null,
       isLoading: true
     }
   }
@@ -104,17 +103,6 @@ class Overview extends React.Component {
     });
   }
 
-  getReviews(productId) {
-    return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews', {
-      headers: {
-      'Authorization': token
-      },
-      params: {
-      product_id: productId
-      }
-    });
-  }
-
   changeStyle(index) {
     this.setState({
       selectedStyle: this.state.styles[index]
@@ -124,15 +112,13 @@ class Overview extends React.Component {
   componentDidMount() {
     Promise.all([
       this.getProductInfo(this.props.productId),
-      this.getStyles(this.props.productId),
-      this.getReviews(this.props.productId)
+      this.getStyles(this.props.productId)
     ])
     .then((values) => {
       this.setState({
         productInfo: values[0].data,
         styles: values[1].data.results,
         selectedStyle: values[1].data.results[0],
-        numReviews: values[2].data.results.length,
         isLoading: false
       });
     })
@@ -156,7 +142,7 @@ class Overview extends React.Component {
           <ImageGalleryDefault images={this.state.selectedStyle.photos} styleName={this.state.selectedStyle.name} />
         </Gallery>
         <Selections>
-          <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} numReviews={this.state.numReviews} cartCount={this.props.cartCount}/>
+          <ProductTitleAndPrice productInfo={this.state.productInfo} starRating={this.props.starRating} price={this.state.selectedStyle.original_price} salePrice={this.state.selectedStyle.sale_price} cartCount={this.props.cartCount}/>
           <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.changeStyle.bind(this)} />
           <AddToCart sizeFirstSkus={sizeFirstSkus} sizes={sizes} updateCart={this.props.updateCart}/>
           <SocialMediaButtons />
