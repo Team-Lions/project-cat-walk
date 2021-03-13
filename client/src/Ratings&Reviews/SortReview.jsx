@@ -1,12 +1,11 @@
 import React from 'react';
 
 const SortReview = ({ reviews }) => {
-  console.log('REVIEWS: ', reviews)
   return (
     <div>
         <div className="sort">
             {reviews.results.length} reviews, sorted by 
-            <select className="sortSelect">
+            <select className="sortSelect" style={{"color":"deeppink"}}>
                 <option value="Relevence">relevence</option>
                 <option value="Helpful">helpful</option>
                 <option value="Newest">newest</option>

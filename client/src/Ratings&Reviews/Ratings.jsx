@@ -33,22 +33,17 @@ class Ratings extends React.Component {
 	}
 	
 	loadMore() {
-		Promise.all([
-			this.getReviews(this.props.productId),
-		])
-		.then((values) => {
-			if (this.state.index > this.state.reviews.results.length) {
-				this.setState({
-					index: 2,
-					resultReview: values[0].data.results.slice(0, this.state.index)
-				})
-			} else {
-				this.setState({
-					index: this.state.index + 2,
-					resultReview: values[0].data.results.slice(0, this.state.index)
-				})
-			}
-		})
+		if (this.state.index > this.state.reviews.results.length) {
+			this.setState({
+				index: 2,
+				resultReview: this.state.reviews.results.slice(0, this.state.index)
+			})
+		} else {
+			this.setState({
+				index: this.state.index + 2,
+				resultReview: this.state.reviews.results.slice(0, this.state.index)
+			})
+		}
 	}
 
 	componentDidMount() {
@@ -77,12 +72,10 @@ class Ratings extends React.Component {
 				<div className="mainReviews">
 					<SortReview reviews={this.state.reviews} />
 					<SingleReview reviews={this.state.resultReview}/>
-					<div className="reviewButtons">
-						{(this.state.resultReview.length === this.state.reviews.results.length) ? <button onClick={this.loadMore}>LESS REVIEWS</button> : <button onClick={this.loadMore}>MORE REVIEWS</button>}
-						<button>
-							ADD A REVIEW +
-						</button>
-					</div>
+				</div>
+				<div className="reviewButtons">
+					{(this.state.resultReview.length === this.state.reviews.results.length) ? <button className="ReviewBTN" onClick={this.loadMore}>LESS REVIEWS</button> : <button className="ReviewBTN" onClick={this.loadMore}>MORE REVIEWS</button>}
+					<AddReview metaData={this.state.metaData}/>
 				</div>
 			</div>
 		</>
