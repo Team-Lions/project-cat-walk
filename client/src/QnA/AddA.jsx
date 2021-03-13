@@ -44,25 +44,25 @@ function AddA(props) {
           <Modal.Body>
             <Form>
                 <Form.Group controlId="formBasicName">
-                    <Form.Label>Your nickname</Form.Label>
+                    <Form.Label style={{color:"deeppink"}}>Your nickname</Form.Label>
                     <Form.Control type="text" placeholder="Enter nickname" onChange={(e) => {
                       setName(e.target.value)}}/>
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Your email</Form.Label>
+                    <Form.Label style={{color:"deeppink"}}>Your email</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" onChange={(e) => {
                       setEmail(e.target.value)}}/>
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Your answer</Form.Label>
+                    <Form.Label style={{color:"deeppink"}}>Your answer</Form.Label>
                     <Form.Control type="text" placeholder="Answer" onChange={(e) => {
                       setBody(e.target.value)}}/>
                 </Form.Group>
-                <label class="form-label" for="customFile">Default file input example</label>
+                <label class="form-label" for="customFile" style={{color:"deeppink"}}>Default file input example</label>
                 <input type="file" class="form-control" id="customFile" multiple/>
                 <Button variant="primary" type="submit" style={mystyle} onSubmit={handleSubmit}>
                     Submit Your Answer
