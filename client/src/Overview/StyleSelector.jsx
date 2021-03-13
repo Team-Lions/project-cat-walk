@@ -19,7 +19,7 @@ const StyleThumbnail = styled.img`
   }
 
   ${props => props.selected && css `
-    border: 3px solid deepskyblue;
+    border: 3px solid deeppink;
   `}
 `;
 
