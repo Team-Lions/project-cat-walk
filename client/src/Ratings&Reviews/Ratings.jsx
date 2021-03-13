@@ -75,9 +75,7 @@ class Ratings extends React.Component {
 				</div>
 				<div className="reviewButtons">
 					{(this.state.resultReview.length === this.state.reviews.results.length) ? <button className="ReviewBTN" onClick={this.loadMore}>LESS REVIEWS</button> : <button className="ReviewBTN" onClick={this.loadMore}>MORE REVIEWS</button>}
-					<button className="ReviewBTN">
-						ADD A REVIEW +
-					</button>
+					<AddReview metaData={this.state.metaData}/>
 				</div>
 			</div>
 		</>

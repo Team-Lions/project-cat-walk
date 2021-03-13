@@ -65,13 +65,13 @@ body {
 }
 
 #related-items {
-  height: 430px;
-  margin-left: 20%;
-  margin-right: 20%;
+	height: 430px;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 #related-title {
-  border-bottom: 2px solid deepskyblue;
+	border-bottom: 2px solid deepskyblue;
 }
 
 #fav-button {
@@ -88,13 +88,13 @@ body {
 }
 
 #your-fit {
-  height: 450px;
-  margin-left: 20%;
-  margin-right: 20%;
+	height: 450px;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 #yourfit-title {
-  border-bottom: 2px solid deeppink;
+	border-bottom: 2px solid deeppink;
 }
 
 #add-button {
@@ -155,7 +155,7 @@ body {
 	grid-area: mainReviews;
 	padding-left: 20px;
 	padding-right: 20px;
-	height: 700px;
+	height: 800px;
 	overflow: auto;
 }
 
@@ -188,7 +188,6 @@ body {
 	font-size: 20px;
 }
 
-
 #related-items {
 	height: 420px;
 	margin-left: 10%;
@@ -198,7 +197,6 @@ body {
 #related-title {
 	border-bottom: 2px solid deepskyblue;
 }
-
 
 .star-list {
 	padding-left: 18%;
@@ -224,15 +222,14 @@ body {
 	background-color: grey;
 }
 
-
 footer {
-  border-top: 2px solid deepskyblue;
-  margin-left: 5%;
-  margin-right: 5%;
-  height: 165px;
-  color: white;
-  background-color: black;
-  text-align: center;
+	border-top: 2px solid deepskyblue;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 165px;
+	color: white;
+	background-color: black;
+	text-align: center;
 }
 
 .sizeSlider {
@@ -269,6 +266,18 @@ footer {
 	background-color: deeppink;
 }
 
+.tAddStar {
+	cursor: pointer;
+	transition: color 200ms;
+}
+
+.characteristicsForm {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 10px;
+}
+
 .RatingSummary {
 	display: flex;
 	flex-direction: column;
@@ -284,13 +293,13 @@ footer {
 
 /* Footer */
 footer {
-  border-top: 2px solid deepskyblue;
-  margin-left: 5%;
-  margin-right: 5%;
-  height: 165px;
-  color: white;
-  background-color: black;
-  text-align: center;
+	border-top: 2px solid deepskyblue;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 165px;
+	color: white;
+	background-color: black;
+	text-align: center;
 }
 .zquestions {
 	overflow-y: scroll;
