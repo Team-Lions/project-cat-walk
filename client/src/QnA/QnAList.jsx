@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import AddQ from './AddQ';
 import axios from 'axios';
 import token from '../../../public/token.js';
-import SearchBar from './SearchBar';
 
 
 class QnAList extends React.Component {
@@ -45,7 +44,6 @@ class QnAList extends React.Component {
     {console.log(this.props)}
     return (
       <div>
-        <SearchBar/>
         <AddQ question={this.props.question} productID={this.props.productID} sendQuestion={this.sendQuestion}/>
         {this.state.isLoading ? <div>isLoading</div> : data.map((question) => {
           return (
