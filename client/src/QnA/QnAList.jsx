@@ -40,18 +40,9 @@ class QnAList extends React.Component {
     })
   }
 
-<<<<<<< HEAD
-  handleSearch() {
-    console.log('changed');
-  }
-
-  render() {
-    const {data} = this.props;
-=======
   render() {
     const {data} = this.props
     {console.log(this.props)}
->>>>>>> parent of f1de47e... Some more styling
     return (
       <div>
         <SearchBar/>
