@@ -22,7 +22,6 @@ class QnAList extends React.Component {
 
   sendQuestion(e, modalData) {
     e.preventDefault();
-    console.log(modalData);
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions',
     modalData,
     {
@@ -31,9 +30,6 @@ class QnAList extends React.Component {
       }
     }
     )
-    .then((results) => {
-      console.log(results);
-    })
     .catch((err) => {
       console.log('error', err.response.data)
     })
@@ -41,13 +37,12 @@ class QnAList extends React.Component {
 
   render() {
     const {data} = this.props
-    {console.log(this.props)}
     return (
       <div>
         <AddQ question={this.props.question} productID={this.props.productID} sendQuestion={this.sendQuestion}/>
         {this.state.isLoading ? <div>isLoading</div> : data.map((question) => {
           return (
-          <Question productID={this.props.productID} question={question} answers={Object.values(question.answers)} id={this.props.id} loadMoreAnswers={this.loadMoreAnswers} show={this.state.show}/>
+          <Question key={question.question_id} productID={this.props.productID} question={question} answers={Object.values(question.answers)} id={this.props.id} loadMoreAnswers={this.loadMoreAnswers} show={this.state.show}/>
           )
         })}
         <Button size="lg" onClick={this.props.loadMore}>
