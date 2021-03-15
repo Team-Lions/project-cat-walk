@@ -20,7 +20,7 @@ function AddQ(props) {
         email,
         product_id: props.productID
       };
-      props.sendQuestion(e, modalData);
+      props.sendQuestion(event, modalData);
     }
 
     const mystyle = {
