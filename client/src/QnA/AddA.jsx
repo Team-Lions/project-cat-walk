@@ -21,12 +21,12 @@ function AddA(props) {
         email,
         question_id: props.question.question_id
       };
-      props.sendAnswer(e, ansData, props.question.question_id);
+      props.sendAnswer(event, ansData, props.question.question_id);
     }
 
 
     const mystyle = {
-      padding: "20",
+      padding: "10px",
       backgroundColor: "rgb(29, 18, 47)",
       border: "1px solid deepPink"
     }
@@ -64,7 +64,7 @@ function AddA(props) {
                 </Form.Group>
                 <label class="form-label" for="customFile" style={{color:"deeppink"}}>Default file input example</label>
                 <input type="file" class="form-control" id="customFile" multiple/>
-                <Button variant="primary" type="submit" style={mystyle} onSubmit={handleSubmit}>
+                <Button variant="primary" type="submit" style={mystyle} onClick={handleSubmit}>
                     Submit Your Answer
                 </Button>
             </Form>

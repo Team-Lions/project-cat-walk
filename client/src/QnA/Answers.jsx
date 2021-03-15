@@ -70,7 +70,7 @@ class Answers extends React.Component {
               <p style={{color:"deepPink", borderBottom:"1px solid deepPink", fontSize: "20px", fontWeight: "Bold"}}>By {answer.answerer_name}, {dateFormat(answer.date, "mmmm dS, yyyy")}</p> :
               <p style={{color:"deepPink", borderBottom:"1px solid deepPink", fontWeight: "normal"}}>By {answer.answerer_name}, {dateFormat(answer.date, "mmmm dS, yyyy")}</p>}
               <div>Yes</div>
-              <QHelpfulness questionID={this.props.questionID} answerID={answer.id} helpfulness={answer.helpfulness}/>
+              <QHelpfulness  questionID={this.props.questionID} answerID={answer.id} helpfulness={answer.helpfulness}/>
             </div>
           )
         }) : <div>No answers</div>
