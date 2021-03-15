@@ -35,6 +35,10 @@ class QnAList extends React.Component {
     })
   }
 
+  handleSearch() {
+
+  }
+
   render() {
     const {data} = this.props
     return (

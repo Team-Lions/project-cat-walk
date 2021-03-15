@@ -10,11 +10,11 @@ export default function CharacteristicsBreakDown({
 
 	return allCharacteristics.map((character) => {
 		return (
-			<>
+			<div key={character[1].id}>
 				<Form.Group>
 					<Form.Label>{character[0]} &nbsp;</Form.Label>
 				</Form.Group>
-				<div className="characteristicsForm" key={character[1].id}>
+				<div className="characteristicsForm">
 					<Form.Check
 						value="1"
 						type="radio"
@@ -96,7 +96,7 @@ export default function CharacteristicsBreakDown({
 						}}
 					/>
 				</div>
-			</>
+			</div>
 		);
 	});
 }

@@ -66,7 +66,6 @@ class App extends React.Component {
       newState.reviewMetaData = reviewMetadata.data;
       newState.starRating = calculateStarReview(newState.reviewMetaData.ratings);
       newState.isLoading = false;
-      //console.log('newstate: ', newState);
       this.setState(newState);
     })
     .catch((err) => {
@@ -117,7 +116,7 @@ class App extends React.Component {
     return (
       <div key={this.state.selectedProductId}>
         <Header cartCount={this.state.cartCount} handleProductChange={this.handleProductChange}/>
-        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} updateCart={this.updateCart.bind(this)} />
+        <Overview productId={this.state.selectedProductId} starRating={this.state.starRating} ratings={this.state.reviewMetaData.ratings} updateCart={this.updateCart.bind(this)} cartCount={this.state.cartCount}/>
         <RelatedItems productId={this.state.selectedProductId} handleProductChange={this.handleProductChange}/>
         <YourFit productId={this.state.selectedProductId}/>
         <QnA productID={this.state.selectedProductId}/>
