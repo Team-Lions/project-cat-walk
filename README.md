@@ -1,39 +1,23 @@
-# project-cat-walk
-Project for HRATX54 FEC
+# Lions Den Apparal
+Welcome to Lion's Den Apparal - your one stop shop for all of the hippest gear to keep you leading the pack in style. View all our available porducts in an expansize photo gallery. Build your outfit with suggested related items. If for some reason you don't think a product is right for you, ask us a question or read reviews from other happy customers!
 
-main branch is the production/user-facing branch
-staging branch is where first merge will occur to make sure overall functionality is not broken
-  
+This is a front end focused project using React, React-bootstrap, and Styled Components to create a stylish web-shopping portal with all the functionality users would expect from a large online retailer.
 
-Create a new branch:
- - first make sure your local version of the main branch is up to date. Run command: git pull origin main
- - run command: git checkout -b new_branchname
- - to verify that you are on the correct branch, run git status. First line will say what branch you are currently on
- - run command: git merge main
- 
-Pushing branch to Github:
- - verify that all changes are commited
- - run command: git checkout main
- - run command: git pull origin main
- - run command: git checkout <name of branch you're looking to push>
- - run command: git status
- - verify the result of git status shows you are on the feature branch
- - run command: git merge main
- - resolve any conflicts !!in the feature branch!!
- - run command: git status
- - verify your branch is still clean
- - run command: git push
- - copy outputed command and run that
+ # Workflow
+ For this project we maintained one master branch, one staging branch, and individual feature branches as for each component. Sprint plans were tracked using [Trello](https://trello.com/b/SjWdKe9X/catwalk-fec-project). When features were ready to be added into stage the following steps were taken:
+  1. Pull down the stage branch
+  2. Merge local feature branch with local stage branch
+  3. Validate that all features are still working correctly
+  4. Push changes to GitHub and create a pull request into staging
+  5. Another teammember must complete a code review before giving the ok to merge
+  6. At the end of the sprint, stage is merged in master
 
-Updating staging and main branches
- - From your newly pushed feature branch create a pull request into the staging branch
- - notify teammate for review
- - teammate reviews and if no changes need to be made merges the pull request
- - reviewer notifies the feature branch owner that the merge is complete
- - feature branch owner performs the following steps
- - run command: git checkout staging
- - run command: git pull origin staging
- - verify that all new changes are still working as expected and nothing else is broken
- - run command: git push origin staging
- - in github create a pull request from staging into main
- - approve your own merge request
+# Get Started
+  To run this on your own machine, execute the follwing commands from a terminal in the root folder:
+   - npm install
+   - npm run build
+   - npm start
+   - navigate to localhost:3000
+
+## Challenges/lessons learned
+  This was the first project where all contributors worked in a team on one single project. The section of the page were easy to divide between members to allow for each teammate to own one particular section. Our biggest challenge was figuring out how to navigate the React lifecycle when loading our components. Namely, we ran into trouble with the ComponentDidMount method of child components trying to complete before their parent components completed and throwing errors because the state in the parent component hadn't been updated yet. We got around this through a mix of conditional rendering, and using Keys to dismount and regenerate the components whenever the selected style was changed.
