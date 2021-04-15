@@ -4,13 +4,13 @@ Welcome to Lion's Den Apparal - your one stop shop for all of the hippest gear t
 This is a front end focused project using React, React-bootstrap, and Styled Components to create a stylish web-shopping portal with all the functionality users would expect from a large online retailer.
 
  # Workflow
- For this project we maintained one master branch, one staging branch, and individual feature branches as for each component. Sprint plans were tracked using [Trello](https://trello.com/b/SjWdKe9X/catwalk-fec-project). When features were ready to be added into stage the following steps were taken:
+ For this project we maintained one main branch, one staging branch, and individual feature branches as for each component. Sprint plans were tracked using [Trello](https://trello.com/b/SjWdKe9X/catwalk-fec-project). When features were ready to be added into stage the following steps were taken:
   1. Pull down the stage branch
   2. Merge local feature branch with local stage branch
   3. Validate that all features are still working correctly
   4. Push changes to GitHub and create a pull request into staging
   5. Another teammember must complete a code review before giving the ok to merge
-  6. At the end of the sprint, stage is merged in master
+  6. At the end of the sprint, stage is merged in main
 
 # Get Started
   To run this on your own machine, execute the follwing commands from a terminal in the root folder:
